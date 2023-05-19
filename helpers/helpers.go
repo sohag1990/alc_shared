@@ -1,9 +1,9 @@
 package helpers
 
 import (
-	"crypto/rand"
 	"fmt"
 	"html/template"
+	"math/rand"
 	"strconv"
 	"time"
 
@@ -50,4 +50,39 @@ func TokenGenerator() string {
 	b := make([]byte, 4)
 	rand.Read(b)
 	return fmt.Sprintf("%x", b)
+}
+
+// GeneratePassword generates a random password of the specified length and complexity level.
+// Complexity levels are 1, 2, and 3, with 1 being the simplest and 3 being the most complex.
+func GeneratePassword(length, complexity int) string {
+	var letterRunes = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+	var numberRunes = []rune("0123456789")
+	var symbolRunes = []rune("!@#$%^&*()_+{}[]|\\;:'\"<>,.?/")
+
+	rand.Seed(time.Now().UnixNano())
+
+	var password []rune
+	for i := 0; i < length; i++ {
+		switch complexity {
+		case 1:
+			password = append(password, letterRunes[rand.Intn(len(letterRunes))])
+		case 2:
+			if rand.Intn(2) == 0 {
+				password = append(password, letterRunes[rand.Intn(len(letterRunes))])
+			} else {
+				password = append(password, numberRunes[rand.Intn(len(numberRunes))])
+			}
+		case 3:
+			switch rand.Intn(3) {
+			case 0:
+				password = append(password, letterRunes[rand.Intn(len(letterRunes))])
+			case 1:
+				password = append(password, numberRunes[rand.Intn(len(numberRunes))])
+			case 2:
+				password = append(password, symbolRunes[rand.Intn(len(symbolRunes))])
+			}
+		}
+	}
+
+	return string(password)
 }
