@@ -7,6 +7,7 @@ import (
 
 	jwt "github.com/appleboy/gin-jwt/v2"
 	"github.com/gin-gonic/gin"
+	"github.com/sohag1990/alc_shared"
 	"github.com/sohag1990/alc_shared/models"
 )
 
@@ -68,7 +69,7 @@ func GinJwtMiddlewareHandler() *jwt.GinJWTMiddleware {
 				return "", jwt.ErrMissingLoginValues
 			}
 
-			apiUrl := "http://localhost:8080/api/check_login"
+			apiUrl := alc_shared.API_URL + "/check_login"
 			var usr models.User
 			usr.Email = loginVals.Email
 			usr.Password = loginVals.Password
