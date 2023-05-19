@@ -1,5 +1,5 @@
 // util.go
-package stringutil
+package alc_shared
 
 import "strings"
 
