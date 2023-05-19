@@ -56,3 +56,35 @@ func ClaimsToken(tokenString string) jwt_go.MapClaims {
 	}
 	return nil
 }
+
+func UserLoginCheck() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		session := sessions.Default(c)
+		// fmt.Println(session.Get("login_session"))
+
+		// token check
+		if session.Get("login_session") == nil {
+			session.Set("after_logged_in_url", c.Request.URL.Path)
+			session.Save()
+			c.Redirect(302, "/login")
+		} else {
+			c.Next()
+		}
+		c.Next()
+	}
+}
+
+func AdminLoginCheck() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		session := sessions.Default(c)
+		// fmt.Println(session.Get("login_session"))
+
+		// token check
+		if session.Get("login_session") == nil {
+			c.Redirect(302, "/login")
+		} else {
+			c.Next()
+		}
+		c.Next()
+	}
+}

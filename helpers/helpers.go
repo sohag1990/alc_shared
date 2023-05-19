@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"html/template"
 	"math/rand"
+	"regexp"
 	"strconv"
 	"time"
 
@@ -85,4 +86,16 @@ func GeneratePassword(length, complexity int) string {
 	}
 
 	return string(password)
+}
+
+var (
+	emailRegexp = regexp.MustCompile("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")
+)
+
+// IsValidEmailFormat Email invalid formate checker
+func IsValidEmailFormat(email string) bool {
+	if !emailRegexp.MatchString(email) {
+		return false
+	}
+	return true
 }
