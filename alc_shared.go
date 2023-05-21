@@ -5,7 +5,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-var API_URL = "http://localhost:8080/api"
+// var API_URL = "http://localhost:8080/api"
 
 // Cors set cors to routes
 func Cors() gin.HandlerFunc {
