@@ -8,6 +8,7 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/gin-gonic/gin"
 	"github.com/sohag1990/alc_shared/models"
 )
 
@@ -98,4 +99,20 @@ func IsValidEmailFormat(email string) bool {
 		return false
 	}
 	return true
+}
+
+func UrlSchema(c *gin.Context) string {
+	isHTTPS := c.Request.TLS != nil
+
+	// Determine the URL schema based on the HTTPS flag
+	scheme := "http"
+	if isHTTPS {
+		scheme = "https"
+	} else {
+		scheme = "http"
+	}
+	return scheme
+}
+func GetHosturl(c *gin.Context) string {
+	return UrlSchema(c) + "://" + c.Request.Host
 }
