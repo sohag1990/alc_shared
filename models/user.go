@@ -23,12 +23,12 @@ type User struct {
 	Role      string
 	Verified  bool `json:"verified"`
 	Hostname  string
-	ProfileID uint64 `gorm:"uniqueIndex;not null"`
+	ProfileID uint64
 
 	// HRM fields
-	AppointmentID     uint64 `gorm:"uniqueIndex;not null"`
-	EmployeeID        uint64 `gorm:"uniqueIndex;not null"`
-	SalaryStructureID uint64 `gorm:"uniqueIndex;not null"`
+	AppointmentID     uint64
+	EmployeeID        uint64
+	SalaryStructureID uint64
 	Profile           Profile
 	Appointment       Appointment
 	Weekend           Weekend
