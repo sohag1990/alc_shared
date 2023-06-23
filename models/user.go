@@ -26,11 +26,11 @@ type User struct {
 	ProfileID uint64
 
 	// HRM fields
-	AppointmentID     uint64
+	HRAppointmentID   uint64
 	EmployeeID        uint64
 	SalaryStructureID uint64
 	Profile           Profile
-	Appointment       Appointment
+	HRAppointment     HRAppointment
 	Weekend           Weekend
 	Employee          Employee
 	SalaryStructure   ServiceCategory

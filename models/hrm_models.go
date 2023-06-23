@@ -2,7 +2,7 @@ package models
 
 import "time"
 
-type Appointment struct {
+type HRAppointment struct {
 	DefaultProperties
 	Company         string
 	Branch          string
