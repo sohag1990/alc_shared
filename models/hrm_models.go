@@ -10,8 +10,8 @@ type HRAppointment struct {
 	Section         string
 	AppointmentType string
 	Shift           string
-	AppointmentDate time.Time
-	JoiningDate     time.Time
+	AppointmentDate time.Time `gorm:"type:date;default:null"`
+	JoiningDate     time.Time `gorm:"type:date;default:null"`
 	EPRID           uint64
 	EmployeeID      uint64
 	EmployeeType    string
@@ -33,7 +33,7 @@ type Employee struct {
 	FatherName              string
 	MotherName              string
 	HusbandOrWifeName       string
-	DateOfBirth             time.Time
+	DateOfBirth             time.Time `gorm:"type:date;default:null"`
 	PresentAddressBangla    string
 	PresentAddressEnglish   string
 	PermanentAddressBangla  string
