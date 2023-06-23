@@ -17,7 +17,7 @@ type FrontendUserData struct {
 }
 
 type User struct {
-	gorm.Model
+	DefaultProperties
 	Email     string `gorm:"uniqueIndex;not null;size:256"`
 	Password  string `form:"password" json:"password" binding:"required" json:"-"`
 	Role      string
