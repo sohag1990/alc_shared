@@ -24,16 +24,11 @@ type User struct {
 	Verified  bool `json:"verified"`
 	Hostname  string
 	ProfileID uint64
-
+	Profile   Profile
 	// HRM fields
-	HRAppointmentID   uint64
-	EmployeeID        uint64
-	SalaryStructureID uint64
-	Profile           Profile
-	HRAppointment     HRAppointment
-	Weekend           Weekend
-	Employee          Employee
-	SalaryStructure   ServiceCategory
+	EmployeeID uint64
+	Employee   Employee
+	Weekend    Weekend
 }
 
 type DefaultProperties struct {
