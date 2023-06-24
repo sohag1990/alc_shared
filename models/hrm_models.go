@@ -28,25 +28,24 @@ type Employee struct {
 	EmployeeImage   string
 
 	// employee information
-	EmployeeNameBangla      string
-	EmployeeNameEnglish     string
-	FatherName              string
-	MotherName              string
-	HusbandOrWifeName       string
-	DateOfBirth             time.Time `gorm:"type:date;default:null"`
-	PresentAddressBangla    string
-	PresentAddressEnglish   string
-	PermanentAddressBangla  string
-	PermanentAddressEnglish string
-	EducationQualification  string
-	Nationality             string
-	Gender                  string
-	BloodGroup              string
-	MaritalStatus           string
-	Religion                string
-	Mobile                  string
-	Phone                   string
-	Email                   string
+	EmployeeNameBangla     string
+	EmployeeNameEnglish    string
+	FatherName             string
+	MotherName             string
+	HusbandOrWifeName      string
+	DateOfBirth            time.Time `gorm:"type:date;default:null"`
+	PresentAddress         string
+	PermanentAddress       string
+	EducationQualification string
+	ExtraQualification     string
+	Nationality            string
+	Gender                 string
+	BloodGroup             string
+	MaritalStatus          string
+	Religion               string
+	Mobile                 string
+	Phone                  string
+	Email                  string
 
 	// salary structer
 	CashSalary           float64
