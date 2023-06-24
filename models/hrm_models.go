@@ -2,8 +2,16 @@ package models
 
 import "time"
 
-type HRAppointment struct {
+type Weekend struct {
 	DefaultProperties
+	Day    string
+	UserID uint64 `gorm:"uniqueIndex;not null"`
+}
+
+type Employee struct {
+	DefaultProperties
+
+	// appointment information
 	Company         string
 	Branch          string
 	Department      string
@@ -18,16 +26,8 @@ type HRAppointment struct {
 	Designation     string
 	Weekend         string
 	EmployeeImage   string
-}
 
-type Weekend struct {
-	DefaultProperties
-	Day    string
-	UserID uint64 `gorm:"uniqueIndex;not null"`
-}
-
-type Employee struct {
-	DefaultProperties
+	// employee information
 	EmployeeNameBangla      string
 	EmployeeNameEnglish     string
 	FatherName              string
@@ -47,10 +47,8 @@ type Employee struct {
 	Mobile                  string
 	Phone                   string
 	Email                   string
-}
 
-type SalaryStructure struct {
-	DefaultProperties
+	// salary structer
 	CashSalary           float64
 	TAndTAllowance       float64
 	OthersPayable        float64
