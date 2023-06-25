@@ -33,7 +33,7 @@ type Company struct {
 	DefaultShiftName       string
 	OneDayDeductionForLate int
 
-	Weekends       []Weekend
+	Weekends       []string
 	Branches       []Branch
 	Projects       []Project
 	Department     []Department
@@ -181,20 +181,13 @@ type Option struct {
 	OptionName string
 	Status     string
 }
-type Weekend struct {
-	DefaultProperties
-	Day        string
-	UserID     uint64
-	EmployeeID uint64
-	CompanyID  uint64
-}
 
 type Employee struct {
 	DefaultProperties
 	Attendances []Attendance
 	ODs         []OD
 	Customers   []Customer
-	Weekends    []Weekend
+	Weekends    []string
 	// appointment information
 	Company         Company
 	CompanyID       uint64
