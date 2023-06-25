@@ -31,9 +31,9 @@ type Company struct {
 	AllowRegistration      bool
 	BookingCancellation    bool
 	DefaultShiftName       string
-	Weekend                string
 	OneDayDeductionForLate int
 
+	Weekends       []Weekend
 	Branches       []Branch
 	Projects       []Project
 	Department     []Department
@@ -186,6 +186,7 @@ type Weekend struct {
 	Day        string
 	UserID     uint64
 	EmployeeID uint64
+	CompanyID  uint64
 }
 
 type Employee struct {
