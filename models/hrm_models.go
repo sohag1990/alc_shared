@@ -33,7 +33,7 @@ type Company struct {
 	DefaultShiftName       string
 	OneDayDeductionForLate int
 
-	Weekends       []string
+	Weekend        []string
 	Branches       []Branch
 	Projects       []Project
 	Department     []Department
@@ -187,7 +187,7 @@ type Employee struct {
 	Attendances []Attendance
 	ODs         []OD
 	Customers   []Customer
-	Weekends    []string
+	Weekend     []string
 	// appointment information
 	Company         Company
 	CompanyID       uint64

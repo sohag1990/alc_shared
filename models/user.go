@@ -28,7 +28,7 @@ type User struct {
 	// HRM fields
 	EmployeeID uint64
 	Employee   Employee
-	Weekend    Weekend
+	Weekend    []string
 }
 
 type DefaultProperties struct {
