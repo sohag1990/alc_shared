@@ -193,22 +193,25 @@ type Employee struct {
 	Attendances []Attendance
 	ODs         []OD
 	Customers   []Customer
+	Weekends    []Weekend
 	// appointment information
 	Company         Company
 	CompanyID       uint64
 	Branch          Branch
 	BranchID        uint64
-	Department      string
-	Section         string
+	Department      Department
+	DepartmentID    uint64
+	Section         Section
+	SectionID       uint64
+	Shift           Shift
+	ShiftID         uint64
 	AppointmentType string
-	Shift           string
 	AppointmentDate time.Time `gorm:"type:date;default:null"`
 	JoiningDate     time.Time `gorm:"type:date;default:null"`
 	EPRID           uint64
 	EmployeeID      uint64
 	EmployeeType    string
 	Designation     string
-	Weekends        []Weekend
 	EmployeeImage   string
 
 	// employee information
