@@ -26,10 +26,10 @@ type Company struct {
 	DefaultLanguage        string
 	LicenseKey             string
 	SecretKey              string
-	SiteOffline            bool
+	SiteOffline            string
 	OfflineMessage         string
-	AllowRegistration      bool
-	BookingCancellation    bool
+	AllowRegistration      string
+	BookingCancellation    string
 	DefaultShiftName       string
 	OneDayDeductionForLate int
 
