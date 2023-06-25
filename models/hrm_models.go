@@ -192,7 +192,7 @@ type Employee struct {
 	DefaultProperties
 	Attendances []Attendance
 	ODs         []OD
-	Customers   []Employee
+	Customers   []Customer
 	// appointment information
 	Company         Company
 	CompanyID       uint64
@@ -317,7 +317,7 @@ type Customer struct {
 	Designation   string
 	Gender        string
 	Nationality   string
-	SalesPerson   Employee
+	Employee      Employee
 	EmployeeID    uint64
 	Mobile        string
 	Phone         string
