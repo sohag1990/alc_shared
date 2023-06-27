@@ -32,8 +32,8 @@ type Company struct {
 	BookingCancellation    string
 	DefaultShiftName       string
 	OneDayDeductionForLate int
+	Weekend                string
 
-	Weekend        string
 	Branches       []Branch
 	Projects       []Project
 	Department     []Department
@@ -179,6 +179,7 @@ type Menu struct {
 	Slug        string
 	OrderNumber int
 	Status      string
+	Options     []Option
 }
 type Option struct {
 	DefaultProperties
@@ -186,7 +187,8 @@ type Option struct {
 	Company    Company
 	Module     Module
 	ModuleID   uint64
-	MenuName   string
+	Menu       Menu
+	MenuID     uint64
 	OptionType string
 	OptionName string
 	Status     string
