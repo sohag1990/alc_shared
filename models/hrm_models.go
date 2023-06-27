@@ -105,7 +105,6 @@ type Division struct {
 	Status         string
 	Areas          []Area
 	TerritoryAreas []TerritoryArea
-	Modules        []Module
 }
 type Area struct {
 	DefaultProperties
