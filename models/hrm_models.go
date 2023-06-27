@@ -163,8 +163,7 @@ type Module struct {
 	CompanyID   uint64
 	Company     Company
 	Name        string
-	Division    Division
-	DivisionID  uint64
+	FaIcon      string
 	OrderNumber int
 	Status      string
 	Options     []Option
