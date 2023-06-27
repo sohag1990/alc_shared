@@ -46,6 +46,7 @@ type Company struct {
 	FiscalYears    []FiscalYear
 	Shifts         []Shift
 	Modules        []Module
+	Menu           []Menu
 	Employees      []Employee
 	Holidays       []Holiday
 	ODs            []OD
@@ -167,7 +168,15 @@ type Module struct {
 	Status      string
 	Options     []Option
 }
-
+type Menu struct {
+	DefaultProperties
+	CompanyID   uint64
+	Company     Company
+	Name        string
+	Slug        string
+	OrderNumber int
+	Status      string
+}
 type Option struct {
 	DefaultProperties
 	CompanyID  uint64
