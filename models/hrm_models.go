@@ -167,11 +167,14 @@ type Module struct {
 	OrderNumber int
 	Status      string
 	Options     []Option
+	Menus       []Menu
 }
 type Menu struct {
 	DefaultProperties
 	CompanyID   uint64
 	Company     Company
+	Module      Module
+	ModuleID    uint64
 	Name        string
 	Slug        string
 	OrderNumber int
