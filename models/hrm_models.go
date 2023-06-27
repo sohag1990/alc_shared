@@ -183,15 +183,15 @@ type Menu struct {
 }
 type Option struct {
 	DefaultProperties
-	CompanyID  uint64
-	Company    Company
-	Module     Module
-	ModuleID   uint64
-	Menu       Menu
-	MenuID     uint64
-	OptionType string
-	OptionName string
-	Status     string
+	CompanyID uint64
+	Company   Company
+	Module    Module
+	ModuleID  uint64
+	Menu      Menu
+	MenuID    uint64
+	Type      string
+	Name      string
+	Status    string
 }
 
 type Employee struct {
