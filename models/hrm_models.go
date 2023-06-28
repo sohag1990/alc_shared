@@ -1,9 +1,5 @@
 package models
 
-import (
-	"time"
-)
-
 type Company struct {
 	DefaultProperties
 	Name                   string
@@ -212,8 +208,8 @@ type Employee struct {
 	Shift           Shift
 	ShiftID         uint64
 	AppointmentType string
-	AppointmentDate time.Time `gorm:"type:date;default:null"`
-	JoiningDate     time.Time `gorm:"type:date;default:null"`
+	AppointmentDate string
+	JoiningDate     string
 	EPRID           string
 	EmployeeID      string
 	EmployeeType    string
@@ -227,7 +223,7 @@ type Employee struct {
 	FatherName             string
 	MotherName             string
 	HusbandOrWifeName      string
-	DateOfBirth            time.Time `gorm:"type:date;default:null"`
+	DateOfBirth            string
 	PresentAddress         string
 	PermanentAddress       string
 	EducationQualification string
@@ -309,10 +305,10 @@ type OD struct {
 	Shift        Shift
 	ShiftID      uint64
 	Remarks      string
-	ODTo         time.Time `gorm:"type:date;default:null"`
-	ODFrom       time.Time `gorm:"type:date;default:null"`
-	InTime       time.Time `gorm:"type:date;default:null"`
-	OutTime      time.Time `gorm:"type:date;default:null"`
+	ODTo         string
+	ODFrom       string
+	InTime       string
+	OutTime      string
 }
 
 type Customer struct {
