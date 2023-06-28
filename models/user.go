@@ -25,9 +25,6 @@ type User struct {
 	Hostname  string
 	ProfileID uint64
 	Profile   Profile
-	// HRM fields
-	EmployeeID uint64
-	Employee   Employee
 }
 
 type DefaultProperties struct {

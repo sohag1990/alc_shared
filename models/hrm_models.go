@@ -201,6 +201,7 @@ type Employee struct {
 	Customers   []Customer
 	Weekend     string
 	// appointment information
+
 	Company         Company
 	CompanyID       uint64
 	Branch          Branch
