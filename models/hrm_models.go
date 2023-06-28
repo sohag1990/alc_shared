@@ -213,21 +213,21 @@ type Employee struct {
 	ShiftID         uint64
 	AppointmentType string
 	AppointmentDate time.Time `gorm:"type:date;default:null"`
-	JoiningDate     time.Time `gorm:"type:date;default:null"`
-	EPRID           string
-	EmployeeID      string
-	EmployeeType    string
-	Designation     string
-	EmployeeImage   string
-	Weekend         string
+	// JoiningDate     time.Time `gorm:"type:date;default:null"`
+	EPRID         string
+	EmployeeID    string
+	EmployeeType  string
+	Designation   string
+	EmployeeImage string
+	Weekend       string
 
 	// employee information
-	EmployeeNameBangla     string
-	EmployeeNameEnglish    string
-	FatherName             string
-	MotherName             string
-	HusbandOrWifeName      string
-	DateOfBirth            time.Time `gorm:"type:date;default:null"`
+	EmployeeNameBangla  string
+	EmployeeNameEnglish string
+	FatherName          string
+	MotherName          string
+	HusbandOrWifeName   string
+	// DateOfBirth            time.Time `gorm:"type:date;default:null"`
 	PresentAddress         string
 	PermanentAddress       string
 	EducationQualification string
