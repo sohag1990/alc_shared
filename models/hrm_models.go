@@ -215,7 +215,7 @@ type Employee struct {
 	AppointmentType string
 	AppointmentDate time.Time `gorm:"type:date;default:null"`
 	JoiningDate     time.Time `gorm:"type:date;default:null"`
-	EPRID           uint64
+	EPRID           string
 	EmployeeID      string
 	EmployeeType    string
 	Designation     string
