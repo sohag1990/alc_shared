@@ -116,3 +116,6 @@ func UrlSchema(c *gin.Context) string {
 func GetHosturl(c *gin.Context) string {
 	return UrlSchema(c) + "://" + c.Request.Host
 }
+func GetHostWithoutProtocol(c *gin.Context) string {
+	return c.Request.Host
+}
