@@ -8,12 +8,13 @@ import (
 
 type FrontendUserData struct {
 	DefaultProperties
-	FullName   string
-	Email      string
-	Role       string
-	Hostname   string
-	ButtonText string
-	Url        string
+	FullName     string
+	Email        string
+	Role         string
+	Hostname     string
+	HostnameOnly string
+	ButtonText   string
+	Url          string
 }
 
 type User struct {
