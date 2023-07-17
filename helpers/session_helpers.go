@@ -19,12 +19,12 @@ func GetFrontendUserData(c *gin.Context) models.FrontendUserData {
 	claims := ClaimsToken(tokenString)
 
 	var usrData models.FrontendUserData
+	usrData.Hostname = GetHosturl(c)
+	usrData.HostnameOnly = GetHostWithoutProtocol(c)
 	if claims != nil || len(claims) != 0 {
 		usrData.FullName = fmt.Sprint(claims["fullname"])
 		usrData.Email = fmt.Sprint(claims["email"])
 		usrData.Role = fmt.Sprint(claims["role"])
-		usrData.Hostname = GetHosturl(c)
-		usrData.HostnameOnly = GetHostWithoutProtocol(c)
 		usrData.ButtonText = "Logout"
 		usrData.Url = "/logout"
 		return usrData
