@@ -39,7 +39,7 @@ func APICall(callMethod string, apiUrl string, requestData any, responseData any
 	resp, err := client.Do(req)
 	if err != nil {
 		log.Println("Error on response.\n[ERROR] -", err)
-		c.JSON(500, err)
+		c.JSON(500, "Connection refused, Back to previous page and try again.")
 	}
 
 	defer resp.Body.Close()
