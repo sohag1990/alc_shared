@@ -1,38 +1,72 @@
 package helpers
 
 import (
-	"log"
-	"net/smtp"
+	"fmt"
+
+	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/credentials"
+	"github.com/aws/aws-sdk-go/aws/session"
+	"github.com/aws/aws-sdk-go/service/ses"
 )
 
-func main() {
-	// Sender's email credentials
-	senderEmail := "your_email@example.com"
-	senderPassword := "your_email_password"
+type Email struct {
+	HtmlBody       string
+	SubjectLine    string
+	FromEmail      string
+	ToEmails       string
+	CCEmails       string
+	BCCEmails      string
+	AwsZone        string
+	AWSAccessKeyID string
+	AWSSecretKeyID string
+}
 
-	// Recipient's email
-	recipientEmail := "recipient@example.com"
-
-	// SMTP server configuration
-	smtpHost := "smtp.example.com"
-	smtpPort := "587"
-
-	// Compose the email
-	subject := "Hello from Go!"
-	body := "This is the email body."
-
-	// Create the message
-	message := "From: " + senderEmail + "\n" +
-		"To: " + recipientEmail + "\n" +
-		"Subject: " + subject + "\n\n" +
-		body
-
-	// Authenticate and send the email
-	auth := smtp.PlainAuth("", senderEmail, senderPassword, smtpHost)
-	err := smtp.SendMail(smtpHost+":"+smtpPort, auth, senderEmail, []string{recipientEmail}, []byte(message))
+func (email Email) SendEmail() {
+	sess, err := session.NewSession(&aws.Config{
+		Region: aws.String(email.AwsZone), // Replace with your desired AWS region
+		Credentials: credentials.NewStaticCredentials(
+			email.AWSAccessKeyID, // Replace with your AWS access key ID
+			email.AWSSecretKeyID, // Replace with your AWS secret access key
+			"",
+		),
+	})
 	if err != nil {
-		log.Fatal(err)
+		fmt.Println("Error creating AWS session:", err)
+	}
+	// Create an SES client
+	svc := ses.New(sess)
+
+	// Compose the email with an HTML body and CC address
+	toAddresses := []*string{aws.String(email.ToEmails)}  // Replace with your to email address
+	ccAddresses := []*string{aws.String(email.CCEmails)}  // Replace with your CC email address
+	bcAddresses := []*string{aws.String(email.BCCEmails)} // Replace with your bCC email address
+
+	input := &ses.SendEmailInput{
+		Source: aws.String(email.FromEmail), // Replace with the sender email address
+		Destination: &ses.Destination{
+			ToAddresses:  toAddresses,
+			CcAddresses:  ccAddresses,
+			BccAddresses: bcAddresses,
+		},
+		Message: &ses.Message{
+			Subject: &ses.Content{
+				Data: aws.String(email.SubjectLine),
+			},
+			Body: &ses.Body{
+				Html: &ses.Content{
+					Data: aws.String(email.HtmlBody),
+				},
+			},
+		},
 	}
 
-	log.Println("Email sent successfully!")
+	// Send the email through Amazon SES
+	result, err := svc.SendEmail(input)
+	if err != nil {
+		fmt.Println("Error sending email:", err)
+		return
+	}
+
+	fmt.Println("Email sent! Message ID:", *result.MessageId)
+
 }
