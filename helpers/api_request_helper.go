@@ -33,7 +33,7 @@ func APICall(callMethod string, apiUrl string, requestData any, responseData any
 	}
 
 	req.Header.Add("Accept", "application/json")
-	req.Header.Set("X-Client-Domain", "hmofireriskassessment.co.uk")
+	req.Header.Set("X-Client-Domain", c.Request.Host)
 
 	// Send req using http Client
 	client := &http.Client{}
