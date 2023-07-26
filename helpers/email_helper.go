@@ -21,6 +21,19 @@ type CompanyInfo struct {
 	Logo        string
 }
 
+func HMOFireRiskAssessmentCompany() CompanyInfo {
+	var companyInfo CompanyInfo
+	companyInfo.CompanyName = "HMO Fire Risk Assessment"
+	companyInfo.Address = "55 Windermere Avenue, Purfleet-on-Thames RM19 1QN"
+	companyInfo.Phone = "+44 20 8004 9655"
+	companyInfo.WhatsApp = "+44 7856 377502"
+	companyInfo.Email = "info@hmofireriskassessment.co.uk"
+	companyInfo.Website = "https://hmofireriskassessment.co.uk"
+	companyInfo.Logo = "https://hmofireriskassessment.co.uk/images/hmo-fire-risk-assessment-logo.png"
+
+	return companyInfo
+}
+
 type Email struct {
 	HtmlBody       string
 	SubjectLine    string
