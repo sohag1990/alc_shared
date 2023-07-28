@@ -138,3 +138,84 @@ func RegistrationEmailTemplate(company CompanyInfo, user models.User) string {
 		`
 	return template
 }
+func GetServicesList(order models.Order) string {
+	services := ""
+	for _, service := range order.OrderServices {
+		services += `
+		<tr>
+		<td>` + service.Title + `</td>
+		<td>` + fmt.Sprint(service.Total) + `</td>
+		</tr>
+		`
+	}
+	return services
+}
+func NewOrderEmailTemplate(company CompanyInfo, user models.User, order models.Order) string {
+
+	template := `
+		<!DOCTYPE html>
+		<html>
+
+		<body style="font-family: Arial, sans-serif; line-height: 1.6;">
+
+			<div style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; background-color: #f9f9f9;">
+				<div style="text-align: center;">
+					<img src="` + company.Logo + `" alt="` + company.CompanyName + ` Logo"
+						style="width: 150px; height: auto;">
+					<h1>` + company.CompanyName + `</h1>
+				</div>
+
+				<div style="margin-top: 20px;">
+					<h3>ORDER DETAILS: </h3>
+					<p>Your order has been received and is now being processed. 
+					Please feel free to email us on ` + company.Email + ` to get an instant support. 
+					Your order details are shown below for your reference:</p>
+					<h3>OUR BANK DETAILS</h3>
+					<p>All Landlord Certificates Limited:</p>
+					<ul>
+					 <li>Account number: 0001 7807</li>
+					 <li>Sort code: 30-93-44</li>
+					</ul>
+					<h3>ORDER #` + fmt.Sprint(order.InvID) + ` (` + order.CreatedAt.String() + `)</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Service</th>
+								<th>Price</th>
+							<tr>
+						</thead>
+						<tbody>` + GetServicesList(order) + `</tbody>
+						<tfoot>
+							<tr>
+								<td>Subtotal:</td>
+								<td>` + fmt.Sprint(order.Subtotal) + `</td>
+							</tr>
+							<tr>
+								<td>Discount:</td>
+								<td>` + fmt.Sprint(order.Discount) + `</td>
+							</tr>
+							<tr>
+								<td>Total:</td>
+								<td>` + fmt.Sprint(order.Total) + `</td>
+							</tr>
+						</tfoot>
+					</table>
+
+				</div>
+
+				<div style="margin-top: 30px; text-align: center; font-size: 12px; color: #666666;">
+					<p>` + company.CompanyName + `</p>
+					<p` + company.Address + `</p>
+					<p>Phone: ` + company.Phone + `</p>
+					<p>WhatsApp: ` + company.WhatsApp + `</p>
+					<p>Email: ` + company.Email + `</p>
+					<p>Website: ` + company.Website + `</p>
+				</div>
+			</div>
+		</body>
+
+		</html>
+
+		`
+	return template
+}
