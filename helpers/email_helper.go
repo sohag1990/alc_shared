@@ -200,6 +200,22 @@ func NewOrderEmailTemplate(company CompanyInfo, user models.User, order models.O
 							</tr>
 						</tfoot>
 					</table>
+					<h3>BILLING ADDRESS</h3>
+					<table>
+						<tr><td>` + order.FullName + `</td></tr>
+						<tr><td>` + order.CompanyName + `</td></tr>
+						<tr><td>` + order.BillingAddress + ` ` + order.BillingPostCode + `</td></tr>
+						<tr><td>` + order.Phone + `</td></tr>
+						<tr><td>` + order.Email + `</td></tr>
+					</table>
+
+					<h3>Property ADDRESS</h3>
+					<table>
+						<tr><td>` + order.LandlordName + `</td></tr>
+						<tr><td>` + order.PropertyAddress + ` ` + order.PropertyPostCode + `</td></tr>
+						<tr><td>` + order.Phone + `</td></tr>
+						<tr><td>` + order.Email + `</td></tr>
+					</table>
 
 				</div>
 
