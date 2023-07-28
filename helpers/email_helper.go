@@ -6,6 +6,8 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/gin-contrib/sessions"
+	"github.com/gin-gonic/gin"
 	"github.com/sohag1990/alc_shared/models"
 	"gopkg.in/gomail.v2"
 )
@@ -61,83 +63,16 @@ type Email struct {
 	AwsZone        string
 	AWSAccessKeyID string
 	AWSSecretKeyID string
+	AWSMTPUsername string
+	AWSMTPPassword string
 }
 
-// func (email Email) SendEmail() {
-// 	sess, err := session.NewSession(&aws.Config{
-// 		Region: aws.String(email.AwsZone), // Replace with your desired AWS region
-// 		Credentials: credentials.NewStaticCredentials(
-// 			email.AWSAccessKeyID, // Replace with your AWS access key ID
-// 			email.AWSSecretKeyID, // Replace with your AWS secret access key
-// 			"",
-// 		),
-// 	})
-// 	if err != nil {
-// 		fmt.Println("Error creating AWS session:", err)
-// 	}
-// 	// Create an SES client
-// 	svc := ses.New(sess)
+func (email Email) SendEmail(order models.Order, c *gin.Context) {
 
-// 	// Download the PDF file from the URL
-// 	pdfURL := "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" // Replace with the actual URL of the PDF file
-// 	pdfFilename := "sample.pdf"                                                         // Replace with the desired filename for the attachment
-// 	if err := downloadFile(pdfURL, pdfFilename); err != nil {
-// 		fmt.Println("Error downloading PDF:", err)
-// 		return
-// 	}
+	session := sessions.Default(c)
 
-// 	// Open the downloaded PDF file
-// 	pdfFile, err := os.Open(pdfFilename)
-// 	if err != nil {
-// 		fmt.Println("Error opening PDF file:", err)
-// 		return
-// 	}
-// 	defer pdfFile.Close()
-
-// 	// Compose the email with an HTML body and CC address
-// 	toAddresses := []*string{aws.String(email.ToEmails)}  // Replace with your to email address
-// 	ccAddresses := []*string{aws.String(email.CCEmails)}  // Replace with your CC email address
-// 	bcAddresses := []*string{aws.String(email.BCCEmails)} // Replace with your bCC email address
-
-// 	input := &ses.SendEmailInput{
-// 		Source: aws.String(email.FromEmail), // Replace with the sender email address
-// 		Destination: &ses.Destination{
-// 			ToAddresses:  toAddresses,
-// 			CcAddresses:  ccAddresses,
-// 			BccAddresses: bcAddresses,
-// 		},
-// 		Message: &ses.Message{
-// 			Subject: &ses.Content{
-// 				Data: aws.String(email.SubjectLine),
-// 			},
-// 			Body: &ses.Body{
-// 				Html: &ses.Content{
-// 					Data: aws.String(email.HtmlBody),
-// 				},
-// 			},
-// 		},
-// 	}
-
-// 	// Attach the PDF to the email
-// 	attachment := &ses.Attachment{
-// 		ContentType: aws.String("application/pdf"),
-// 		Data:        pdfContent.Bytes(),
-// 		Filename:    aws.String(pdfFilename),
-// 	}
-// 	input.Message.Attachments = []*ses.Attachment{attachment}
-// 	// Send the email through Amazon SES
-// 	result, err := svc.SendEmail(input)
-// 	if err != nil {
-// 		fmt.Println("Error sending email:", err)
-// 		return
-// 	}
-
-// 	fmt.Println("Email sent! Message ID:", *result.MessageId)
-
-// }
-func (email Email) SendEmail() {
-	// Download the PDF file from the URL
-	pdfURL := "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+	tokenString := fmt.Sprint(session.Get("login_session"))
+	pdfURL := "http://localhost:8070/invoice/" + fmt.Sprint(order.ID) + "/" + tokenString
 	pdfFilename := "dummy.pdf"
 	if err := downloadFile(pdfURL, pdfFilename); err != nil {
 		fmt.Println("Error downloading PDF:", err)
@@ -157,7 +92,7 @@ func (email Email) SendEmail() {
 	m.Attach(pdfFilename)
 
 	// Send the email using SES
-	d := gomail.NewDialer(email.AwsZone, 587, email.AWSAccessKeyID, email.AWSSecretKeyID) // Replace with your AWS credentials
+	d := gomail.NewDialer(email.AwsZone, 587, email.AWSMTPUsername, email.AWSMTPPassword) // Replace with your AWS credentials
 	if err := d.DialAndSend(m); err != nil {
 		fmt.Println("Error sending email:", err)
 		return
