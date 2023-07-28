@@ -2,13 +2,30 @@ package helpers
 
 import (
 	"fmt"
+	"io"
+	"net/http"
+	"os"
 
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/credentials"
-	"github.com/aws/aws-sdk-go/aws/session"
-	"github.com/aws/aws-sdk-go/service/ses"
 	"github.com/sohag1990/alc_shared/models"
+	"gopkg.in/gomail.v2"
 )
+
+func downloadFile(url, filename string) error {
+	resp, err := http.Get(url)
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
+
+	out, err := os.Create(filename)
+	if err != nil {
+		return err
+	}
+	defer out.Close()
+
+	_, err = io.Copy(out, resp.Body)
+	return err
+}
 
 // Company info
 type CompanyInfo struct {
@@ -46,56 +63,108 @@ type Email struct {
 	AWSSecretKeyID string
 }
 
+// func (email Email) SendEmail() {
+// 	sess, err := session.NewSession(&aws.Config{
+// 		Region: aws.String(email.AwsZone), // Replace with your desired AWS region
+// 		Credentials: credentials.NewStaticCredentials(
+// 			email.AWSAccessKeyID, // Replace with your AWS access key ID
+// 			email.AWSSecretKeyID, // Replace with your AWS secret access key
+// 			"",
+// 		),
+// 	})
+// 	if err != nil {
+// 		fmt.Println("Error creating AWS session:", err)
+// 	}
+// 	// Create an SES client
+// 	svc := ses.New(sess)
+
+// 	// Download the PDF file from the URL
+// 	pdfURL := "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" // Replace with the actual URL of the PDF file
+// 	pdfFilename := "sample.pdf"                                                         // Replace with the desired filename for the attachment
+// 	if err := downloadFile(pdfURL, pdfFilename); err != nil {
+// 		fmt.Println("Error downloading PDF:", err)
+// 		return
+// 	}
+
+// 	// Open the downloaded PDF file
+// 	pdfFile, err := os.Open(pdfFilename)
+// 	if err != nil {
+// 		fmt.Println("Error opening PDF file:", err)
+// 		return
+// 	}
+// 	defer pdfFile.Close()
+
+// 	// Compose the email with an HTML body and CC address
+// 	toAddresses := []*string{aws.String(email.ToEmails)}  // Replace with your to email address
+// 	ccAddresses := []*string{aws.String(email.CCEmails)}  // Replace with your CC email address
+// 	bcAddresses := []*string{aws.String(email.BCCEmails)} // Replace with your bCC email address
+
+// 	input := &ses.SendEmailInput{
+// 		Source: aws.String(email.FromEmail), // Replace with the sender email address
+// 		Destination: &ses.Destination{
+// 			ToAddresses:  toAddresses,
+// 			CcAddresses:  ccAddresses,
+// 			BccAddresses: bcAddresses,
+// 		},
+// 		Message: &ses.Message{
+// 			Subject: &ses.Content{
+// 				Data: aws.String(email.SubjectLine),
+// 			},
+// 			Body: &ses.Body{
+// 				Html: &ses.Content{
+// 					Data: aws.String(email.HtmlBody),
+// 				},
+// 			},
+// 		},
+// 	}
+
+// 	// Attach the PDF to the email
+// 	attachment := &ses.Attachment{
+// 		ContentType: aws.String("application/pdf"),
+// 		Data:        pdfContent.Bytes(),
+// 		Filename:    aws.String(pdfFilename),
+// 	}
+// 	input.Message.Attachments = []*ses.Attachment{attachment}
+// 	// Send the email through Amazon SES
+// 	result, err := svc.SendEmail(input)
+// 	if err != nil {
+// 		fmt.Println("Error sending email:", err)
+// 		return
+// 	}
+
+// 	fmt.Println("Email sent! Message ID:", *result.MessageId)
+
+// }
 func (email Email) SendEmail() {
-	sess, err := session.NewSession(&aws.Config{
-		Region: aws.String(email.AwsZone), // Replace with your desired AWS region
-		Credentials: credentials.NewStaticCredentials(
-			email.AWSAccessKeyID, // Replace with your AWS access key ID
-			email.AWSSecretKeyID, // Replace with your AWS secret access key
-			"",
-		),
-	})
-	if err != nil {
-		fmt.Println("Error creating AWS session:", err)
-	}
-	// Create an SES client
-	svc := ses.New(sess)
-
-	// Compose the email with an HTML body and CC address
-	toAddresses := []*string{aws.String(email.ToEmails)}  // Replace with your to email address
-	ccAddresses := []*string{aws.String(email.CCEmails)}  // Replace with your CC email address
-	bcAddresses := []*string{aws.String(email.BCCEmails)} // Replace with your bCC email address
-
-	input := &ses.SendEmailInput{
-		Source: aws.String(email.FromEmail), // Replace with the sender email address
-		Destination: &ses.Destination{
-			ToAddresses:  toAddresses,
-			CcAddresses:  ccAddresses,
-			BccAddresses: bcAddresses,
-		},
-		Message: &ses.Message{
-			Subject: &ses.Content{
-				Data: aws.String(email.SubjectLine),
-			},
-			Body: &ses.Body{
-				Html: &ses.Content{
-					Data: aws.String(email.HtmlBody),
-				},
-			},
-		},
+	// Download the PDF file from the URL
+	pdfURL := "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+	pdfFilename := "dummy.pdf"
+	if err := downloadFile(pdfURL, pdfFilename); err != nil {
+		fmt.Println("Error downloading PDF:", err)
+		return
 	}
 
-	// Send the email through Amazon SES
-	result, err := svc.SendEmail(input)
-	if err != nil {
+	// Compose the email
+	m := gomail.NewMessage()
+	m.SetHeader("From", email.FromEmail) // Replace with the sender email address
+	m.SetHeader("To", email.ToEmails)    // Replace with the recipient email address
+	m.SetHeader("Cc", email.CCEmails)    // Replace with your CC email address
+	m.SetHeader("Bcc", email.BCCEmails)  // Replace with your BCC email address
+	m.SetHeader("Subject", email.SubjectLine)
+	m.SetBody("text/html", email.HtmlBody)
+
+	// Attach the PDF file
+	m.Attach(pdfFilename)
+
+	// Send the email using SES
+	d := gomail.NewDialer(email.AwsZone, 587, email.AWSAccessKeyID, email.AWSSecretKeyID) // Replace with your AWS credentials
+	if err := d.DialAndSend(m); err != nil {
 		fmt.Println("Error sending email:", err)
 		return
 	}
 
-	fmt.Println("Email sent! Message ID:", *result.MessageId)
-
+	fmt.Println("Email sent through Amazon SES successfully!")
 }
-
 func RegistrationEmailTemplate(company CompanyInfo, user models.User) string {
 
 	template := `
