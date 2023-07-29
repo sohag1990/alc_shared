@@ -69,10 +69,9 @@ type Email struct {
 
 func (email Email) SendEmail(order models.Order, c *gin.Context) {
 
-	claims := jwt.ExtractClaims(c)
-	tokenString := claims["token"]
-	fmt.Println(claims)
-	pdfURL := "http://localhost:8070/invoice/" + fmt.Sprint(order.ID) + "/" + fmt.Sprint(tokenString)
+	token := jwt.GetToken(c)
+	fmt.Println(token)
+	pdfURL := "http://localhost:8070/invoice/" + fmt.Sprint(order.ID) + "/" + fmt.Sprint(token)
 	pdfFilename := "dummy.pdf"
 	if err := downloadFile(pdfURL, pdfFilename); err != nil {
 		fmt.Println("Error downloading PDF:", err)
