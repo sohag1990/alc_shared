@@ -1,33 +1,33 @@
 package helpers
 
 import (
+	"context"
 	"fmt"
-	"io"
-	"net/http"
-	"os"
+	"io/ioutil"
 
 	jwt "github.com/appleboy/gin-jwt/v2"
+	"github.com/chromedp/chromedp"
 	"github.com/gin-gonic/gin"
 	"github.com/sohag1990/alc_shared/models"
 	"gopkg.in/gomail.v2"
 )
 
-func downloadFile(url, filename string) error {
-	resp, err := http.Get(url)
-	if err != nil {
-		return err
-	}
-	defer resp.Body.Close()
+// func downloadFile(url, filename string) error {
+// 	resp, err := http.Get(url)
+// 	if err != nil {
+// 		return err
+// 	}
+// 	defer resp.Body.Close()
 
-	out, err := os.Create(filename)
-	if err != nil {
-		return err
-	}
-	defer out.Close()
+// 	out, err := os.Create(filename)
+// 	if err != nil {
+// 		return err
+// 	}
+// 	defer out.Close()
 
-	_, err = io.Copy(out, resp.Body)
-	return err
-}
+// 	_, err = io.Copy(out, resp.Body)
+// 	return err
+// }
 
 // Company info
 type CompanyInfo struct {
@@ -67,17 +67,51 @@ type Email struct {
 	AWSMTPPassword string
 }
 
+func generatePDF(url, pdfFilename string) error {
+	// Create a context
+	ctx, cancel := chromedp.NewContext(context.Background())
+	defer cancel()
+
+	// Generate the PDF from the URL
+	var buf []byte
+	if err := chromedp.Run(ctx, printToPDF(url, &buf)); err != nil {
+		return err
+	}
+
+	// Save the generated PDF to a file
+	if err := ioutil.WriteFile(pdfFilename, buf, 0644); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func printToPDF(url string, res *[]byte) chromedp.Tasks {
+	return chromedp.Tasks{
+		chromedp.Navigate(url),
+		chromedp.ActionFunc(func(ctx context.Context) error {
+			buf, _, err := chromedp.RunPrintPDF(ctx, chromedp.WithPrintToPDF())
+			if err != nil {
+				return err
+			}
+			*res = buf
+			return nil
+		}),
+	}
+}
+
 func (email Email) SendEmail(order models.Order, c *gin.Context) {
 
 	token := jwt.GetToken(c)
 	fmt.Println(token)
-	pdfURL := "http://localhost:8070/invoice-pdf/" + fmt.Sprint(token) + "/" + fmt.Sprint(order.ID)
 	pdfFilename := fmt.Sprint(order.InvID) + ".pdf"
-	if err := downloadFile(pdfURL, pdfFilename); err != nil {
-		fmt.Println("Error downloading PDF:", err)
+
+	url := "http://localhost:8070/invoice/" + fmt.Sprint(order.ID) + "/" + token
+	// Generate the PDF from the web page URL
+	if err := generatePDF(url, pdfFilename); err != nil {
+		fmt.Println("Error generating PDF:", err)
 		return
 	}
-
 	// Compose the email
 	m := gomail.NewMessage()
 	m.SetHeader("From", email.FromEmail) // Replace with the sender email address
