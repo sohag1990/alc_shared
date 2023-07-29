@@ -71,7 +71,7 @@ func (email Email) SendEmail(order models.Order, c *gin.Context) {
 
 	claims := jwt.ExtractClaims(c)
 	tokenString := claims["token"]
-	fmt.Println(tokenString)
+	fmt.Println(claims)
 	pdfURL := "http://localhost:8070/invoice/" + fmt.Sprint(order.ID) + "/" + fmt.Sprint(tokenString)
 	pdfFilename := "dummy.pdf"
 	if err := downloadFile(pdfURL, pdfFilename); err != nil {
