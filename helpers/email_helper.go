@@ -12,19 +12,8 @@ import (
 	"gopkg.in/gomail.v2"
 )
 
-func downloadFile(url, token, filename string) error {
-	client := &http.Client{}
-	req, err := http.NewRequest("GET", url, nil)
-	if err != nil {
-		return err
-	}
-
-	// Set the custom header "Token"
-	if token != "" {
-		req.Header.Set("Token", token)
-	}
-
-	resp, err := client.Do(req)
+func downloadFile(url, filename string) error {
+	resp, err := http.Get(url)
 	if err != nil {
 		return err
 	}
@@ -81,10 +70,10 @@ type Email struct {
 func (email Email) SendEmail(order models.Order, c *gin.Context) {
 
 	token := jwt.GetToken(c)
-
-	pdfURL := "http://localhost:8070/invoice-pdf/" + fmt.Sprint(order.ID)
+	fmt.Println(token)
+	pdfURL := "http://localhost:8070/invoice-pdf/" + fmt.Sprint(token) + "/" + fmt.Sprint(order.ID)
 	pdfFilename := fmt.Sprint(order.InvID) + ".pdf"
-	if err := downloadFile(pdfURL, token, pdfFilename); err != nil {
+	if err := downloadFile(pdfURL, pdfFilename); err != nil {
 		fmt.Println("Error downloading PDF:", err)
 		return
 	}
