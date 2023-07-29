@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 
 	jwt "github.com/appleboy/gin-jwt/v2"
+	"github.com/chromedp/cdproto/page"
 	"github.com/chromedp/chromedp"
 	"github.com/gin-gonic/gin"
 	"github.com/sohag1990/alc_shared/models"
@@ -86,11 +87,12 @@ func generatePDF(url, pdfFilename string) error {
 	return nil
 }
 
-func printToPDF(url string, res *[]byte) chromedp.Tasks {
+// print a specific pdf page.
+func printToPDF(urlstr string, res *[]byte) chromedp.Tasks {
 	return chromedp.Tasks{
-		chromedp.Navigate(url),
+		chromedp.Navigate(urlstr),
 		chromedp.ActionFunc(func(ctx context.Context) error {
-			buf, _, err := chromedp.RunPrintPDF(ctx, chromedp.WithPrintToPDF())
+			buf, _, err := page.PrintToPDF().WithPrintBackground(false).Do(ctx)
 			if err != nil {
 				return err
 			}
