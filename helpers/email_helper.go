@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/gin-contrib/sessions"
+	jwt "github.com/appleboy/gin-jwt/v2"
 	"github.com/gin-gonic/gin"
 	"github.com/sohag1990/alc_shared/models"
 	"gopkg.in/gomail.v2"
@@ -69,10 +69,10 @@ type Email struct {
 
 func (email Email) SendEmail(order models.Order, c *gin.Context) {
 
-	session := sessions.Default(c)
-
-	tokenString := fmt.Sprint(session.Get("login_session"))
-	pdfURL := "http://localhost:8070/invoice/" + fmt.Sprint(order.ID) + "/" + tokenString
+	claims := jwt.ExtractClaims(c)
+	tokenString := claims["token"]
+	fmt.Println(tokenString)
+	pdfURL := "http://localhost:8070/invoice/" + fmt.Sprint(order.ID) + "/" + fmt.Sprint(tokenString)
 	pdfFilename := "dummy.pdf"
 	if err := downloadFile(pdfURL, pdfFilename); err != nil {
 		fmt.Println("Error downloading PDF:", err)
