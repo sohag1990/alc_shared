@@ -127,7 +127,7 @@ func (email Email) SendEmail(order models.Order, c *gin.Context) {
 	m.Attach(pdfFilename)
 
 	// Send the email using SES
-	d := gomail.NewDialer(email.AwsZone, 587, email.AWSMTPUsername, email.AWSMTPPassword) // Replace with your AWS credentials
+	d := gomail.NewDialer(email.AwsZone, 465, email.AWSMTPUsername, email.AWSMTPPassword) // Replace with your AWS credentials
 	if err := d.DialAndSend(m); err != nil {
 		fmt.Println("Error sending email:", err)
 		return
