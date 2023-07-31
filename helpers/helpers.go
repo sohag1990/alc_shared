@@ -12,9 +12,9 @@ import (
 	"github.com/sohag1990/alc_shared/models"
 )
 
-func InvIDGenerator(companyShortName string, order models.Order) string {
-	fmt.Println(order.CreatedAt)
-	invID := companyShortName + "-" + GetYearFromTime(order.CreatedAt) + "-" + Uint64ConvertToString(order.InvID)
+func InvIDGenerator(order models.Order) string {
+
+	invID := GetYearFromTime(order.CreatedAt) + "-" + Uint64ConvertToString(order.InvID)
 	return invID
 }
 func StringToInt(str string) int {
