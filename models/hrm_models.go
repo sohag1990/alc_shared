@@ -145,8 +145,8 @@ type FiscalYear struct {
 
 type Shift struct {
 	DefaultProperties
-	CompanyID uint64
-	// Company       Company (Cant works with initial default shift, so this relation need to extend in action logic, do not make relation here. only take the ID)
+	CompanyID     uint64
+	Company       Company
 	Name          string
 	Status        string
 	StartTime     string
