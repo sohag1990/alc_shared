@@ -67,7 +67,7 @@ func APICallHRM_V1(callMethod string, requestData any, responseData any, c *gin.
 		structType = reflect.TypeOf(responseData)
 		structName = structType.Name()
 	}
-	apiUrl := API_URL + strings.ToLower(helpers.Pluralize(structName))
+	apiUrl := API_URL + strings.ToLower(Pluralize(structName))
 	id, _ := strconv.ParseUint(c.Param("id"), 10, 64)
 	if id > 0 {
 		apiUrl = apiUrl + "/" + fmt.Sprint(id)
