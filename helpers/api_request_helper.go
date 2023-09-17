@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"reflect"
 	"strconv"
+	"strings"
 
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
@@ -61,11 +62,12 @@ func APICallHRM_V1(callMethod string, requestData any, responseData any, c *gin.
 
 	// Get the name of the struct type
 	structName := structType.Name()
-	if len(structName) == 0 {
+
+	if structName == "string" {
 		structType = reflect.TypeOf(responseData)
 		structName = structType.Name()
 	}
-	apiUrl := API_URL + Pluralize(structName)
+	apiUrl := API_URL + strings.ToLower(helpers.Pluralize(structName))
 	id, _ := strconv.ParseUint(c.Param("id"), 10, 64)
 	if id > 0 {
 		apiUrl = apiUrl + "/" + fmt.Sprint(id)
