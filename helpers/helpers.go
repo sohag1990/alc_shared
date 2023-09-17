@@ -6,6 +6,7 @@ import (
 	"math/rand"
 	"regexp"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -118,4 +119,34 @@ func GetHosturl(c *gin.Context) string {
 }
 func GetHostWithoutProtocol(c *gin.Context) string {
 	return c.Request.Host
+}
+
+// Pluralize any word also you can add irregular plural words preset.
+func Pluralize(word string) string {
+	// Define some irregular plural forms
+	irregularPlurals := map[string]string{
+		"human":    "humans",
+		"project":  "projects",
+		"employee": "employees",
+		// Add more irregular plurals if needed
+	}
+
+	// Check if the word is in the irregular plurals map
+	if plural, ok := irregularPlurals[strings.ToLower(word)]; ok {
+		return plural
+	}
+
+	// Apply some basic rules for pluralization
+	if strings.HasSuffix(word, "s") || strings.HasSuffix(word, "x") || strings.HasSuffix(word, "z") {
+		return word + "es"
+	} else if strings.HasSuffix(word, "y") {
+		// Change "y" to "ies" if the word ends with a consonant
+		if strings.ContainsAny(string(word[len(word)-2]), "aeiou") {
+			return word + "s"
+		} else {
+			return word[:len(word)-1] + "ies"
+		}
+	} else {
+		return word + "s"
+	}
 }
