@@ -56,7 +56,7 @@ func APICall(callMethod string, apiUrl string, requestData any, responseData any
 
 // APICallHRM_V1 API Call for GET or POST method and get Json Marshal Byte data
 func APICallHRM_V1(callMethod string, requestData any, responseData any, c *gin.Context) []byte {
-
+	var API_URL = "http://localhost:8080/api/v1/hrm/"
 	structType := reflect.TypeOf(requestData)
 
 	// Get the name of the struct type
@@ -65,7 +65,7 @@ func APICallHRM_V1(callMethod string, requestData any, responseData any, c *gin.
 		structType = reflect.TypeOf(responseData)
 		structName = structType.Name()
 	}
-	apiUrl := app.API_URL + "/v1/hrm/" + helpers.Pluralize(structName)
+	apiUrl := API_URL + Pluralize(structName)
 	id, _ := strconv.ParseUint(c.Param("id"), 10, 64)
 	if id > 0 {
 		apiUrl = apiUrl + "/" + fmt.Sprint(id)
