@@ -1,5 +1,7 @@
 package models
 
+import "time"
+
 type Company struct {
 	DefaultProperties
 	Name                   string
@@ -135,10 +137,10 @@ type FiscalYear struct {
 	DefaultProperties
 	CompanyID uint64
 	Company   Company
-	Year      string
+	Year      time.Time
 	Status    string
-	YearStart string
-	YearEnd   string
+	YearStart time.Time
+	YearEnd   time.Time
 	Holidays  []Holiday
 	ODs       []OD
 }
@@ -149,8 +151,8 @@ type Shift struct {
 	Company       Company
 	Name          string
 	Status        string
-	StartTime     string
-	EndTime       string
+	StartTime     time.Time
+	EndTime       time.Time
 	ShiftCapacity int
 	ODs           []OD
 }
@@ -282,8 +284,8 @@ type Attendance struct {
 	Employee   Employee
 	EmployeeID uint64
 	Mobile     string
-	InTime     string
-	OutTime    string
+	InTime     time.Time
+	OutTime    time.Time
 	Remarks    string
 	IsPresent  bool
 }
@@ -307,8 +309,8 @@ type OD struct {
 	Remarks      string
 	ODTo         string
 	ODFrom       string
-	InTime       string
-	OutTime      string
+	InTime       time.Time
+	OutTime      time.Time
 }
 
 type Customer struct {
