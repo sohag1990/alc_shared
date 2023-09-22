@@ -137,7 +137,7 @@ type FiscalYear struct {
 	DefaultProperties
 	CompanyID uint64
 	Company   Company
-	Year      time.Time
+	Year      int
 	Status    string
 	YearStart time.Time
 	YearEnd   time.Time
