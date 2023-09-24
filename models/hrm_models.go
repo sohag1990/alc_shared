@@ -4,33 +4,33 @@ import "time"
 
 type Company struct {
 	DefaultProperties
-	Name                   string
-	Address                string
-	Phone                  string
-	Mobile                 string
-	Email                  string
-	SiteURL                string
-	SSRURL                 string
-	BackendTitle           string
-	FrontendTitle          string
-	ShortTitle             string
-	SmallLogo              string
-	LargeLogo              string
-	Copyright              string
-	Keyword                string
-	MetaDescription        string
-	CurrencySign           string
-	CurrencyCode           string
-	DefaultLanguage        string
-	LicenseKey             string
-	SecretKey              string
-	SiteOffline            string
-	OfflineMessage         string
-	AllowRegistration      string
-	BookingCancellation    string
-	DefaultShiftName       string
+	Name                   string `gorm:"size:250"`
+	Address                string `gorm:"size:512"`
+	Phone                  string `gorm:"size:20"`
+	Mobile                 string `gorm:"size:100"`
+	Email                  string `gorm:"size:250"`
+	SiteURL                string `gorm:"size:350"`
+	SSRURL                 string `gorm:"size:512"`
+	BackendTitle           string `gorm:"size:512"`
+	FrontendTitle          string `gorm:"size:512"`
+	ShortTitle             string `gorm:"size:512"`
+	SmallLogo              string `gorm:"size:512"`
+	LargeLogo              string `gorm:"size:512"`
+	Copyright              string `gorm:"size:250"`
+	Keyword                string `gorm:"size:1000"`
+	MetaDescription        string `gorm:"size:1000"`
+	CurrencySign           string `gorm:"size:25"`
+	CurrencyCode           string `gorm:"size:25"`
+	DefaultLanguage        string `gorm:"size:10"`
+	LicenseKey             string `gorm:"size:512"`
+	SecretKey              string `gorm:"size:512"`
+	SiteOffline            string `gorm:"size:25"`
+	OfflineMessage         string `gorm:"size:512"`
+	AllowRegistration      string `gorm:"size:25"`
+	BookingCancellation    string `gorm:"size:25"`
+	DefaultShiftName       string `gorm:"size:50"`
 	OneDayDeductionForLate int
-	Weekend                string
+	Weekend                string `gorm:"size:250"`
 
 	Branches       []Branch
 	Projects       []Project
@@ -54,11 +54,11 @@ type Branch struct {
 	CompanyID uint64
 	Company   Company
 
-	Name      string
-	Address   string
-	Phone     string
-	Mobile    string
-	Email     string
+	Name      string `gorm:"size:250"`
+	Address   string `gorm:"size:512"`
+	Phone     string `gorm:"size:25"`
+	Mobile    string `gorm:"size:25"`
+	Email     string `gorm:"size:250"`
 	Employees []Employee
 	Projects  []Project
 	Holidays  []Holiday
@@ -70,8 +70,8 @@ type Project struct {
 	Company     Company
 	BranchID    uint64
 	Branch      Branch
-	Name        string
-	Description string
+	Name        string `gorm:"size:250"`
+	Description string `gorm:"size:512"`
 	Price       float64
 	Budget      float64
 }
@@ -79,9 +79,9 @@ type Department struct {
 	DefaultProperties
 	CompanyID        uint64
 	Company          Company
-	Name             string
-	HeadOfDepartment string
-	Status           string
+	Name             string `gorm:"size:250"`
+	HeadOfDepartment string `gorm:"size:250"`
+	Status           string `gorm:"size:25"`
 	Sections         []Section
 	ODs              []OD
 }
@@ -91,17 +91,17 @@ type Section struct {
 	Company         Company
 	DepartmentID    uint64
 	Department      Department
-	Name            string
-	SectionHeadName string
-	Status          string
+	Name            string `gorm:"size:250"`
+	SectionHeadName string `gorm:"size:250"`
+	Status          string `gorm:"size:25"`
 	ODs             []OD
 }
 type Division struct {
 	DefaultProperties
 	CompanyID      uint64
 	Company        Company
-	Name           string
-	Status         string
+	Name           string `gorm:"size:250"`
+	Status         string `gorm:"size:25"`
 	Areas          []Area
 	TerritoryAreas []TerritoryArea
 }
@@ -111,16 +111,16 @@ type Area struct {
 	Company        Company
 	DivisionID     uint64
 	Division       Division
-	Name           string
-	Status         string
+	Name           string `gorm:"size:250"`
+	Status         string `gorm:"size:25"`
 	TerritoryAreas []TerritoryArea
 }
 type District struct {
 	DefaultProperties
 	CompanyID uint64
 	Company   Company
-	Name      string
-	Status    string
+	Name      string `gorm:"size:250"`
+	Status    string `gorm:"size:25"`
 }
 type TerritoryArea struct {
 	DefaultProperties
@@ -130,15 +130,15 @@ type TerritoryArea struct {
 	Division   Division
 	AreaID     uint64
 	Area       Area
-	Name       string
-	Status     string
+	Name       string `gorm:"size:250"`
+	Status     string `gorm:"size:25"`
 }
 type FiscalYear struct {
 	DefaultProperties
 	CompanyID uint64
 	Company   Company
 	Year      int
-	Status    string
+	Status    string `gorm:"size:25"`
 	YearStart time.Time
 	YearEnd   time.Time
 	Holidays  []Holiday
@@ -149,10 +149,10 @@ type Shift struct {
 	DefaultProperties
 	CompanyID     uint64
 	Company       Company
-	Name          string
-	Status        string
-	StartTime     time.Time
-	EndTime       time.Time
+	Name          string `gorm:"size:250"`
+	Status        string `gorm:"size:25"`
+	StartTime     string `gorm:"size:25"`
+	EndTime       string `gorm:"size:25"`
 	ShiftCapacity int
 	ODs           []OD
 }
@@ -160,10 +160,10 @@ type Module struct {
 	DefaultProperties
 	CompanyID   uint64
 	Company     Company
-	Name        string
-	FaIcon      string
+	Name        string `gorm:"size:250"`
+	FaIcon      string `gorm:"size:25"`
 	OrderNumber int
-	Status      string
+	Status      string `gorm:"size:25"`
 	Options     []Option
 	Menus       []Menu
 }
@@ -173,10 +173,10 @@ type Menu struct {
 	Company     Company
 	Module      Module
 	ModuleID    uint64
-	Name        string
-	Slug        string
+	Name        string `gorm:"size:250"`
+	Slug        string `gorm:"size:250"`
 	OrderNumber int
-	Status      string
+	Status      string `gorm:"size:25"`
 	Options     []Option
 }
 type Option struct {
@@ -187,9 +187,9 @@ type Option struct {
 	ModuleID  uint64
 	Menu      Menu
 	MenuID    uint64
-	Type      string
-	Name      string
-	Status    string
+	Type      string `gorm:"size:25"`
+	Name      string `gorm:"size:250"`
+	Status    string `gorm:"size:25"`
 }
 
 type Employee struct {
@@ -209,35 +209,35 @@ type Employee struct {
 	SectionID       uint64
 	Shift           Shift
 	ShiftID         uint64
-	AppointmentType string
-	AppointmentDate string
-	JoiningDate     string
-	EPRID           string
-	EmployeeID      string
-	EmployeeType    string
-	Designation     string
-	EmployeeImage   string
-	Weekend         string
+	AppointmentType string `gorm:"size:25"`
+	AppointmentDate time.Time
+	JoiningDate     time.Time
+	EPRID           string `gorm:"size:25"`
+	EmployeeID      string `gorm:"size:25"`
+	EmployeeType    string `gorm:"size:25"`
+	Designation     string `gorm:"size:250"`
+	EmployeeImage   string `gorm:"size:250"`
+	Weekend         string `gorm:"size:250"`
 
 	// employee information
-	EmployeeNameBangla     string
-	EmployeeNameEnglish    string
-	FatherName             string
-	MotherName             string
-	HusbandOrWifeName      string
-	DateOfBirth            string
-	PresentAddress         string
-	PermanentAddress       string
-	EducationQualification string
-	ExtraQualification     string
-	Nationality            string
-	Gender                 string
-	BloodGroup             string
-	MaritalStatus          string
-	Religion               string
-	Mobile                 string
-	Phone                  string
-	Email                  string
+	EmployeeNameBangla     string `gorm:"size:250"`
+	EmployeeNameEnglish    string `gorm:"size:250"`
+	FatherName             string `gorm:"size:250"`
+	MotherName             string `gorm:"size:250"`
+	HusbandOrWifeName      string `gorm:"size:250"`
+	DateOfBirth            time.Time
+	PresentAddress         string `gorm:"size:512"`
+	PermanentAddress       string `gorm:"size:512"`
+	EducationQualification string `gorm:"size:512"`
+	ExtraQualification     string `gorm:"size:512"`
+	Nationality            string `gorm:"size:250"`
+	Gender                 string `gorm:"size:25"`
+	BloodGroup             string `gorm:"size:25"`
+	MaritalStatus          string `gorm:"size:25"`
+	Religion               string `gorm:"size:25"`
+	Mobile                 string `gorm:"size:25"`
+	Phone                  string `gorm:"size:25"`
+	Email                  string `gorm:"size:250"`
 
 	// salary structer
 	CashSalary           float64
@@ -259,9 +259,9 @@ type Employee struct {
 	TotalLoanPaid        float64
 	GrossDeduction       float64
 	NetSalary            float64
-	PHHeadMapping        string
-	LoanHeadMapping      string
-	Status               string
+	PHHeadMapping        string `gorm:"size:512"`
+	LoanHeadMapping      string `gorm:"size:512"`
+	Status               string `gorm:"size:25"`
 }
 
 type Holiday struct {
@@ -272,21 +272,21 @@ type Holiday struct {
 	Branch       Branch
 	FiscalYearID uint64
 	FiscalYear   FiscalYear
-	Name         string
-	FromDate     string
-	ToDate       string
-	HolidayImage string
-	Status       string
+	Name         string `gorm:"size:250"`
+	FromDate     time.Time
+	ToDate       time.Time
+	HolidayImage string `gorm:"size:512"`
+	Status       string `gorm:"size:25"`
 }
 type Attendance struct {
 	DefaultProperties
 
 	Employee   Employee
 	EmployeeID uint64
-	Mobile     string
+	Mobile     string `gorm:"size:25"`
 	InTime     time.Time
 	OutTime    time.Time
-	Remarks    string
+	Remarks    string `gorm:"size:250"`
 	IsPresent  bool
 }
 
@@ -306,9 +306,9 @@ type OD struct {
 	FiscalYearID uint64
 	Shift        Shift
 	ShiftID      uint64
-	Remarks      string
-	ODTo         string
-	ODFrom       string
+	Remarks      string `gorm:"size:250"`
+	ODTo         time.Time
+	ODFrom       time.Time
 	InTime       time.Time
 	OutTime      time.Time
 }
@@ -316,55 +316,55 @@ type OD struct {
 type Customer struct {
 	DefaultProperties
 	//Customer Details
-	Name            string
-	ShortCode       string
-	Address         string
-	ShippingAddress string
+	Name            string `gorm:"size:250"`
+	ShortCode       string `gorm:"size:250"`
+	Address         string `gorm:"size:250"`
+	ShippingAddress string `gorm:"size:250"`
 	//Contact Person Information
-	ContactPerson string
-	Designation   string
-	Gender        string
-	Nationality   string
+	ContactPerson string `gorm:"size:250"`
+	Designation   string `gorm:"size:250"`
+	Gender        string `gorm:"size:25"`
+	Nationality   string `gorm:"size:25"`
 	Employee      Employee
 	EmployeeID    uint64
-	Mobile        string
-	Phone         string
-	Fax           string
-	Email         string
+	Mobile        string `gorm:"size:25"`
+	Phone         string `gorm:"size:25"`
+	Fax           string `gorm:"size:25"`
+	Email         string `gorm:"size:250"`
 }
 
 type Distributor struct {
 	DefaultProperties
-	Name            string
-	ShortCode       string
-	Address         string
-	BillingAddress  string
-	ShippingAddress string
+	Name            string `gorm:"size:250"`
+	ShortCode       string `gorm:"size:25"`
+	Address         string `gorm:"size:512"`
+	BillingAddress  string `gorm:"size:512"`
+	ShippingAddress string `gorm:"size:512"`
 	//Contact Person Information
-	ContactPerson string
-	Designation   string
-	Gender        string
-	Currency      string
-	Attention     string
-	Mobile        string
-	Phone         string
-	Fax           string
-	Email         string
+	ContactPerson string `gorm:"size:250"`
+	Designation   string `gorm:"size:250"`
+	Gender        string `gorm:"size:25"`
+	Currency      string `gorm:"size:25"`
+	Attention     string `gorm:"size:250"`
+	Mobile        string `gorm:"size:25"`
+	Phone         string `gorm:"size:25"`
+	Fax           string `gorm:"size:25"`
+	Email         string `gorm:"size:250"`
 }
 type Importer struct {
 	DefaultProperties
-	Name            string
-	ShortCode       string
-	Address         string
-	BillingAddress  string
-	ShippingAddress string
-	ContactPerson   string
-	Designation     string
-	Currency        string
-	Mobile          string
-	Phone           string
-	Fax             string
-	Email           string
+	Name            string `gorm:"size:250"`
+	ShortCode       string `gorm:"size:25"`
+	Address         string `gorm:"size:512"`
+	BillingAddress  string `gorm:"size:512"`
+	ShippingAddress string `gorm:"size:512"`
+	ContactPerson   string `gorm:"size:250"`
+	Designation     string `gorm:"size:250"`
+	Currency        string `gorm:"size:25"`
+	Mobile          string `gorm:"size:25"`
+	Phone           string `gorm:"size:25"`
+	Fax             string `gorm:"size:25"`
+	Email           string `gorm:"size:250"`
 }
 
 // type Workorder struct {
@@ -414,5 +414,5 @@ type Importer struct {
 //	}
 type ProductCategory struct {
 	DefaultProperties
-	Name string
+	Name string `gorm:"size:250"`
 }
