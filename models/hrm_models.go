@@ -238,6 +238,7 @@ type Employee struct {
 	Mobile                 string `gorm:"size:25"`
 	Phone                  string `gorm:"size:25"`
 	Email                  string `gorm:"size:250"`
+	Password               string `gorm:"-:migration"`
 
 	// salary structer
 	CashSalary           float64
