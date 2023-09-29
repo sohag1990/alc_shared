@@ -138,9 +138,9 @@ type FiscalYear struct {
 	CompanyID uint64
 	Company   Company
 	Year      int
-	Status    string `gorm:"size:25"`
-	YearStart time.Time
-	YearEnd   time.Time
+	Status    string    `gorm:"size:25"`
+	YearStart time.Time `form:"YearStart" binding:"required"time_format:"2006-01-02"`
+	YearEnd   time.Time `form:"YearEnd" binding:"required"time_format:"2006-01-02"`
 	Holidays  []Holiday
 	ODs       []OD
 }
@@ -273,21 +273,21 @@ type Holiday struct {
 	Branch       Branch
 	FiscalYearID uint64
 	FiscalYear   FiscalYear
-	Name         string `gorm:"size:250"`
-	FromDate     time.Time
-	ToDate       time.Time
-	HolidayImage string `gorm:"size:512"`
-	Status       string `gorm:"size:25"`
+	Name         string    `gorm:"size:250"`
+	FromDate     time.Time `form:"FromDate" binding:"required" time_format:"2006-01-02"`
+	ToDate       time.Time `form:"ToDate" binding:"required" time_format:"2006-01-02"`
+	HolidayImage string    `gorm:"size:512"`
+	Status       string    `gorm:"size:25"`
 }
 type Attendance struct {
 	DefaultProperties
 
 	Employee   Employee
 	EmployeeID uint64
-	Mobile     string `gorm:"size:25"`
-	InTime     time.Time
-	OutTime    time.Time
-	Remarks    string `gorm:"size:250"`
+	Mobile     string    `gorm:"size:25"`
+	InTime     time.Time `form:"InTime" binding:"required" time_format:"2006-01-02 15:04"`
+	OutTime    time.Time `form:"OutTime" binding:"required" time_format:"2006-01-02 15:04"`
+	Remarks    string    `gorm:"size:250"`
 	IsPresent  bool
 }
 
@@ -307,11 +307,11 @@ type OD struct {
 	FiscalYearID uint64
 	Shift        Shift
 	ShiftID      uint64
-	Remarks      string `gorm:"size:250"`
-	ODTo         time.Time
-	ODFrom       time.Time
-	InTime       time.Time
-	OutTime      time.Time
+	Remarks      string    `gorm:"size:250"`
+	ODTo         time.Time `form:"ODTo" binding:"required"time_format:"2006-01-02 15:04"`
+	ODFrom       time.Time `form:"ODFrom" binding:"required"time_format:"2006-01-02 15:04"`
+	InTime       time.Time `form:"InTime" binding:"required"time_format:"2006-01-02 15:04"`
+	OutTime      time.Time `form:"OutTime" binding:"required"time_format:"2006-01-02 15:04"`
 }
 
 type Customer struct {
