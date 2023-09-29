@@ -209,36 +209,36 @@ type Employee struct {
 	SectionID       uint64
 	Shift           Shift
 	ShiftID         uint64
-	AppointmentType string `gorm:"size:25"`
-	AppointmentDate time.Time
-	JoiningDate     time.Time
-	EprID           string `gorm:"size:25"`
-	EmployeeID      string `gorm:"size:25"`
-	EmployeeType    string `gorm:"size:25"`
-	Designation     string `gorm:"size:250"`
-	EmployeeImage   string `gorm:"size:250"`
-	Weekend         string `gorm:"size:250"`
+	AppointmentType string    `gorm:"size:25"`
+	AppointmentDate time.Time `form:"AppointmentDate" binding:"required" time_format:"2006-01-02"`
+	JoiningDate     time.Time `form:"JoiningDate" binding:"required" time_format:"2006-01-02"`
+	EprID           string    `gorm:"size:25"`
+	EmployeeID      string    `gorm:"size:25"`
+	EmployeeType    string    `gorm:"size:25"`
+	Designation     string    `gorm:"size:250"`
+	EmployeeImage   string    `gorm:"size:250"`
+	Weekend         string    `gorm:"size:250"`
 
 	// employee information
-	EmployeeNameBangla     string `gorm:"size:250"`
-	EmployeeNameEnglish    string `gorm:"size:250"`
-	FatherName             string `gorm:"size:250"`
-	MotherName             string `gorm:"size:250"`
-	HusbandOrWifeName      string `gorm:"size:250"`
-	DateOfBirth            time.Time
-	PresentAddress         string `gorm:"size:512"`
-	PermanentAddress       string `gorm:"size:512"`
-	EducationQualification string `gorm:"size:512"`
-	ExtraQualification     string `gorm:"size:512"`
-	Nationality            string `gorm:"size:250"`
-	Gender                 string `gorm:"size:25"`
-	BloodGroup             string `gorm:"size:25"`
-	MaritalStatus          string `gorm:"size:25"`
-	Religion               string `gorm:"size:25"`
-	Mobile                 string `gorm:"size:25"`
-	Phone                  string `gorm:"size:25"`
-	Email                  string `gorm:"size:250"`
-	Password               string `gorm:"-"`
+	EmployeeNameBangla     string    `gorm:"size:250"`
+	EmployeeNameEnglish    string    `gorm:"size:250"`
+	FatherName             string    `gorm:"size:250"`
+	MotherName             string    `gorm:"size:250"`
+	HusbandOrWifeName      string    `gorm:"size:250"`
+	DateOfBirth            time.Time `form:"DateOfBirth" binding:"required" time_format:"2006-01-02"`
+	PresentAddress         string    `gorm:"size:512"`
+	PermanentAddress       string    `gorm:"size:512"`
+	EducationQualification string    `gorm:"size:512"`
+	ExtraQualification     string    `gorm:"size:512"`
+	Nationality            string    `gorm:"size:250"`
+	Gender                 string    `gorm:"size:25"`
+	BloodGroup             string    `gorm:"size:25"`
+	MaritalStatus          string    `gorm:"size:25"`
+	Religion               string    `gorm:"size:25"`
+	Mobile                 string    `gorm:"size:25"`
+	Phone                  string    `gorm:"size:25"`
+	Email                  string    `gorm:"size:250"`
+	Password               string    `gorm:"-"`
 
 	// salary structer
 	CashSalary           float64
