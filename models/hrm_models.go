@@ -212,7 +212,7 @@ type Employee struct {
 	AppointmentType string `gorm:"size:25"`
 	AppointmentDate time.Time
 	JoiningDate     time.Time
-	EPRID           string `gorm:"size:25"`
+	EprID           string `gorm:"size:25"`
 	EmployeeID      string `gorm:"size:25"`
 	EmployeeType    string `gorm:"size:25"`
 	Designation     string `gorm:"size:250"`
