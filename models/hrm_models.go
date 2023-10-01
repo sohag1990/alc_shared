@@ -139,8 +139,8 @@ type FiscalYear struct {
 	Company   Company
 	Year      int
 	Status    string    `gorm:"size:25"`
-	YearStart time.Time `form:"YearStart" binding:"required"time_format:"2006-01-02"`
-	YearEnd   time.Time `form:"YearEnd" binding:"required"time_format:"2006-01-02"`
+	YearStart time.Time `form:"YearStart" time_format:"2006-01-02"`
+	YearEnd   time.Time `form:"YearEnd" time_format:"2006-01-02"`
 	Holidays  []Holiday
 	ODs       []OD
 }
@@ -210,8 +210,8 @@ type Employee struct {
 	Shift           Shift
 	ShiftID         uint64
 	AppointmentType string    `gorm:"size:25"`
-	AppointmentDate time.Time `form:"AppointmentDate" binding:"required" time_format:"2006-01-02"`
-	JoiningDate     time.Time `form:"JoiningDate" binding:"required" time_format:"2006-01-02"`
+	AppointmentDate time.Time `form:"AppointmentDate"  time_format:"2006-01-02"`
+	JoiningDate     time.Time `form:"JoiningDate"  time_format:"2006-01-02"`
 	EprID           string    `gorm:"size:25"`
 	EmployeeID      string    `gorm:"size:25"`
 	EmployeeType    string    `gorm:"size:25"`
@@ -225,7 +225,7 @@ type Employee struct {
 	FatherName             string    `gorm:"size:250"`
 	MotherName             string    `gorm:"size:250"`
 	HusbandOrWifeName      string    `gorm:"size:250"`
-	DateOfBirth            time.Time `form:"DateOfBirth" binding:"required" time_format:"2006-01-02"`
+	DateOfBirth            time.Time `form:"DateOfBirth"  time_format:"2006-01-02"`
 	PresentAddress         string    `gorm:"size:512"`
 	PermanentAddress       string    `gorm:"size:512"`
 	EducationQualification string    `gorm:"size:512"`
@@ -274,8 +274,8 @@ type Holiday struct {
 	FiscalYearID uint64
 	FiscalYear   FiscalYear
 	Name         string    `gorm:"size:250"`
-	FromDate     time.Time `form:"FromDate" binding:"required" time_format:"2006-01-02"`
-	ToDate       time.Time `form:"ToDate" binding:"required" time_format:"2006-01-02"`
+	FromDate     time.Time `form:"FromDate"  time_format:"2006-01-02"`
+	ToDate       time.Time `form:"ToDate"  time_format:"2006-01-02"`
 	HolidayImage string    `gorm:"size:512"`
 	Status       string    `gorm:"size:25"`
 }
@@ -285,8 +285,8 @@ type Attendance struct {
 	Employee   Employee
 	EmployeeID uint64
 	Mobile     string    `gorm:"size:25"`
-	InTime     time.Time `form:"InTime" binding:"required" time_format:"2006-01-02 15:04"`
-	OutTime    time.Time `form:"OutTime" binding:"required" time_format:"2006-01-02 15:04"`
+	InTime     time.Time `form:"InTime"  time_format:"2006-01-02 15:04"`
+	OutTime    time.Time `form:"OutTime"  time_format:"2006-01-02 15:04"`
 	Remarks    string    `gorm:"size:250"`
 	IsPresent  bool
 }
@@ -308,10 +308,10 @@ type OD struct {
 	Shift        Shift
 	ShiftID      uint64
 	Remarks      string    `gorm:"size:250"`
-	ODTo         time.Time `form:"ODTo" binding:"required"time_format:"2006-01-02 15:04"`
-	ODFrom       time.Time `form:"ODFrom" binding:"required"time_format:"2006-01-02 15:04"`
-	InTime       time.Time `form:"InTime" binding:"required"time_format:"2006-01-02 15:04"`
-	OutTime      time.Time `form:"OutTime" binding:"required"time_format:"2006-01-02 15:04"`
+	ODTo         time.Time `form:"ODTo" time_format:"2006-01-02 15:04"`
+	ODFrom       time.Time `form:"ODFrom" time_format:"2006-01-02 15:04"`
+	InTime       time.Time `form:"InTime" time_format:"2006-01-02 15:04"`
+	OutTime      time.Time `form:"OutTime" time_format:"2006-01-02 15:04"`
 }
 
 type Customer struct {
