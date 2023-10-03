@@ -26,6 +26,10 @@ type User struct {
 	Hostname  string
 	ProfileID uint64
 	Profile   Profile
+	Company   Company
+	CompanyID uint64
+	Branch    Branch
+	BranchID  uint64
 }
 
 type DefaultProperties struct {
