@@ -285,8 +285,8 @@ type Attendance struct {
 	Employee   Employee
 	EmployeeID uint64
 	Mobile     string    `gorm:"size:25"`
-	InTime     time.Time `form:"InTime"  time_format:"2006-01-02 15:04"`
-	OutTime    time.Time `form:"OutTime"  time_format:"2006-01-02 15:04"`
+	InTime     time.Time `form:"InTime"  time_format:"15:04"`
+	OutTime    time.Time `form:"OutTime"  time_format:"15:04"`
 	Remarks    string    `gorm:"size:250"`
 	IsPresent  bool
 }
@@ -308,8 +308,8 @@ type OD struct {
 	Shift        Shift
 	ShiftID      uint64
 	Remarks      string    `gorm:"size:250"`
-	ODTo         time.Time `form:"ODTo" time_format:"2006-01-02 15:04"`
-	ODFrom       time.Time `form:"ODFrom" time_format:"2006-01-02 15:04"`
+	ODTo         time.Time `form:"ODTo" time_format:"2006-01-02"`
+	ODFrom       time.Time `form:"ODFrom" time_format:"2006-01-02"`
 	InTime       time.Time `form:"InTime" time_format:"15:04"`
 	OutTime      time.Time `form:"OutTime" time_format:"15:04"`
 }
