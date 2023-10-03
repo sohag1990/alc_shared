@@ -310,8 +310,8 @@ type OD struct {
 	Remarks      string    `gorm:"size:250"`
 	ODTo         time.Time `form:"ODTo" time_format:"2006-01-02 15:04"`
 	ODFrom       time.Time `form:"ODFrom" time_format:"2006-01-02 15:04"`
-	InTime       time.Time `form:"InTime" time_format:"2006-01-02 15:04"`
-	OutTime      time.Time `form:"OutTime" time_format:"2006-01-02 15:04"`
+	InTime       time.Time `form:"InTime" time_format:"15:04"`
+	OutTime      time.Time `form:"OutTime" time_format:"15:04"`
 }
 
 type Customer struct {
