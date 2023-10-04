@@ -19,19 +19,13 @@ type FrontendUserData struct {
 
 type User struct {
 	DefaultProperties
-	Email      string `gorm:"uniqueIndex;not null;size:256"`
-	Password   string `form:"password" json:"password" binding:"required" json:"-"`
-	Role       string
-	Verified   bool `json:"verified"`
-	Hostname   string
-	ProfileID  uint64
-	Profile    Profile
-	Company    Company
-	CompanyID  uint64
-	Branch     Branch
-	BranchID   uint64
-	EmployeeID uint64
-	Employee   Employee
+	Email     string `gorm:"uniqueIndex;not null;size:256"`
+	Password  string `form:"password" json:"password" binding:"required" json:"-"`
+	Role      string
+	Verified  bool `json:"verified"`
+	Hostname  string
+	ProfileID uint64
+	Profile   Profile
 }
 
 type DefaultProperties struct {

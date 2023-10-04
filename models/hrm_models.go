@@ -199,6 +199,8 @@ type Employee struct {
 	Customers   []Customer
 	// appointment information
 
+	UserID          uint64
+	User            User
 	Company         Company
 	CompanyID       uint64
 	Branch          Branch
