@@ -239,7 +239,7 @@ type Employee struct {
 	Religion               string    `gorm:"size:25"`
 	Mobile                 string    `gorm:"size:25"`
 	Phone                  string    `gorm:"size:25"`
-	Email                  string    `gorm:"uniqueIndex;size:256;not null"`
+	Email                  string    `gorm:"size:256;not null"`
 	Password               string    `gorm:"-"`
 
 	// salary structer
