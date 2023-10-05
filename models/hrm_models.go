@@ -8,7 +8,7 @@ type Company struct {
 	Address                string `gorm:"size:512"`
 	Phone                  string `gorm:"size:20"`
 	Mobile                 string `gorm:"size:100"`
-	Email                  string `gorm:"size:250"`
+	Email                  string `gorm:"uniqueIndex;size:256;not null"`
 	SiteURL                string `gorm:"size:350"`
 	SSRURL                 string `gorm:"size:512"`
 	BackendTitle           string `gorm:"size:512"`
@@ -239,7 +239,7 @@ type Employee struct {
 	Religion               string    `gorm:"size:25"`
 	Mobile                 string    `gorm:"size:25"`
 	Phone                  string    `gorm:"size:25"`
-	Email                  string    `gorm:"size:250"`
+	Email                  string    `gorm:"uniqueIndex;size:256;not null"`
 	Password               string    `gorm:"-"`
 
 	// salary structer

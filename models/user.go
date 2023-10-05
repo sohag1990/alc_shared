@@ -19,7 +19,7 @@ type FrontendUserData struct {
 
 type User struct {
 	DefaultProperties
-	Email     string `gorm:"uniqueIndex;size:256" binding:"required"`
+	Email     string `gorm:"uniqueIndex;size:256;not null"`
 	Password  string `form:"password" json:"password" json:"-"`
 	Role      string
 	Verified  bool `json:"verified"`
