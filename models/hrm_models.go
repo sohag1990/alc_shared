@@ -48,6 +48,7 @@ type Company struct {
 	Employees      []Employee
 	Holidays       []Holiday
 	ODs            []OD
+	Leaves         []Leave
 }
 type Branch struct {
 	DefaultProperties
