@@ -420,11 +420,28 @@ type ProductCategory struct {
 	DefaultProperties
 	Name string `gorm:"size:250"`
 }
-type Leave struct {
+type LeaveType struct {
 	DefaultProperties
 	Name      string `gorm:"size:250"`
 	Total     int
 	Status    string `gorm:"size:25"`
 	Company   Company
 	CompanyID uint64
+}
+type Leave struct {
+	DefaultProperties
+	Employee         Employee
+	EmployeeID       uint64
+	LeaveNature      string
+	LeaveType        LeaveType
+	LeaveTypeID      uint64
+	ApplicationDate  time.Time
+	LeaveFrom        time.Time
+	LeaveTo          time.Time
+	Purpose          string
+	RecommendedBy    string
+	SectionChief     string
+	HeadOfDepartment string
+	LeaveAddress     string
+	Mobile           string
 }
