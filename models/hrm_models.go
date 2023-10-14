@@ -419,3 +419,11 @@ type ProductCategory struct {
 	DefaultProperties
 	Name string `gorm:"size:250"`
 }
+type Leave struct {
+	DefaultProperties
+	Name      string `gorm:"size:250"`
+	Total     int
+	Status    string `gorm:"size:25"`
+	Company   Company
+	CompanyID uint64
+}
