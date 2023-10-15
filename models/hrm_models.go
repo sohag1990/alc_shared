@@ -48,7 +48,7 @@ type Company struct {
 	Employees      []Employee
 	Holidays       []Holiday
 	ODs            []OD
-	Leaves         []Leave
+	LeaveTypes     []LeaveType
 }
 type Branch struct {
 	DefaultProperties
@@ -198,6 +198,7 @@ type Employee struct {
 	Attendances []Attendance
 	ODs         []OD
 	Customers   []Customer
+	Leaves      []Leave
 	// appointment information
 
 	UserID          uint64
@@ -427,6 +428,8 @@ type LeaveType struct {
 	Status    string `gorm:"size:25"`
 	Company   Company
 	CompanyID uint64
+
+	Leaves []Leave
 }
 type Leave struct {
 	DefaultProperties
