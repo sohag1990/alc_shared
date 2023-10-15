@@ -435,9 +435,9 @@ type Leave struct {
 	LeaveNature      string
 	LeaveType        LeaveType
 	LeaveTypeID      uint64
-	ApplicationDate  time.Time
-	LeaveFrom        time.Time
-	LeaveTo          time.Time
+	ApplicationDate  time.Time `form:"ApplicationDate" time_format:"2006-01-02"`
+	LeaveFrom        time.Time `form:"LeaveFrom" time_format:"2006-01-02"`
+	LeaveTo          time.Time `form:"LeaveTo" time_format:"2006-01-02"`
 	Purpose          string
 	RecommendedBy    string
 	SectionChief     string
