@@ -23,7 +23,7 @@ type Company struct {
 	CurrencyCode           string `gorm:"size:25"`
 	DefaultLanguage        string `gorm:"size:10"`
 	LicenseKey             string `gorm:"size:512"`
-	SecretKey              string `gorm:"size:512"`
+	SecretKey              string `gorm:"size:500"`
 	SiteOffline            string `gorm:"size:25"`
 	OfflineMessage         string `gorm:"size:512"`
 	AllowRegistration      string `gorm:"size:25"`
