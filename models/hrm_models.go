@@ -441,6 +441,7 @@ type Leave struct {
 	ApplicationDate  time.Time `form:"ApplicationDate" time_format:"2006-01-02"`
 	LeaveFrom        time.Time `form:"LeaveFrom" time_format:"2006-01-02"`
 	LeaveTo          time.Time `form:"LeaveTo" time_format:"2006-01-02"`
+	TotalLeave       int
 	Purpose          string
 	RecommendedBy    string
 	SectionChief     string
