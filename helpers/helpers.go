@@ -105,7 +105,7 @@ func IsValidEmailFormat(email string) bool {
 func UrlSchema(c *gin.Context) string {
 	isHTTPS := c.Request.TLS != nil
 	port80 := c.Request.URL.Port()
-	fmt.Println(port80)
+	fmt.Println("port", port80)
 
 	// Determine the URL schema based on the HTTPS flag
 	scheme := "http"
