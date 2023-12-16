@@ -11,7 +11,13 @@ type Patient struct {
 	Phone               string `gorm:"size:20"`
 	Mobile              string `gorm:"size:100"`
 	Gender              string `gorm:"size:25"`
-	PatientHistory      string
+	FatherName          string
+	MotherName          string
+	DateOfBirth         time.Time
+	Occupation          string
+	MaritalStatus       string
+	DateOfMarry         time.Time
+	CaseHistory         CaseHistory
 	PatientHistoryAudio string
 	PatientHistoryVideo string
 	ProfilePicture      string
@@ -19,6 +25,8 @@ type Patient struct {
 	Deseases []Desease
 	Doctor   Doctor
 	DoctorID uint64
+}
+type CaseHistory struct {
 }
 type Doctor struct {
 	DefaultProperties
