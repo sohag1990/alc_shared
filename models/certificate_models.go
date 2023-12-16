@@ -8,7 +8,7 @@ type Fra struct {
 	Address                         string
 	Description                     string
 	NumberOfFloors                  int
-	ConstructionDate                *time.Time `form:"ConstructionDate"  time_format:"2006-01-02"`
+	ConstructionDate                time.Time `form:"ConstructionDate"  time_format:"2006-01-02"`
 	BriefDescriptionOfAccommodation string
 
 	LandlordName      string
@@ -22,12 +22,12 @@ type Fra struct {
 	ChildrenOccupants string
 	ElderlyOccupants  string
 
-	Assessmentdate    *time.Time `form:"Assessmentdate"  time_format:"2006-01-02"`
+	Assessmentdate    time.Time `form:"Assessmentdate"  time_format:"2006-01-02"`
 	AssessmentType    string
 	AssessedBy        string
 	Registration      string
 	AssessmentPurpose string
-	ReviewDate        *time.Time `form:"ReviewDate"  time_format:"2006-01-02"`
+	ReviewDate        time.Time `form:"ReviewDate"  time_format:"2006-01-02"`
 
 	ProbabilityScore         string
 	ProbabilityDescription   string
