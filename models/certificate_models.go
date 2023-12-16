@@ -22,7 +22,7 @@ type Fra struct {
 	ChildrenOccupants string
 	ElderlyOccupants  string
 
-	Assessmentdate    time.Time `form:"Assessmentdate"  time_format:"2006-01-02"`
+	AssessmentDate    time.Time `form:"AssessmentDate"  time_format:"2006-01-02"`
 	AssessmentType    string
 	AssessedBy        string
 	Registration      string
