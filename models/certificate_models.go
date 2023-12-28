@@ -5,6 +5,7 @@ import "time"
 type Fra struct {
 	DefaultProperties
 	OrderID                         uint64
+	Order                           Order
 	Name                            string
 	Address                         string
 	Description                     string
