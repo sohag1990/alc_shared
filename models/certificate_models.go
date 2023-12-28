@@ -4,6 +4,7 @@ import "time"
 
 type Fra struct {
 	DefaultProperties
+	OrderID                         uint64
 	Name                            string
 	Address                         string
 	Description                     string
@@ -36,9 +37,6 @@ type Fra struct {
 
 	// Hazard identification
 	// Doors
-	Doors_1_0_Comment        string
-	Doors_1_0_Recommendation string
-
 	SufficientExits_1_1                   string
 	SufficientExits_1_1_RiskLevel         string
 	ImmediatelyOpened_1_2                 string
@@ -50,10 +48,10 @@ type Fra struct {
 	AutomaticDoorFastenings_1_5           string
 	AutomaticDoorFastenings_1_5_RiskLevel string
 
-	// Signage
-	Signage_2_0_Comment        string
-	Signage_2_0_Recommendation string
+	Doors_1_0_Comment        string
+	Doors_1_0_Recommendation string
 
+	// Signage
 	SufficientExitSignage_2_1            string
 	SufficientExitSignage_2_1_Risklevel  string
 	EscapeRoutesIdentified_2_2           string
@@ -68,6 +66,9 @@ type Fra struct {
 	AdequateNotices_2_6_Risklevel        string
 	IlluminatedExitSigns                 string
 	IlluminatedExitSigns_Risklevel       string
+
+	Signage_2_0_Comment        string
+	Signage_2_0_Recommendation string
 
 	// Lighting
 	Lighting_3_0_Comment        string
