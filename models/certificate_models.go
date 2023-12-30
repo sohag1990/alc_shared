@@ -31,23 +31,20 @@ type Fra struct {
 	AssessmentPurpose string    `gorm:"size:250"`
 	ReviewDate        time.Time `form:"ReviewDate"  time_format:"2006-01-02"`
 
-	ProbabilityScore         string `gorm:"size:24"`
-	ProbabilityDescription   string `gorm:"size:512"`
-	PotentialRiskScore       string `gorm:"size:24"`
-	PotentialRiskDescription string `gorm:"size:24"`
+	PotentialRiskScore string `gorm:"size:24"`
 
 	// Hazard identification
 	// Doors
 	SufficientExits_1_1                   string `gorm:"size:24"`
-	SufficientExits_1_1_RiskLevel         string `gorm:"size:24"`
+	SufficientExits_1_1_Risklevel         string `gorm:"size:24"`
 	ImmediatelyOpened_1_2                 string `gorm:"size:24"`
-	ImmediatelyOpened_1_2_RiskLevel       string `gorm:"size:24"`
+	ImmediatelyOpened_1_2_Risklevel       string `gorm:"size:24"`
 	AppropriateDevices_1_3                string `gorm:"size:24"`
-	AppropriateDevices_1_3_RiskLevel      string `gorm:"size:24"`
+	AppropriateDevices_1_3_Risklevel      string `gorm:"size:24"`
 	InternalDoorsWedged_1_4               string `gorm:"size:24"`
-	InternalDoorsWedged_1_4_RiskLevel     string `gorm:"size:24"`
+	InternalDoorsWedged_1_4_Risklevel     string `gorm:"size:24"`
 	AutomaticDoorFastenings_1_5           string `gorm:"size:24"`
-	AutomaticDoorFastenings_1_5_RiskLevel string `gorm:"size:24"`
+	AutomaticDoorFastenings_1_5_Risklevel string `gorm:"size:24"`
 
 	HazardIdentification_1_1_0_Comment        string
 	HazardIdentification_1_1_0_Recommendation string
