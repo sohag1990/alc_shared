@@ -4,6 +4,7 @@ import "time"
 
 type Fra struct {
 	DefaultProperties
+	CertificateIssuer               string
 	OrderID                         uint64
 	Order                           Order
 	Name                            string
