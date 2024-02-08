@@ -10,4 +10,5 @@ import (
 // Cors set cors to routes
 func Cors() gin.HandlerFunc {
 	return cors.Default()
+
 }
