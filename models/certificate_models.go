@@ -6,12 +6,12 @@ type GasCert struct {
 	DefaultProperties
 	GasRecommendations []GasRecommendation
 	GasInspections     []GasInspection
-
-	OrderID  uint64
-	Name     string `gorm:"size:100"`
-	Address  string `gorm:"size:250"`
-	PostCode string `gorm:"size:20"`
-	Tel      string `gorm:"size:20"`
+	CertificateIssuer  string
+	OrderID            uint64 `gorm:"size:100"`
+	Name               string `gorm:"size:100"`
+	Address            string `gorm:"size:250"`
+	PostCode           string `gorm:"size:20"`
+	Tel                string `gorm:"size:20"`
 
 	LandlordName     string `gorm:"size:100"`
 	LandlordAddress  string `gorm:"size:250"`
