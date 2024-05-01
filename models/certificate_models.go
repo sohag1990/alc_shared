@@ -4,28 +4,28 @@ import "time"
 
 type GasCert struct {
 	DefaultProperties
-	GasRecommendations []GasRecommendation
-	GasInspections     []GasInspection
-	CertificateIssuer  string
-	OrderID            uint64 `gorm:"size:100"`
-	Name               string `gorm:"size:100"`
-	Address            string `gorm:"size:250"`
-	PostCode           string `gorm:"size:20"`
-	Tel                string `gorm:"size:20"`
+	// GasRecommendations []GasRecommendation
+	GasInspections    []GasInspection
+	CertificateIssuer string
+	// OrderID            uint64 `gorm:"size:100"`
+	// Name               string `gorm:"size:100"`
+	// Address            string `gorm:"size:250"`
+	// PostCode           string `gorm:"size:20"`
+	// Tel                string `gorm:"size:20"`
 
-	LandlordName     string `gorm:"size:100"`
-	LandlordAddress  string `gorm:"size:250"`
-	LandlordPostCode string `gorm:"size:20"`
+	// LandlordName     string `gorm:"size:100"`
+	// LandlordAddress  string `gorm:"size:250"`
+	// LandlordPostCode string `gorm:"size:20"`
 
-	AssessmentDate      time.Time `form:"AssessmentDate"  time_format:"2006-01-02"`
-	GasEngineerName     string    `gorm:"size:100"`
-	GasRegistraionID    string    `gorm:"size:20"`
-	GasSafeRegNo        string    `gorm:"size:20"`
-	GasEngineerAddress  string    `gorm:"size:250"`
-	GasEngineerPostCode string    `gorm:"size:20"`
-	GasEngineerTel      string    `gorm:"size:20"`
+	// AssessmentDate      time.Time `form:"AssessmentDate"  time_format:"2006-01-02"`
+	// GasEngineerName     string    `gorm:"size:100"`
+	// GasRegistraionID    string    `gorm:"size:20"`
+	// GasSafeRegNo        string    `gorm:"size:20"`
+	// GasEngineerAddress  string    `gorm:"size:250"`
+	// GasEngineerPostCode string    `gorm:"size:20"`
+	// GasEngineerTel      string    `gorm:"size:20"`
 
-	ReviewDate time.Time `form:"ReviewDate"  time_format:"2006-01-02"`
+	// ReviewDate time.Time `form:"ReviewDate"  time_format:"2006-01-02"`
 
 	// APPLIANCE DETAILS
 
@@ -39,25 +39,25 @@ type GasRecommendation struct {
 }
 type GasInspection struct {
 	DefaultProperties
-	GasCertID                        uint64
-	Location                         string `gorm:"size:50"`
-	ApplianceType                    string `gorm:"size:50"`
-	Make                             string `gorm:"size:50"`
-	Model                            string `gorm:"size:50"`
-	FlueType                         string `gorm:"size:50"`
-	LandlordsAppliance               string `gorm:"size:50"`
-	ApplianceInspected               string `gorm:"size:50"`
-	CombustionAnalyserReading        string `gorm:"size:50"`
-	OperatingPressure                string `gorm:"size:50"`
-	SafetyDevicesOperation           string `gorm:"size:50"`
-	VentilationProvisionSatisfactory string `gorm:"size:50"`
-	VisualConditionSatisfactory      string `gorm:"size:50"`
-	FluePerformanceTest              string `gorm:"size:50"`
-	ApplianceServiced                string `gorm:"size:50"`
-	ApplianceSafeToUse               string `gorm:"size:50"`
-	COAlarmFitted                    string `gorm:"size:50"`
-	IsCOAlarmInDate                  string `gorm:"size:50"`
-	TestingCOAlarmSatisfactory       string `gorm:"size:50"`
+	GasCertID uint64
+	Location  string `gorm:"size:50"`
+	// ApplianceType                    string `gorm:"size:50"`
+	// Make                             string `gorm:"size:50"`
+	// Model                            string `gorm:"size:50"`
+	// FlueType                         string `gorm:"size:50"`
+	// LandlordsAppliance               string `gorm:"size:50"`
+	// ApplianceInspected               string `gorm:"size:50"`
+	// CombustionAnalyserReading        string `gorm:"size:50"`
+	// OperatingPressure                string `gorm:"size:50"`
+	// SafetyDevicesOperation           string `gorm:"size:50"`
+	// VentilationProvisionSatisfactory string `gorm:"size:50"`
+	// VisualConditionSatisfactory      string `gorm:"size:50"`
+	// FluePerformanceTest              string `gorm:"size:50"`
+	// ApplianceServiced                string `gorm:"size:50"`
+	// ApplianceSafeToUse               string `gorm:"size:50"`
+	// COAlarmFitted                    string `gorm:"size:50"`
+	// IsCOAlarmInDate                  string `gorm:"size:50"`
+	// TestingCOAlarmSatisfactory       string `gorm:"size:50"`
 }
 type Fra struct {
 	DefaultProperties
