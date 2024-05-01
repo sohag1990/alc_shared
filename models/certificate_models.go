@@ -7,7 +7,7 @@ type GasCert struct {
 	// GasRecommendations []GasRecommendation
 	GasInspections    []GasInspection
 	CertificateIssuer string
-	// OrderID            uint64 `gorm:"size:100"`
+	OrderID           uint64 `gorm:"size:100"`
 	// Name               string `gorm:"size:100"`
 	// Address            string `gorm:"size:250"`
 	// PostCode           string `gorm:"size:20"`
