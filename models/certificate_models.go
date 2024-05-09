@@ -7,7 +7,7 @@ type GasCert struct {
 	GasRecommendations []GasRecommendation
 	GasInspections     []GasInspection
 	CertificateIssuer  string
-	OrderID            uint64 `gorm:"size:100"`
+	OrderID            uint64
 	Name               string `gorm:"size:100"`
 	Email              string `gorm:"size:100"`
 	Address            string `gorm:"size:250"`
@@ -30,6 +30,7 @@ type GasCert struct {
 	ReminderSentDate time.Time `form:"ReminderSentDate"  time_format:"2006-01-02"`
 	RenewalStatus    bool
 	RenewedDate      time.Time `form:"RenewedDate"  time_format:"2006-01-02"`
+	RenewdOrderID    uint64
 
 	// APPLIANCE DETAILS
 
