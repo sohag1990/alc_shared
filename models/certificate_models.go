@@ -26,7 +26,10 @@ type GasCert struct {
 	GasEngineerPostCode string    `gorm:"size:20"`
 	GasEngineerTel      string    `gorm:"size:20"`
 
-	ReviewDate time.Time `form:"ReviewDate"  time_format:"2006-01-02"`
+	ReviewDate       time.Time `form:"ReviewDate"  time_format:"2006-01-02"`
+	ReminderSentDate time.Time `form:"ReminderSentDate"  time_format:"2006-01-02"`
+	RenewalStatus    bool
+	RenewedDate      time.Time `form:"RenewedDate"  time_format:"2006-01-02"`
 
 	// APPLIANCE DETAILS
 
