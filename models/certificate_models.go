@@ -12,7 +12,7 @@ type GasCert struct {
 	Email              string `gorm:"size:100"`
 	Address            string `gorm:"size:250"`
 	PostCode           string `gorm:"size:20"`
-	Tel                string `gorm:"size:20"`
+	Phone              string `gorm:"size:20"`
 
 	LandlordName     string `gorm:"size:100"`
 	LandlordAddress  string `gorm:"size:250"`
