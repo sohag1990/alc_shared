@@ -2,6 +2,15 @@ package models
 
 import "time"
 
+type FollowUp struct {
+	DefaultProperties
+	OrderID         uint64
+	Services        string
+	FollowUpContent string
+	FeedbackContent string
+	Status          bool
+}
+
 type GasCert struct {
 	DefaultProperties
 	GasRecommendations []GasRecommendation
