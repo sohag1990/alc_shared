@@ -1,6 +1,10 @@
 package models
 
-import "time"
+import (
+	"time"
+
+	"github.com/sohag1990/alc_shared/wp_models"
+)
 
 type FollowUp struct {
 	DefaultProperties
@@ -11,6 +15,7 @@ type FollowUp struct {
 	FollowUpContent string `gorm:"type:text"`
 	FeedbackContent string `gorm:"type:text"`
 	Status          bool
+	LineItems       []wp_models.LineItem
 }
 
 type GasCert struct {
@@ -29,15 +34,16 @@ type GasCert struct {
 	LandlordAddress  string `gorm:"size:250"`
 	LandlordPostCode string `gorm:"size:20"`
 
-	AssessmentDate      time.Time `form:"AssessmentDate"  time_format:"2006-01-02"`
-	GasEngineerName     string    `gorm:"size:100"`
-	GasRegistraionID    string    `gorm:"size:20"`
-	GasSafeRegNo        string    `gorm:"size:20"`
-	GasEngineerAddress  string    `gorm:"size:250"`
-	GasEngineerPostCode string    `gorm:"size:20"`
-	GasEngineerTel      string    `gorm:"size:20"`
+	GasEngineerName     string `gorm:"size:100"`
+	GasRegistraionID    string `gorm:"size:20"`
+	GasSafeRegNo        string `gorm:"size:20"`
+	GasEngineerAddress  string `gorm:"size:250"`
+	GasEngineerPostCode string `gorm:"size:20"`
+	GasEngineerTel      string `gorm:"size:20"`
 
-	ReviewDate       time.Time `form:"ReviewDate"  time_format:"2006-01-02"`
+	AssessmentDate time.Time `form:"AssessmentDate"  time_format:"2006-01-02"`
+	ReviewDate     time.Time `form:"ReviewDate"  time_format:"2006-01-02"`
+
 	ReminderSentDate time.Time `form:"ReminderSentDate"  time_format:"2006-01-02"`
 	RenewalStatus    bool
 	RenewedDate      time.Time `form:"RenewedDate"  time_format:"2006-01-02"`

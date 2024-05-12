@@ -1,5 +1,7 @@
 package wp_models
 
+import "time"
+
 type Billing struct {
 	Address1  string `json:"address_1"`
 	Address2  string `json:"address_2"`
@@ -44,6 +46,10 @@ type LineItem struct {
 	Total       string        `json:"total"`
 	TotalTax    string        `json:"total_tax"`
 	VariationID int           `json:"variation_id"`
+	//extra fields
+
+	AssessmentDate time.Time `form:"AssessmentDate"  time_format:"2006-01-02"`
+	ReviewDate     time.Time `form:"ReviewDate"  time_format:"2006-01-02"`
 }
 
 type Image struct {
