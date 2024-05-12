@@ -2,8 +2,6 @@ package models
 
 import (
 	"time"
-
-	"github.com/sohag1990/alc_shared/wp_models"
 )
 
 type FollowUp struct {
@@ -15,7 +13,6 @@ type FollowUp struct {
 	FollowUpContent string `gorm:"type:text"`
 	FeedbackContent string `gorm:"type:text"`
 	Status          bool
-	LineItems       []wp_models.LineItem
 }
 
 type GasCert struct {
