@@ -12,6 +12,7 @@ type FollowUp struct {
 	FollowUpSubject string `gorm:"size:150"`
 	FollowUpContent string `gorm:"type:text"`
 	FeedbackContent string `gorm:"type:text"`
+	RenewedOrderID  uint64
 	Status          bool
 }
 
