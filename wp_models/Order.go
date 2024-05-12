@@ -50,6 +50,7 @@ type LineItem struct {
 
 	AssessmentDate time.Time `form:"AssessmentDate"  time_format:"2006-01-02"`
 	ReviewDate     time.Time `form:"ReviewDate"  time_format:"2006-01-02"`
+	RemainingDays  int
 }
 
 type Image struct {
