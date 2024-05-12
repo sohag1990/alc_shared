@@ -5,9 +5,11 @@ import "time"
 type FollowUp struct {
 	DefaultProperties
 	OrderID         uint64
-	Services        string
-	FollowUpContent string
-	FeedbackContent string
+	FollowUpOption  string `gorm:"size:100"`
+	Services        string `gorm:"size:250"`
+	FollowUpSubject string `gorm:"size:150"`
+	FollowUpContent string `gorm:"type:text"`
+	FeedbackContent string `gorm:"type:text"`
 	Status          bool
 }
 
