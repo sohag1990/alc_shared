@@ -6,6 +6,7 @@ import (
 
 type FollowUp struct {
 	DefaultProperties
+	Company         string `gorm:"size:100"`
 	Email           string
 	OrderID         uint64
 	FollowUpOption  string `gorm:"size:100"`
