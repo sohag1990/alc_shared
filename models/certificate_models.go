@@ -1,19 +1,20 @@
 package models
 
 import (
+	"html/template"
 	"time"
 )
 
 type FollowUp struct {
 	DefaultProperties
 	Company         string `gorm:"size:100"`
-	Email           string
+	Email           string `gorm:"size:100"`
 	OrderID         uint64
-	FollowUpOption  string `gorm:"size:100"`
-	Services        string `gorm:"size:250"`
-	FollowUpSubject string `gorm:"size:150"`
-	FollowUpContent string `gorm:"type:text"`
-	FeedbackContent string `gorm:"type:text"`
+	FollowUpOption  string        `gorm:"size:100"`
+	Services        string        `gorm:"size:250"`
+	FollowUpSubject string        `gorm:"size:150"`
+	FollowUpContent template.HTML `gorm:"type:text"`
+	FeedbackContent string        `gorm:"type:text"`
 	RenewedOrderID  uint64
 	Status          bool
 }
