@@ -10,11 +10,11 @@ type FollowUp struct {
 	Company         string `gorm:"size:100"`
 	Email           string `gorm:"size:100"`
 	OrderID         uint64
-	FollowUpOption  string        `gorm:"size:100"`
-	Services        string        `gorm:"size:250"`
-	FollowUpSubject string        `gorm:"size:150"`
-	FollowUpContent template.HTML `gorm:"type:text"`
-	FeedbackContent string        `gorm:"type:text"`
+	FollowUpOption  string `gorm:"size:100"`
+	Services        string `gorm:"size:250"`
+	FollowUpSubject string `gorm:"size:150"`
+	FollowUpContent template.HTML
+	FeedbackContent template.HTML
 	RenewedOrderID  uint64
 	Status          bool
 }
