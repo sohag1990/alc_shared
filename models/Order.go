@@ -8,6 +8,7 @@ import (
 
 type Property struct {
 	DefaultProperties
+	LandlordName     string
 	PropertyType     string
 	PropertyAddress  string
 	PropertyPostCode string
