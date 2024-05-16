@@ -26,6 +26,7 @@ type User struct {
 	Hostname  string
 	ProfileID uint64
 	Profile   Profile
+	Property  []Property
 }
 
 type DefaultProperties struct {
