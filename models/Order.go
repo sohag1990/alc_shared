@@ -9,6 +9,8 @@ import (
 type Property struct {
 	DefaultProperties
 	LandlordName     string
+	LandlordPhone    string
+	LandlordEmail    string
 	PropertyCategory string //commercial or residential
 	PropertyType     string // if commercial: shop, office, resturount etc other then HMO, flat, house, communal area
 	PropertyAddress  string
