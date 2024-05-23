@@ -31,7 +31,7 @@ func GetFrontendUserData(c *gin.Context) models.FrontendUserData {
 	}
 	usrData.FullName = "Guest"
 	usrData.Email = ""
-	usrData.Role = "customer"
+	usrData.Role = "guest"
 	usrData.ButtonText = "Login"
 	usrData.Url = "/login"
 
