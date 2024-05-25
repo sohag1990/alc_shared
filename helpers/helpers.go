@@ -1,9 +1,14 @@
 package helpers
 
 import (
+	"crypto/aes"
+	"crypto/cipher"
+	"crypto/rand"
+	"encoding/hex"
 	"fmt"
 	"html/template"
-	"math/rand"
+	"io"
+
 	"regexp"
 	"strconv"
 	"strings"
@@ -154,4 +159,68 @@ func Pluralize(word string) string {
 	} else {
 		return word + "s"
 	}
+}
+
+// Declare the key as a global variable
+var key = []byte("R&>+DLHp+Rp!XP}9C%;X<yw_YJbTH}Z-$S~$4R!WY$p}9`u$pW/(*G-a8umz -+$")
+
+// Encrypt encrypts plaintext using the given key with AES-GCM.
+func Encrypt(plaintext []byte) (string, error) {
+	// Create a new AES cipher block
+	block, err := aes.NewCipher(key)
+	if err != nil {
+		return "", err
+	}
+
+	// Use Galois Counter Mode (GCM) for encryption
+	aesGCM, err := cipher.NewGCM(block)
+	if err != nil {
+		return "", err
+	}
+
+	// Create a nonce for the encryption
+	nonce := make([]byte, aesGCM.NonceSize())
+	if _, err = io.ReadFull(rand.Reader, nonce); err != nil {
+		return "", err
+	}
+
+	// Encrypt the plaintext using AES-GCM
+	ciphertext := aesGCM.Seal(nonce, nonce, plaintext, nil)
+
+	// Return the encrypted text as a hexadecimal string
+	return hex.EncodeToString(ciphertext), nil
+}
+
+// Decrypt decrypts ciphertext using the given key with AES-GCM.
+func Decrypt(ciphertextHex string) (string, error) {
+	// Decode the hexadecimal string into bytes
+	ciphertext, err := hex.DecodeString(ciphertextHex)
+	if err != nil {
+		return "", err
+	}
+
+	// Create a new AES cipher block
+	block, err := aes.NewCipher(key)
+	if err != nil {
+		return "", err
+	}
+
+	// Use Galois Counter Mode (GCM) for decryption
+	aesGCM, err := cipher.NewGCM(block)
+	if err != nil {
+		return "", err
+	}
+
+	// Extract the nonce from the ciphertext
+	nonceSize := aesGCM.NonceSize()
+	nonce, ciphertext := ciphertext[:nonceSize], ciphertext[nonceSize:]
+
+	// Decrypt the ciphertext using AES-GCM
+	plaintext, err := aesGCM.Open(nil, nonce, ciphertext, nil)
+	if err != nil {
+		return "", err
+	}
+
+	// Return the original plaintext as a string
+	return string(plaintext), nil
 }
