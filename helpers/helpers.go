@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"html/template"
 	"io"
+	"math/big"
 
 	"regexp"
 	"strconv"
@@ -62,37 +63,59 @@ func TokenGenerator() string {
 
 // GeneratePassword generates a random password of the specified length and complexity level.
 // Complexity levels are 1, 2, and 3, with 1 being the simplest and 3 being the most complex.
-func GeneratePassword(length, complexity int) string {
+func GeneratePassword(length, complexity int) (string, error) {
 	var letterRunes = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
 	var numberRunes = []rune("0123456789")
 	var symbolRunes = []rune("!@#$%^&*()_+{}[]|\\;:'\"<>,.?/")
 
-	rand.Seed(time.Now().UnixNano())
-
 	var password []rune
 	for i := 0; i < length; i++ {
+		var err error
+		var r rune
 		switch complexity {
 		case 1:
-			password = append(password, letterRunes[rand.Intn(len(letterRunes))])
+			r, err = randomRune(letterRunes)
 		case 2:
-			if rand.Intn(2) == 0 {
-				password = append(password, letterRunes[rand.Intn(len(letterRunes))])
+			if n, err := cryptoRandInt(2); err != nil {
+				return "", err
+			} else if n == 0 {
+				r, err = randomRune(letterRunes)
 			} else {
-				password = append(password, numberRunes[rand.Intn(len(numberRunes))])
+				r, err = randomRune(numberRunes)
 			}
 		case 3:
-			switch rand.Intn(3) {
-			case 0:
-				password = append(password, letterRunes[rand.Intn(len(letterRunes))])
-			case 1:
-				password = append(password, numberRunes[rand.Intn(len(numberRunes))])
-			case 2:
-				password = append(password, symbolRunes[rand.Intn(len(symbolRunes))])
+			if n, err := cryptoRandInt(3); err != nil {
+				return "", err
+			} else if n == 0 {
+				r, err = randomRune(letterRunes)
+			} else if n == 1 {
+				r, err = randomRune(numberRunes)
+			} else {
+				r, err = randomRune(symbolRunes)
 			}
 		}
+		if err != nil {
+			return "", err
+		}
+		password = append(password, r)
 	}
 
-	return string(password)
+	return string(password), nil
+}
+func randomRune(runes []rune) (rune, error) {
+	n, err := cryptoRandInt(len(runes))
+	if err != nil {
+		return 0, err
+	}
+	return runes[n], nil
+}
+
+func cryptoRandInt(max int) (int, error) {
+	nBig, err := rand.Int(rand.Reader, big.NewInt(int64(max)))
+	if err != nil {
+		return 0, err
+	}
+	return int(nBig.Int64()), nil
 }
 
 var (
