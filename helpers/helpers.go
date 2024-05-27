@@ -251,7 +251,7 @@ func Decrypt(ciphertextHex string) (string, error) {
 }
 
 // Custom middleware to log 404 errors
-func logNotFound() gin.HandlerFunc {
+func LogNotFound() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		// Process request
 		c.Next()
