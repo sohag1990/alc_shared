@@ -8,7 +8,9 @@ import (
 	"fmt"
 	"html/template"
 	"io"
+	"log"
 	"math/big"
+	"net/http"
 
 	"regexp"
 	"strconv"
@@ -246,4 +248,17 @@ func Decrypt(ciphertextHex string) (string, error) {
 
 	// Return the original plaintext as a string
 	return string(plaintext), nil
+}
+
+// Custom middleware to log 404 errors
+func logNotFound() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		// Process request
+		c.Next()
+
+		// Check if the status code is 404
+		if c.Writer.Status() == http.StatusNotFound {
+			log.Printf("404 Not Found: %s %s", c.Request.Method, c.Request.URL.Path)
+		}
+	}
 }
