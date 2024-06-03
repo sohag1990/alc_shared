@@ -15,6 +15,7 @@ type Property struct {
 	PropertyType     string // if commercial: shop, office, resturount etc other then HMO, flat, house, communal area
 	PropertyAddress  string
 	PropertyPostCode string
+	FlatNumber       string
 	UserID           uint64
 }
 
