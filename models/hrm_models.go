@@ -8,7 +8,7 @@ type Company struct {
 	Address                string `gorm:"size:512"`
 	Phone                  string `gorm:"size:20"`
 	Mobile                 string `gorm:"size:100"`
-	Email                  string `gorm:"uniqueIndex;size:256;not null"`
+	Email                  string `gorm:"unique;size:256;not null"`
 	SiteURL                string `gorm:"size:350"`
 	SSRURL                 string `gorm:"size:512"`
 	BackendTitle           string `gorm:"size:512"`

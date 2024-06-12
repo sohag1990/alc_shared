@@ -7,6 +7,6 @@ type Profile struct {
 	Address     string
 	Postcode    string
 	Phone       string
-	UserID      uint64 `gorm:"uniqueIndex;not null"`
+	UserID      uint64 `gorm:"unique;not null"`
 	DefaultProperties
 }
