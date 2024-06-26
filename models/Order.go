@@ -65,4 +65,11 @@ type OrderServices struct {
 	DeletedAt *time.Time            `sql:"index" json:"-"`
 	IsDel     soft_delete.DeletedAt `gorm:"softDelete:flag,DeletedAtField:DeletedAt"`
 	Index     int
+	// extra added for testing
+	ReviewDate time.Time `form:"ReviewDate"  time_format:"2006-01-02"`
+
+	ReminderSentDate time.Time `form:"ReminderSentDate"  time_format:"2006-01-02"`
+	RenewalStatus    bool
+	RenewedDate      time.Time `form:"RenewedDate"  time_format:"2006-01-02"`
+	RenewdOrderID    uint64
 }
