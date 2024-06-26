@@ -72,4 +72,5 @@ type OrderServices struct {
 	RenewalStatus    bool
 	RenewedDate      time.Time `form:"RenewedDate"  time_format:"2006-01-02"`
 	RenewdOrderID    uint64
+	RemainingDays    int
 }
