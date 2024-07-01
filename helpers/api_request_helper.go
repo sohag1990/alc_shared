@@ -48,6 +48,8 @@ func APICall(callMethod string, apiUrl string, requestData any, responseData any
 	// return resp
 	data, _ := json.Marshal(responseData)
 	// fmt.Println(data)
+	count := resp.Header.Get("X-Count")
+	fmt.Println(count)
 	return data
 
 }
