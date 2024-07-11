@@ -112,7 +112,8 @@ type Fra struct {
 	ReviewDate        time.Time `form:"ReviewDate"  time_format:"2006-01-02"`
 
 	PotentialRiskScore string `gorm:"size:24"`
-
+}
+type FraHazardIdentification struct {
 	// Hazard identification
 	// Doors
 	SufficientExits_1_1                   string `gorm:"size:24"`
