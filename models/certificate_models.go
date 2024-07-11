@@ -82,6 +82,17 @@ type GasInspection struct {
 	IsCOAlarmInDate                  string `gorm:"size:50"`
 	TestingCOAlarmSatisfactory       string `gorm:"size:50"`
 }
+
+// FraHazardIdentificationSignage
+// FraHazardIdentificationLighting
+// FraHazardIdentificationElectrical
+// FraHazardIdentificationSmoking
+// FraHazardIdentificationPortableHeating
+// FraHazardIdentificationCooking
+// FraHazardIdentificationFurniture
+// FraHazardIdentificationHousekeeping
+// FraHazardIdentificationGeneral
+// FraHazardIdentificationOther
 type Fra struct {
 	DefaultProperties
 	OrderID                   uint64
@@ -114,7 +125,151 @@ type Fra struct {
 	ReviewDate        time.Time `form:"ReviewDate"  time_format:"2006-01-02"`
 
 	PotentialRiskScore string `gorm:"size:24"`
+	// Means for Giving Warning
+	MeansForGivingWarning_2_0_Comment           string `gorm:"type:text"`
+	MeansForGivingWarning_2_0_Recommendation    string `gorm:"type:text"`
+	FireAlarmDetectionSystem_2_0_Comment        string `gorm:"type:text"`
+	FireAlarmDetectionSystem_2_0_Recommendation string `gorm:"type:text"`
+
+	BuildingHaveMeansGivingWarning_2_1           string `gorm:"size:24"`
+	BuildingHaveMeansGivingWarning_2_1_Risklevel string `gorm:"size:24"`
+	MeansGivingWarningAppropriate_2_2            string `gorm:"size:24"`
+	MeansGivingWarningAppropriate_2_2_Risklevel  string `gorm:"size:24"`
+	AlarmAudibleThroughout_2_3                   string `gorm:"size:24"`
+	AlarmAudibleThroughout_2_3_Risklevel         string `gorm:"size:24"`
+	CallPointsSatisfactory_2_4                   string `gorm:"size:24"`
+	CallPointsSatisfactory_2_4_Risklevel         string `gorm:"size:24"`
+	DetectionSufficient_2_5                      string `gorm:"size:24"`
+	DetectionSufficient_2_5_Risklevel            string `gorm:"size:24"`
+	DetectorsCallPointsObstructed_2_6            string `gorm:"size:24"`
+	DetectorsCallPointsObstructed_2_6_Risklevel  string `gorm:"size:24"`
+	OccupiersAware_2_7                           string `gorm:"size:24"`
+	OccupiersAware_2_7_Risklevel                 string `gorm:"size:24"`
+	OccupiersTrained_2_8                         string `gorm:"size:24"`
+	OccupiersTrained_2_8_Risklevel               string `gorm:"size:24"`
+	FireAlarmSystemTested_2_9                    string `gorm:"size:24"`
+	FireAlarmSystemTested_2_9_Risklevel          string `gorm:"size:24"`
+	FireAlarmSystemServiced_2_10                 string `gorm:"size:24"`
+	FireAlarmSystemServiced_2_10_Risklevel       string `gorm:"size:24"`
+	BatteryBackUp_2_11                           string `gorm:"size:24"`
+	BatteryBackUp_2_11_Risklevel                 string `gorm:"size:24"`
+
+	// Emergency Action Plan
+	EmergencyActionPlan_3_0_Comment        string `gorm:"type:text"`
+	EmergencyActionPlan_3_0_Recommendation string `gorm:"type:text"`
+
+	WrittenFireEmergencyActionPlan_3_1           string `gorm:"size:24"`
+	WrittenFireEmergencyActionPlan_3_1_Risklevel string `gorm:"size:24"`
+	PointSpecifiedCommunalBoard_3_2              string `gorm:"size:24"`
+	PointSpecifiedCommunalBoard_3_2_Risklevel    string `gorm:"size:24"`
+	ActionDiscoveringFire_3_3                    string `gorm:"size:24"`
+	ActionDiscoveringFire_3_3_Risklevel          string `gorm:"size:24"`
+	HowRaiseAlarm_3_4                            string `gorm:"size:24"`
+	HowRaiseAlarm_3_4_Risklevel                  string `gorm:"size:24"`
+	ActionHearingFireAlarm_3_5                   string `gorm:"size:24"`
+	ActionHearingFireAlarm_3_5_Risklevel         string `gorm:"size:24"`
+	ProcedureAlertingMembers_3_6                 string `gorm:"size:24"`
+	ProcedureAlertingMembers_3_6_Risklevel       string `gorm:"size:24"`
+	EvacuationProcedur_3_7                       string `gorm:"size:24"`
+	EvacuationProcedur_3_7_Risklevel             string `gorm:"size:24"`
+	LocationAppropriateUse_3_8                   string `gorm:"size:24"`
+	LocationAppropriateUse_3_8_Risklevel         string `gorm:"size:24"`
+	ImportanceClosingFireDoors_3_9               string `gorm:"size:24"`
+	ImportanceClosingFireDoors_3_9_Risklevel     string `gorm:"size:24"`
+	IsolationMachinery_3_10                      string `gorm:"size:24"`
+	IsolationMachinery_3_10_Risklevel            string `gorm:"size:24"`
+	ReasonNotUsingLifts_3_11                     string `gorm:"size:24"`
+	ReasonNotUsingLifts_3_11_Risklevel           string `gorm:"size:24"`
+	InformationSpecificHazards_3_12              string `gorm:"size:24"`
+	InformationSpecificHazards_3_12_Risklevel    string `gorm:"size:24"`
+
+	//Portable fire-fighting equipment
+	PortableFireFightingEquipment_4_0_Comment        string `gorm:"type:text"`
+	PortableFireFightingEquipment_4_0_Recommendation string `gorm:"type:text"`
+
+	SufficientExtinguishers_4_1                    string `gorm:"size:24"`
+	SufficientExtinguishers_4_1_Risklevel          string `gorm:"size:24"`
+	ExtinguishersCorrectlyPositioned_4_2           string `gorm:"size:24"`
+	ExtinguishersCorrectlyPositioned_4_2_Risklevel string `gorm:"size:24"`
+	ExtinguishersAppropriate_4_3                   string `gorm:"size:24"`
+	ExtinguishersAppropriate_4_3_Risklevel         string `gorm:"size:24"`
+	FireBlankets_4_4                               string `gorm:"size:24"`
+	FireBlankets_4_4_Risklevel                     string `gorm:"size:24"`
+	ExtinguishersObstructed_4_5                    string `gorm:"size:24"`
+	ExtinguishersObstructed_4_5_Risklevel          string `gorm:"size:24"`
+	ExtinguisherSigns_4_6                          string `gorm:"size:24"`
+	ExtinguisherSigns_4_6_Risklevel                string `gorm:"size:24"`
+	ExtinguishersServiced_4_7                      string `gorm:"size:24"`
+	ExtinguishersServiced_4_7_Risklevel            string `gorm:"size:24"`
+
+	//Fixed Installations
+	FixedInstallations_5_0_Comment        string `gorm:"type:text"`
+	FixedInstallations_5_0_Recommendation string `gorm:"type:text"`
+
+	SprinklerSystem_5_1                    string `gorm:"size:24"`
+	SprinklerSystem_5_1_Risklevel          string `gorm:"size:24"`
+	DryWetRiser_5_2                        string `gorm:"size:24"`
+	DryWetRiser_5_2_Risklevel              string `gorm:"size:24"`
+	GasFloodingSystem_5_3                  string `gorm:"size:24"`
+	GasFloodingSystem_5_3_Risklevel        string `gorm:"size:24"`
+	SmokeControlSystem_5_4                 string `gorm:"size:24"`
+	SmokeControlSystem_5_4_Risklevel       string `gorm:"size:24"`
+	OtherFixedInstallation_5_5             string `gorm:"size:24"`
+	OtherFixedInstallation_5_5_Risklevel   string `gorm:"size:24"`
+	HoseReelsProvided_5_6                  string `gorm:"size:24"`
+	HoseReelsProvided_5_6_Risklevel        string `gorm:"size:24"`
+	FixedInstallationsTested_5_7           string `gorm:"size:24"`
+	FixedInstallationsTested_5_7_Risklevel string `gorm:"size:24"`
+	ProtectionSystemsSignage_5_8           string `gorm:"size:24"`
+	ProtectionSystemsSignage_5_8_Risklevel string `gorm:"size:24"`
+	ProtectionSystemsAlarms_5_9            string `gorm:"size:24"`
+	ProtectionSystemsAlarms_5_9_Risklevel  string `gorm:"size:24"`
+
+	//Arson
+	Arson_6_0_Comment        string `gorm:"type:text"`
+	Arson_6_0_Recommendation string `gorm:"type:text"`
+
+	SecureDuringDarkness_6_1                string `gorm:"size:24"`
+	SecureDuringDarkness_6_1_Risklevel      string `gorm:"size:24"`
+	StandardExternalLighting_6_2            string `gorm:"size:24"`
+	StandardExternalLighting_6_2_Risklevel  string `gorm:"size:24"`
+	ExternalRubbish_6_3                     string `gorm:"size:24"`
+	ExternalRubbish_6_3_Risklevel           string `gorm:"size:24"`
+	WheelieBinsSecurelyPlaced_6_4           string `gorm:"size:24"`
+	WheelieBinsSecurelyPlaced_6_4_Risklevel string `gorm:"size:24"`
+	CCTVAvailable_6_5                       string `gorm:"size:24"`
+	CCTVAvailable_6_5_Risklevel             string `gorm:"size:24"`
+	VideoDoorbellAvailable_6_6              string `gorm:"size:24"`
+	VideoDoorbellAvailable_6_6_Risklevel    string `gorm:"size:24"`
+
+	//7.0 Maintenance and Record Keeping
+	MaintenanceAndRecordKeeping_7_0_Comment        string `gorm:"type:text"`
+	MaintenanceAndRecordKeeping_7_0_Recommendation string `gorm:"type:text"`
+
+	SufficientRiskAssessment_7_1                  string `gorm:"size:24"`
+	SufficientRiskAssessment_7_1_Risklevel        string `gorm:"size:24"`
+	RiskAssessmentReviewed_7_2                    string `gorm:"size:24"`
+	RiskAssessmentReviewed_7_2_Risklevel          string `gorm:"size:24"`
+	SufficientEmergencyActionPlan_7_3             string `gorm:"size:24"`
+	SufficientEmergencyActionPlan_7_3_Risklevel   string `gorm:"size:24"`
+	LogBookKept_7_4                               string `gorm:"size:24"`
+	LogBookKept_7_4_Risklevel                     string `gorm:"size:24"`
+	FireAlarmTestingRecord_7_5                    string `gorm:"size:24"`
+	FireAlarmTestingRecord_7_5_Risklevel          string `gorm:"size:24"`
+	EmergencyLightTestingRecord_7_6               string `gorm:"size:24"`
+	EmergencyLightTestingRecord_7_6_Risklevel     string `gorm:"size:24"`
+	MeansEscapeRouteRecord_7_7                    string `gorm:"size:24"`
+	MeansEscapeRouteRecord_7_7_Risklevel          string `gorm:"size:24"`
+	FireExtinguisherEquipmentRecord_7_8           string `gorm:"size:24"`
+	FireExtinguisherEquipmentRecord_7_8_Risklevel string `gorm:"size:24"`
+	FixedInstallationTesting_7_9                  string `gorm:"size:24"`
+	FixedInstallationTesting_7_9_Risklevel        string `gorm:"size:24"`
+	GeneralFireTraining_7_10                      string `gorm:"size:24"`
+	GeneralFireTraining_7_10_Risklevel            string `gorm:"size:24"`
+	FireDrillsRecord_7_11                         string `gorm:"size:24"`
+	FireDrillsRecord_7_11_Risklevel               string `gorm:"size:24"`
 }
+
 type FraHazardIdentification struct {
 	// Hazard identification
 	DefaultProperties
@@ -269,148 +424,4 @@ type FraHazardIdentification struct {
 	Others_11_0_Recommendation string `gorm:"type:text"`
 	Others_11_1                string `gorm:"type:text"`
 	Others_11_1_Risklevel      string `gorm:"size:24"`
-
-	// Means for Giving Warning
-	MeansForGivingWarning_2_0_Comment           string `gorm:"type:text"`
-	MeansForGivingWarning_2_0_Recommendation    string `gorm:"type:text"`
-	FireAlarmDetectionSystem_2_0_Comment        string `gorm:"type:text"`
-	FireAlarmDetectionSystem_2_0_Recommendation string `gorm:"type:text"`
-
-	BuildingHaveMeansGivingWarning_2_1           string `gorm:"size:24"`
-	BuildingHaveMeansGivingWarning_2_1_Risklevel string `gorm:"size:24"`
-	MeansGivingWarningAppropriate_2_2            string `gorm:"size:24"`
-	MeansGivingWarningAppropriate_2_2_Risklevel  string `gorm:"size:24"`
-	AlarmAudibleThroughout_2_3                   string `gorm:"size:24"`
-	AlarmAudibleThroughout_2_3_Risklevel         string `gorm:"size:24"`
-	CallPointsSatisfactory_2_4                   string `gorm:"size:24"`
-	CallPointsSatisfactory_2_4_Risklevel         string `gorm:"size:24"`
-	DetectionSufficient_2_5                      string `gorm:"size:24"`
-	DetectionSufficient_2_5_Risklevel            string `gorm:"size:24"`
-	DetectorsCallPointsObstructed_2_6            string `gorm:"size:24"`
-	DetectorsCallPointsObstructed_2_6_Risklevel  string `gorm:"size:24"`
-	OccupiersAware_2_7                           string `gorm:"size:24"`
-	OccupiersAware_2_7_Risklevel                 string `gorm:"size:24"`
-	OccupiersTrained_2_8                         string `gorm:"size:24"`
-	OccupiersTrained_2_8_Risklevel               string `gorm:"size:24"`
-	FireAlarmSystemTested_2_9                    string `gorm:"size:24"`
-	FireAlarmSystemTested_2_9_Risklevel          string `gorm:"size:24"`
-	FireAlarmSystemServiced_2_10                 string `gorm:"size:24"`
-	FireAlarmSystemServiced_2_10_Risklevel       string `gorm:"size:24"`
-	BatteryBackUp_2_11                           string `gorm:"size:24"`
-	BatteryBackUp_2_11_Risklevel                 string `gorm:"size:24"`
-
-	// Emergency Action Plan
-	EmergencyActionPlan_3_0_Comment        string `gorm:"type:text"`
-	EmergencyActionPlan_3_0_Recommendation string `gorm:"type:text"`
-
-	WrittenFireEmergencyActionPlan_3_1           string `gorm:"size:24"`
-	WrittenFireEmergencyActionPlan_3_1_Risklevel string `gorm:"size:24"`
-	PointSpecifiedCommunalBoard_3_2              string `gorm:"size:24"`
-	PointSpecifiedCommunalBoard_3_2_Risklevel    string `gorm:"size:24"`
-	ActionDiscoveringFire_3_3                    string `gorm:"size:24"`
-	ActionDiscoveringFire_3_3_Risklevel          string `gorm:"size:24"`
-	HowRaiseAlarm_3_4                            string `gorm:"size:24"`
-	HowRaiseAlarm_3_4_Risklevel                  string `gorm:"size:24"`
-	ActionHearingFireAlarm_3_5                   string `gorm:"size:24"`
-	ActionHearingFireAlarm_3_5_Risklevel         string `gorm:"size:24"`
-	ProcedureAlertingMembers_3_6                 string `gorm:"size:24"`
-	ProcedureAlertingMembers_3_6_Risklevel       string `gorm:"size:24"`
-	EvacuationProcedur_3_7                       string `gorm:"size:24"`
-	EvacuationProcedur_3_7_Risklevel             string `gorm:"size:24"`
-	LocationAppropriateUse_3_8                   string `gorm:"size:24"`
-	LocationAppropriateUse_3_8_Risklevel         string `gorm:"size:24"`
-	ImportanceClosingFireDoors_3_9               string `gorm:"size:24"`
-	ImportanceClosingFireDoors_3_9_Risklevel     string `gorm:"size:24"`
-	IsolationMachinery_3_10                      string `gorm:"size:24"`
-	IsolationMachinery_3_10_Risklevel            string `gorm:"size:24"`
-	ReasonNotUsingLifts_3_11                     string `gorm:"size:24"`
-	ReasonNotUsingLifts_3_11_Risklevel           string `gorm:"size:24"`
-	InformationSpecificHazards_3_12              string `gorm:"size:24"`
-	InformationSpecificHazards_3_12_Risklevel    string `gorm:"size:24"`
-
-	//Portable fire-fighting equipment
-	PortableFireFightingEquipment_4_0_Comment        string `gorm:"type:text"`
-	PortableFireFightingEquipment_4_0_Recommendation string `gorm:"type:text"`
-
-	SufficientExtinguishers_4_1                    string `gorm:"size:24"`
-	SufficientExtinguishers_4_1_Risklevel          string `gorm:"size:24"`
-	ExtinguishersCorrectlyPositioned_4_2           string `gorm:"size:24"`
-	ExtinguishersCorrectlyPositioned_4_2_Risklevel string `gorm:"size:24"`
-	ExtinguishersAppropriate_4_3                   string `gorm:"size:24"`
-	ExtinguishersAppropriate_4_3_Risklevel         string `gorm:"size:24"`
-	FireBlankets_4_4                               string `gorm:"size:24"`
-	FireBlankets_4_4_Risklevel                     string `gorm:"size:24"`
-	ExtinguishersObstructed_4_5                    string `gorm:"size:24"`
-	ExtinguishersObstructed_4_5_Risklevel          string `gorm:"size:24"`
-	ExtinguisherSigns_4_6                          string `gorm:"size:24"`
-	ExtinguisherSigns_4_6_Risklevel                string `gorm:"size:24"`
-	ExtinguishersServiced_4_7                      string `gorm:"size:24"`
-	ExtinguishersServiced_4_7_Risklevel            string `gorm:"size:24"`
-
-	//Fixed Installations
-	FixedInstallations_5_0_Comment        string `gorm:"type:text"`
-	FixedInstallations_5_0_Recommendation string `gorm:"type:text"`
-
-	SprinklerSystem_5_1                    string `gorm:"size:24"`
-	SprinklerSystem_5_1_Risklevel          string `gorm:"size:24"`
-	DryWetRiser_5_2                        string `gorm:"size:24"`
-	DryWetRiser_5_2_Risklevel              string `gorm:"size:24"`
-	GasFloodingSystem_5_3                  string `gorm:"size:24"`
-	GasFloodingSystem_5_3_Risklevel        string `gorm:"size:24"`
-	SmokeControlSystem_5_4                 string `gorm:"size:24"`
-	SmokeControlSystem_5_4_Risklevel       string `gorm:"size:24"`
-	OtherFixedInstallation_5_5             string `gorm:"size:24"`
-	OtherFixedInstallation_5_5_Risklevel   string `gorm:"size:24"`
-	HoseReelsProvided_5_6                  string `gorm:"size:24"`
-	HoseReelsProvided_5_6_Risklevel        string `gorm:"size:24"`
-	FixedInstallationsTested_5_7           string `gorm:"size:24"`
-	FixedInstallationsTested_5_7_Risklevel string `gorm:"size:24"`
-	ProtectionSystemsSignage_5_8           string `gorm:"size:24"`
-	ProtectionSystemsSignage_5_8_Risklevel string `gorm:"size:24"`
-	ProtectionSystemsAlarms_5_9            string `gorm:"size:24"`
-	ProtectionSystemsAlarms_5_9_Risklevel  string `gorm:"size:24"`
-
-	//Arson
-	Arson_6_0_Comment        string `gorm:"type:text"`
-	Arson_6_0_Recommendation string `gorm:"type:text"`
-
-	SecureDuringDarkness_6_1                string `gorm:"size:24"`
-	SecureDuringDarkness_6_1_Risklevel      string `gorm:"size:24"`
-	StandardExternalLighting_6_2            string `gorm:"size:24"`
-	StandardExternalLighting_6_2_Risklevel  string `gorm:"size:24"`
-	ExternalRubbish_6_3                     string `gorm:"size:24"`
-	ExternalRubbish_6_3_Risklevel           string `gorm:"size:24"`
-	WheelieBinsSecurelyPlaced_6_4           string `gorm:"size:24"`
-	WheelieBinsSecurelyPlaced_6_4_Risklevel string `gorm:"size:24"`
-	CCTVAvailable_6_5                       string `gorm:"size:24"`
-	CCTVAvailable_6_5_Risklevel             string `gorm:"size:24"`
-	VideoDoorbellAvailable_6_6              string `gorm:"size:24"`
-	VideoDoorbellAvailable_6_6_Risklevel    string `gorm:"size:24"`
-
-	//7.0 Maintenance and Record Keeping
-	MaintenanceAndRecordKeeping_7_0_Comment        string `gorm:"type:text"`
-	MaintenanceAndRecordKeeping_7_0_Recommendation string `gorm:"type:text"`
-
-	SufficientRiskAssessment_7_1                  string `gorm:"size:24"`
-	SufficientRiskAssessment_7_1_Risklevel        string `gorm:"size:24"`
-	RiskAssessmentReviewed_7_2                    string `gorm:"size:24"`
-	RiskAssessmentReviewed_7_2_Risklevel          string `gorm:"size:24"`
-	SufficientEmergencyActionPlan_7_3             string `gorm:"size:24"`
-	SufficientEmergencyActionPlan_7_3_Risklevel   string `gorm:"size:24"`
-	LogBookKept_7_4                               string `gorm:"size:24"`
-	LogBookKept_7_4_Risklevel                     string `gorm:"size:24"`
-	FireAlarmTestingRecord_7_5                    string `gorm:"size:24"`
-	FireAlarmTestingRecord_7_5_Risklevel          string `gorm:"size:24"`
-	EmergencyLightTestingRecord_7_6               string `gorm:"size:24"`
-	EmergencyLightTestingRecord_7_6_Risklevel     string `gorm:"size:24"`
-	MeansEscapeRouteRecord_7_7                    string `gorm:"size:24"`
-	MeansEscapeRouteRecord_7_7_Risklevel          string `gorm:"size:24"`
-	FireExtinguisherEquipmentRecord_7_8           string `gorm:"size:24"`
-	FireExtinguisherEquipmentRecord_7_8_Risklevel string `gorm:"size:24"`
-	FixedInstallationTesting_7_9                  string `gorm:"size:24"`
-	FixedInstallationTesting_7_9_Risklevel        string `gorm:"size:24"`
-	GeneralFireTraining_7_10                      string `gorm:"size:24"`
-	GeneralFireTraining_7_10_Risklevel            string `gorm:"size:24"`
-	FireDrillsRecord_7_11                         string `gorm:"size:24"`
-	FireDrillsRecord_7_11_Risklevel               string `gorm:"size:24"`
 }
