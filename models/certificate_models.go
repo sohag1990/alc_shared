@@ -95,9 +95,11 @@ type GasInspection struct {
 // FraHazardIdentificationOther
 type Fra struct {
 	DefaultProperties
-	OrderID                   uint64
-	FraHazardIdentificationID uint64
-	FraHazardIdentification   FraHazardIdentification
+	OrderID                       uint64
+	FraHazardIdentificationID     uint64
+	FraHazardIdentification       FraHazardIdentification
+	FraMaintenanceRecordKeepingID uint64
+	FraMaintenanceRecordKeeping   FraMaintenanceRecordKeeping
 	// Order                           Order
 	Name                            string `gorm:"size:255"`
 	Address                         string `gorm:"size:255"`
@@ -125,6 +127,7 @@ type Fra struct {
 	ReviewDate        time.Time `form:"ReviewDate"  time_format:"2006-01-02"`
 
 	PotentialRiskScore string `gorm:"size:24"`
+
 	// Means for Giving Warning
 	MeansForGivingWarning_2_0_Comment           string `gorm:"type:text"`
 	MeansForGivingWarning_2_0_Recommendation    string `gorm:"type:text"`
@@ -241,7 +244,10 @@ type Fra struct {
 	CCTVAvailable_6_5_Risklevel             string `gorm:"size:24"`
 	VideoDoorbellAvailable_6_6              string `gorm:"size:24"`
 	VideoDoorbellAvailable_6_6_Risklevel    string `gorm:"size:24"`
-
+}
+type FraMaintenanceRecordKeeping struct {
+	DefaultProperties
+	FraID uint64
 	//7.0 Maintenance and Record Keeping
 	MaintenanceAndRecordKeeping_7_0_Comment        string `gorm:"type:text"`
 	MaintenanceAndRecordKeeping_7_0_Recommendation string `gorm:"type:text"`
@@ -269,7 +275,6 @@ type Fra struct {
 	FireDrillsRecord_7_11                         string `gorm:"size:24"`
 	FireDrillsRecord_7_11_Risklevel               string `gorm:"size:24"`
 }
-
 type FraHazardIdentification struct {
 	// Hazard identification
 	DefaultProperties
