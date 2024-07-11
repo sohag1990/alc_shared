@@ -84,7 +84,9 @@ type GasInspection struct {
 }
 type Fra struct {
 	DefaultProperties
-	OrderID uint64
+	OrderID                   uint64
+	FraHazardIdentificationID uint64
+	FraHazardIdentification   FraHazardIdentification
 	// Order                           Order
 	Name                            string `gorm:"size:255"`
 	Address                         string `gorm:"size:255"`
@@ -115,6 +117,9 @@ type Fra struct {
 }
 type FraHazardIdentification struct {
 	// Hazard identification
+	DefaultProperties
+	FraID uint64
+
 	// Doors
 	SufficientExits_1_1                   string `gorm:"size:24"`
 	SufficientExits_1_1_Risklevel         string `gorm:"size:24"`
