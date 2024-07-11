@@ -108,7 +108,7 @@ type Fra struct {
 	AssessmentType    string    `gorm:"size:100"`
 	AssessedBy        string    `gorm:"size:100"`
 	Registration      string    `gorm:"size:100"`
-	AssessmentPurpose string    `gorm:"size:250"`
+	AssessmentPurpose string    `gorm:"type:text"`
 	ReviewDate        time.Time `form:"ReviewDate"  time_format:"2006-01-02"`
 
 	PotentialRiskScore string `gorm:"size:24"`
@@ -261,7 +261,7 @@ type Fra struct {
 	// Others
 	Others_11_0_Comment        string `gorm:"type:text"`
 	Others_11_0_Recommendation string `gorm:"type:text"`
-	Others_11_1                string `gorm:"size:250"`
+	Others_11_1                string `gorm:"type:text"`
 	Others_11_1_Risklevel      string `gorm:"size:24"`
 
 	// Means for Giving Warning
