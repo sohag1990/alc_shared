@@ -95,17 +95,27 @@ type GasInspection struct {
 // FraHazardIdentificationOther
 type Fra struct {
 	DefaultProperties
-	OrderID                            uint64
-	FraHazardIdentificationID          uint64
-	FraMaintenanceRecordKeepingID      uint64
-	FraMeansForGivingWarningID         uint64
-	FraEmergencyActionPlanID           uint64
-	FraPortableFireFightingEquipmentID uint64
-	FraFixedInstallationID             uint64
-	FraArsonID                         uint64
-	FraGeneralID                       uint64
+	OrderID                             uint64
+	FraHazardIdentificationID           uint64
+	FraMaintenanceRecordKeepingID       uint64
+	FraMeansForGivingWarningID          uint64
+	FraEmergencyActionPlanID            uint64
+	FraPortableFireFightingEquipmentID  uint64
+	FraFixedInstallationID              uint64
+	FraArsonID                          uint64
+	FraGeneralID                        uint64
+	FraHazardIdentificationDoorID       uint64
+	FraHazardIdentificationSignageID    uint64
+	FraHazardIdentificationLightingID   uint64
+	FraHazardIdentificationElectricalID uint64
+	FraHazardIdentificationCookingID    uint64
 
-	FraHazardIdentification          FraHazardIdentification
+	FraHazardIdentificationDoor       FraHazardIdentificationDoor
+	FraHazardIdentificationSignage    FraHazardIdentificationSignage
+	FraHazardIdentificationLighting   FraHazardIdentificationLighting
+	FraHazardIdentificationElectrical FraHazardIdentificationElectrical
+	FraHazardIdentificationCooking    FraHazardIdentificationCooking
+
 	FraMaintenanceRecordKeeping      FraMaintenanceRecordKeeping
 	FraMeansForGivingWarning         FraMeansForGivingWarning
 	FraEmergencyActionPlan           FraEmergencyActionPlan
@@ -113,6 +123,7 @@ type Fra struct {
 	FraFixedInstallation             FraFixedInstallation
 	FraArson                         FraArson
 	FraGeneral                       FraGeneral
+
 	// Order                           Order
 	Name                            string `gorm:"size:255"`
 	Address                         string `gorm:"size:255"`
@@ -303,7 +314,7 @@ type FraMaintenanceRecordKeeping struct {
 	FireDrillsRecord_7_11                         string `gorm:"size:24"`
 	FireDrillsRecord_7_11_Risklevel               string `gorm:"size:24"`
 }
-type FraHazardIdentification struct {
+type FraHazardIdentificationDoor struct {
 	// Hazard identification
 	DefaultProperties
 	FraID uint64
@@ -324,7 +335,12 @@ type FraHazardIdentification struct {
 	HazardIdentification_1_1_0_Recommendation string `gorm:"type:text"`
 	Doors_1_0_Comment                         string `gorm:"type:text"`
 	Doors_1_0_Recommendation                  string `gorm:"type:text"`
+}
 
+type FraHazardIdentificationSignage struct {
+	// Hazard identification
+	DefaultProperties
+	FraID uint64
 	// Signage
 	SufficientExitSignage_2_1            string `gorm:"size:24"`
 	SufficientExitSignage_2_1_Risklevel  string `gorm:"size:24"`
@@ -343,7 +359,12 @@ type FraHazardIdentification struct {
 
 	Signage_2_0_Comment        string `gorm:"type:text"`
 	Signage_2_0_Recommendation string `gorm:"type:text"`
+}
 
+type FraHazardIdentificationLighting struct {
+	// Hazard identification
+	DefaultProperties
+	FraID uint64
 	// Lighting
 	Lighting_3_0_Comment        string `gorm:"type:text"`
 	Lighting_3_0_Recommendation string `gorm:"type:text"`
@@ -358,7 +379,12 @@ type FraHazardIdentification struct {
 	EmergencyLightingCharging_3_4_Risklevel         string `gorm:"size:24"`
 	LightingMaintained_3_5                          string `gorm:"size:24"`
 	LightingMaintained_3_5_Risklevel                string `gorm:"size:24"`
+}
 
+type FraHazardIdentificationElectrical struct {
+	// Hazard identification
+	DefaultProperties
+	FraID uint64
 	// Electrical
 	Electrical_4_0_Comment        string `gorm:"type:text"`
 	Electrical_4_0_Recommendation string `gorm:"type:text"`
@@ -391,7 +417,12 @@ type FraHazardIdentification struct {
 	SuitableMeasures_6_2_Risklevel       string `gorm:"size:24"`
 	RegularMaintenance_6_3               string `gorm:"size:24"`
 	RegularMaintenance_6_3_Risklevel     string `gorm:"size:24"`
+}
 
+type FraHazardIdentificationCooking struct {
+	// Hazard identification
+	DefaultProperties
+	FraID uint64
 	// Cooking 7.0 `gorm:"type:text"`
 	Cooking_7_0_Comment        string `gorm:"type:text"`
 	Cooking_6_0_Recommendation string `gorm:"type:text"`
