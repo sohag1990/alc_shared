@@ -95,11 +95,24 @@ type GasInspection struct {
 // FraHazardIdentificationOther
 type Fra struct {
 	DefaultProperties
-	OrderID                       uint64
-	FraHazardIdentificationID     uint64
-	FraHazardIdentification       FraHazardIdentification
-	FraMaintenanceRecordKeepingID uint64
-	FraMaintenanceRecordKeeping   FraMaintenanceRecordKeeping
+	OrderID                            uint64
+	FraHazardIdentificationID          uint64
+	FraMaintenanceRecordKeepingID      uint64
+	FraMeansForGivingWarningID         uint64
+	FraEmergencyActionPlanID           uint64
+	FraPortableFireFightingEquipmentID uint64
+	FraFixedInstallationID             uint64
+	FraArsonID                         uint64
+	FraGeneralID                       uint64
+
+	FraHazardIdentification          FraHazardIdentification
+	FraMaintenanceRecordKeeping      FraMaintenanceRecordKeeping
+	FraMeansForGivingWarning         FraMeansForGivingWarning
+	FraEmergencyActionPlan           FraEmergencyActionPlan
+	FraPortableFireFightingEquipment FraPortableFireFightingEquipment
+	FraFixedInstallation             FraFixedInstallation
+	FraArson                         FraArson
+	FraGeneral                       FraGeneral
 	// Order                           Order
 	Name                            string `gorm:"size:255"`
 	Address                         string `gorm:"size:255"`
@@ -127,7 +140,10 @@ type Fra struct {
 	ReviewDate        time.Time `form:"ReviewDate"  time_format:"2006-01-02"`
 
 	PotentialRiskScore string `gorm:"size:24"`
-
+}
+type FraMeansForGivingWarning struct {
+	DefaultProperties
+	FraID uint64
 	// Means for Giving Warning
 	MeansForGivingWarning_2_0_Comment           string `gorm:"type:text"`
 	MeansForGivingWarning_2_0_Recommendation    string `gorm:"type:text"`
@@ -156,7 +172,10 @@ type Fra struct {
 	FireAlarmSystemServiced_2_10_Risklevel       string `gorm:"size:24"`
 	BatteryBackUp_2_11                           string `gorm:"size:24"`
 	BatteryBackUp_2_11_Risklevel                 string `gorm:"size:24"`
-
+}
+type FraEmergencyActionPlan struct {
+	DefaultProperties
+	FraID uint64
 	// Emergency Action Plan
 	EmergencyActionPlan_3_0_Comment        string `gorm:"type:text"`
 	EmergencyActionPlan_3_0_Recommendation string `gorm:"type:text"`
@@ -185,7 +204,10 @@ type Fra struct {
 	ReasonNotUsingLifts_3_11_Risklevel           string `gorm:"size:24"`
 	InformationSpecificHazards_3_12              string `gorm:"size:24"`
 	InformationSpecificHazards_3_12_Risklevel    string `gorm:"size:24"`
-
+}
+type FraPortableFireFightingEquipment struct {
+	DefaultProperties
+	FraID uint64
 	//Portable fire-fighting equipment
 	PortableFireFightingEquipment_4_0_Comment        string `gorm:"type:text"`
 	PortableFireFightingEquipment_4_0_Recommendation string `gorm:"type:text"`
@@ -204,7 +226,10 @@ type Fra struct {
 	ExtinguisherSigns_4_6_Risklevel                string `gorm:"size:24"`
 	ExtinguishersServiced_4_7                      string `gorm:"size:24"`
 	ExtinguishersServiced_4_7_Risklevel            string `gorm:"size:24"`
-
+}
+type FraFixedInstallation struct {
+	DefaultProperties
+	FraID uint64
 	//Fixed Installations
 	FixedInstallations_5_0_Comment        string `gorm:"type:text"`
 	FixedInstallations_5_0_Recommendation string `gorm:"type:text"`
@@ -227,7 +252,10 @@ type Fra struct {
 	ProtectionSystemsSignage_5_8_Risklevel string `gorm:"size:24"`
 	ProtectionSystemsAlarms_5_9            string `gorm:"size:24"`
 	ProtectionSystemsAlarms_5_9_Risklevel  string `gorm:"size:24"`
-
+}
+type FraArson struct {
+	DefaultProperties
+	FraID uint64
 	//Arson
 	Arson_6_0_Comment        string `gorm:"type:text"`
 	Arson_6_0_Recommendation string `gorm:"type:text"`
@@ -406,7 +434,10 @@ type FraHazardIdentification struct {
 	CombustibleMaterialsIgnitionSources_9_2_Risklevel   string `gorm:"size:24"`
 	HazardousMaterialsStoredAppropriately_9_3           string `gorm:"size:24"`
 	HazardousMaterialsStoredAppropriately_9_3_Risklevel string `gorm:"size:24"`
-
+}
+type FraGeneral struct {
+	DefaultProperties
+	FraID uint64
 	// General
 	General_10_0_Comment        string `gorm:"type:text"`
 	General_10_0_Recommendation string `gorm:"type:text"`
