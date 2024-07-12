@@ -414,7 +414,7 @@ type FraHazardIdentificationCooking struct {
 	FraID uint64
 	// Cooking 7.0 `gorm:"type:text"`
 	Cooking_7_0_Comment        string `gorm:"type:text"`
-	Cooking_6_0_Recommendation string `gorm:"type:text"`
+	Cooking_7_0_Recommendation string `gorm:"type:text"`
 
 	ReasonableMeasuresPreventFires_7_1           string `gorm:"size:24"`
 	ReasonableMeasuresPreventFires_7_1_Risklevel string `gorm:"size:24"`
