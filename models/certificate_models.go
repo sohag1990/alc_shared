@@ -83,20 +83,9 @@ type GasInspection struct {
 	TestingCOAlarmSatisfactory       string `gorm:"size:50"`
 }
 
-// FraHazardIdentificationSignage
-// FraHazardIdentificationLighting
-// FraHazardIdentificationElectrical
-// FraHazardIdentificationSmoking
-// FraHazardIdentificationPortableHeating
-// FraHazardIdentificationCooking
-// FraHazardIdentificationFurniture
-// FraHazardIdentificationHousekeeping
-// FraHazardIdentificationGeneral
-// FraHazardIdentificationOther
 type Fra struct {
 	DefaultProperties
 	OrderID                             uint64
-	FraHazardIdentificationID           uint64
 	FraMaintenanceRecordKeepingID       uint64
 	FraMeansForGivingWarningID          uint64
 	FraEmergencyActionPlanID            uint64
