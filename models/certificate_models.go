@@ -93,7 +93,7 @@ type Fra struct {
 	FraFixedInstallationID              uint64
 	FraArsonID                          uint64
 	FraGeneralID                        uint64
-	FraRecommendation                   []FraRecommendation
+	FraRecommendations                  []FraRecommendation
 	FraHazardIdentificationDoorID       uint64
 	FraHazardIdentificationSignageID    uint64
 	FraHazardIdentificationLightingID   uint64
