@@ -93,6 +93,7 @@ type Fra struct {
 	FraFixedInstallationID              uint64
 	FraArsonID                          uint64
 	FraGeneralID                        uint64
+	FraRecommendation                   []FraRecommendation
 	FraHazardIdentificationDoorID       uint64
 	FraHazardIdentificationSignageID    uint64
 	FraHazardIdentificationLightingID   uint64
@@ -145,10 +146,10 @@ type FraMeansForGivingWarning struct {
 	DefaultProperties
 	FraID uint64
 	// Means for Giving Warning
-	MeansForGivingWarning_2_0_Comment           string `gorm:"type:text"`
-	MeansForGivingWarning_2_0_Recommendation    string `gorm:"type:text"`
-	FireAlarmDetectionSystem_2_0_Comment        string `gorm:"type:text"`
-	FireAlarmDetectionSystem_2_0_Recommendation string `gorm:"type:text"`
+	MeansForGivingWarning_2_0_Comment string `gorm:"type:text"`
+	// MeansForGivingWarning_2_0_Recommendation    string `gorm:"type:text"`
+	FireAlarmDetectionSystem_2_0_Comment string `gorm:"type:text"`
+	// FireAlarmDetectionSystem_2_0_Recommendation string `gorm:"type:text"`
 
 	BuildingHaveMeansGivingWarning_2_1           string `gorm:"size:24"`
 	BuildingHaveMeansGivingWarning_2_1_Risklevel string `gorm:"size:24"`
@@ -177,8 +178,8 @@ type FraEmergencyActionPlan struct {
 	DefaultProperties
 	FraID uint64
 	// Emergency Action Plan
-	EmergencyActionPlan_3_0_Comment        string `gorm:"type:text"`
-	EmergencyActionPlan_3_0_Recommendation string `gorm:"type:text"`
+	EmergencyActionPlan_3_0_Comment string `gorm:"type:text"`
+	// EmergencyActionPlan_3_0_Recommendation string `gorm:"type:text"`
 
 	WrittenFireEmergencyActionPlan_3_1           string `gorm:"size:24"`
 	WrittenFireEmergencyActionPlan_3_1_Risklevel string `gorm:"size:24"`
@@ -209,8 +210,8 @@ type FraPortableFireFightingEquipment struct {
 	DefaultProperties
 	FraID uint64
 	//Portable fire-fighting equipment
-	PortableFireFightingEquipment_4_0_Comment        string `gorm:"type:text"`
-	PortableFireFightingEquipment_4_0_Recommendation string `gorm:"type:text"`
+	PortableFireFightingEquipment_4_0_Comment string `gorm:"type:text"`
+	// PortableFireFightingEquipment_4_0_Recommendation string `gorm:"type:text"`
 
 	SufficientExtinguishers_4_1                    string `gorm:"size:24"`
 	SufficientExtinguishers_4_1_Risklevel          string `gorm:"size:24"`
@@ -231,8 +232,8 @@ type FraFixedInstallation struct {
 	DefaultProperties
 	FraID uint64
 	//Fixed Installations
-	FixedInstallations_5_0_Comment        string `gorm:"type:text"`
-	FixedInstallations_5_0_Recommendation string `gorm:"type:text"`
+	FixedInstallations_5_0_Comment string `gorm:"type:text"`
+	// FixedInstallations_5_0_Recommendation string `gorm:"type:text"`
 
 	SprinklerSystem_5_1                    string `gorm:"size:24"`
 	SprinklerSystem_5_1_Risklevel          string `gorm:"size:24"`
@@ -277,8 +278,8 @@ type FraMaintenanceRecordKeeping struct {
 	DefaultProperties
 	FraID uint64
 	//7.0 Maintenance and Record Keeping
-	MaintenanceAndRecordKeeping_7_0_Comment        string `gorm:"type:text"`
-	MaintenanceAndRecordKeeping_7_0_Recommendation string `gorm:"type:text"`
+	MaintenanceAndRecordKeeping_7_0_Comment string `gorm:"type:text"`
+	// MaintenanceAndRecordKeeping_7_0_Recommendation string `gorm:"type:text"`
 
 	SufficientRiskAssessment_7_1                  string `gorm:"size:24"`
 	SufficientRiskAssessment_7_1_Risklevel        string `gorm:"size:24"`
@@ -320,10 +321,10 @@ type FraHazardIdentificationDoor struct {
 	AutomaticDoorFastenings_1_5           string `gorm:"size:24"`
 	AutomaticDoorFastenings_1_5_Risklevel string `gorm:"size:24"`
 
-	HazardIdentification_1_1_0_Comment        string `gorm:"type:text"`
-	HazardIdentification_1_1_0_Recommendation string `gorm:"type:text"`
-	Doors_1_0_Comment                         string `gorm:"type:text"`
-	Doors_1_0_Recommendation                  string `gorm:"type:text"`
+	HazardIdentification_1_1_0_Comment string `gorm:"type:text"`
+	// HazardIdentification_1_1_0_Recommendation string `gorm:"type:text"`
+	Doors_1_0_Comment string `gorm:"type:text"`
+	// Doors_1_0_Recommendation                  string `gorm:"type:text"`
 }
 
 type FraHazardIdentificationSignage struct {
@@ -346,8 +347,8 @@ type FraHazardIdentificationSignage struct {
 	IlluminatedExitSigns_2_7             string `gorm:"size:24"`
 	IlluminatedExitSigns_2_7_Risklevel   string `gorm:"size:24"`
 
-	Signage_2_0_Comment        string `gorm:"type:text"`
-	Signage_2_0_Recommendation string `gorm:"type:text"`
+	Signage_2_0_Comment string `gorm:"type:text"`
+	// Signage_2_0_Recommendation string `gorm:"type:text"`
 }
 
 type FraHazardIdentificationLighting struct {
@@ -355,8 +356,8 @@ type FraHazardIdentificationLighting struct {
 	DefaultProperties
 	FraID uint64
 	// Lighting
-	Lighting_3_0_Comment        string `gorm:"type:text"`
-	Lighting_3_0_Recommendation string `gorm:"type:text"`
+	Lighting_3_0_Comment string `gorm:"type:text"`
+	// Lighting_3_0_Recommendation string `gorm:"type:text"`
 
 	EmergencyLighting_3_1                           string `gorm:"size:24"`
 	EmergencyLighting_3_1_Risklevel                 string `gorm:"size:24"`
@@ -375,8 +376,8 @@ type FraHazardIdentificationElectrical struct {
 	DefaultProperties
 	FraID uint64
 	// Electrical
-	Electrical_4_0_Comment        string `gorm:"type:text"`
-	Electrical_4_0_Recommendation string `gorm:"type:text"`
+	Electrical_4_0_Comment string `gorm:"type:text"`
+	// Electrical_4_0_Recommendation string `gorm:"type:text"`
 
 	ReasonableMeasures_4_1               string `gorm:"size:24"`
 	ReasonableMeasures_4_1_Risklevel     string `gorm:"size:24"`
@@ -386,8 +387,8 @@ type FraHazardIdentificationElectrical struct {
 	ElectricalEquipment_4_3_Risklevel    string `gorm:"size:24"`
 
 	// Smoking
-	Smoking_5_0_Comment        string `gorm:"type:text"`
-	Smoking_5_0_Recommendation string `gorm:"type:text"`
+	Smoking_5_0_Comment string `gorm:"type:text"`
+	// Smoking_5_0_Recommendation string `gorm:"type:text"`
 
 	PeopleSmoke_5_1                    string `gorm:"size:24"`
 	PeopleSmoke_5_1_Risklevel          string `gorm:"size:24"`
@@ -397,8 +398,8 @@ type FraHazardIdentificationElectrical struct {
 	SignageAvailable_5_3_Risklevel     string `gorm:"size:24"`
 
 	// Portable heating & heating installations
-	PortableHeating_6_0_Comment        string `gorm:"type:text"`
-	PortableHeating_6_0_Recommendation string `gorm:"type:text"`
+	PortableHeating_6_0_Comment string `gorm:"type:text"`
+	// PortableHeating_6_0_Recommendation string `gorm:"type:text"`
 
 	PortableHeatersAvoided_6_1           string `gorm:"size:24"`
 	PortableHeatersAvoided_6_1_Risklevel string `gorm:"size:24"`
@@ -413,8 +414,8 @@ type FraHazardIdentificationCooking struct {
 	DefaultProperties
 	FraID uint64
 	// Cooking 7.0 `gorm:"type:text"`
-	Cooking_7_0_Comment        string `gorm:"type:text"`
-	Cooking_7_0_Recommendation string `gorm:"type:text"`
+	Cooking_7_0_Comment string `gorm:"type:text"`
+	// Cooking_7_0_Recommendation string `gorm:"type:text"`
 
 	ReasonableMeasuresPreventFires_7_1           string `gorm:"size:24"`
 	ReasonableMeasuresPreventFires_7_1_Risklevel string `gorm:"size:24"`
@@ -428,8 +429,8 @@ type FraHazardIdentificationCooking struct {
 	GasSafetyRecordAvailable_7_5_Risklevel       string `gorm:"size:24"`
 
 	// Furniture & Furnishings (Fire safety Regulations 1993)
-	FurnitureFurnishings_8_0_Comment        string `gorm:"type:text"`
-	FurnitureFurnishings_8_0_Recommendation string `gorm:"type:text"`
+	FurnitureFurnishings_8_0_Comment string `gorm:"type:text"`
+	// FurnitureFurnishings_8_0_Recommendation string `gorm:"type:text"`
 
 	MeetSpecifiedIgnitionRequirements_8_1                string `gorm:"size:24"`
 	MeetSpecifiedIgnitionRequirements_8_1_Risklevel      string `gorm:"size:24"`
@@ -445,8 +446,8 @@ type FraHazardIdentificationCooking struct {
 	FirstSupplierFurnitureCompliance_8_6_Risklevel       string `gorm:"size:24"`
 
 	// Housekeeping
-	Housekeeping_9_0_Comment        string `gorm:"type:text"`
-	Housekeeping_9_0_Recommendation string `gorm:"type:text"`
+	Housekeeping_9_0_Comment string `gorm:"type:text"`
+	// Housekeeping_9_0_Recommendation string `gorm:"type:text"`
 
 	StandardHousekeepingAdequate_9_1                    string `gorm:"size:24"`
 	StandardHousekeepingAdequate_9_1_Risklevel          string `gorm:"size:24"`
@@ -459,8 +460,8 @@ type FraGeneral struct {
 	DefaultProperties
 	FraID uint64
 	// General
-	General_10_0_Comment        string `gorm:"type:text"`
-	General_10_0_Recommendation string `gorm:"type:text"`
+	General_10_0_Comment string `gorm:"type:text"`
+	// General_10_0_Recommendation string `gorm:"type:text"`
 
 	AlternativeExit_10_1                           string `gorm:"size:24"`
 	AlternativeExit_10_1_Risklevel                 string `gorm:"size:24"`
@@ -476,8 +477,19 @@ type FraGeneral struct {
 	EscapeRoutesAdequatelyProtected_10_6_Risklevel string `gorm:"size:24"`
 
 	// Others
-	Others_11_0_Comment        string `gorm:"type:text"`
-	Others_11_0_Recommendation string `gorm:"type:text"`
-	Others_11_1                string `gorm:"type:text"`
-	Others_11_1_Risklevel      string `gorm:"size:24"`
+	Others_11_0_Comment string `gorm:"type:text"`
+	// Others_11_0_Recommendation string `gorm:"type:text"`
+	Others_11_1           string `gorm:"type:text"`
+	Others_11_1_Risklevel string `gorm:"size:24"`
+}
+type FraRecommendation struct {
+	DefaultProperties
+	FraID uint64
+	// Recommendation
+	Action       string `gorm:"type:text"`
+	Priority     string `gorm:"size:24"`
+	Location     string `gorm:"size:24"`
+	Ref          string `gorm:"size:250"`
+	RiskCategory string `gorm:"size:150"`
+	Compliance   string `gorm:"size:250"`
 }
