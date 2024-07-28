@@ -58,7 +58,6 @@ type OrderServices struct {
 	OrderID    uint64
 	ServiceID  int
 	PropertyID uint64
-	Property   Property
 	Title      string
 	Subtotal   float32
 	Discount   float32
