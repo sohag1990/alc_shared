@@ -35,3 +35,13 @@ type DefaultProperties struct {
 	UpdatedAt *time.Time `json:"-"`
 	Deleted   gorm.DeletedAt
 }
+
+type EmailSetting struct {
+	DefaultProperties
+	FromEmail      string
+	CcEmail        string
+	BccEmail       string
+	AwsZone        string
+	AWSAccessKeyID string
+	AWSSecretKeyID string
+}
