@@ -27,6 +27,7 @@ type Order struct {
 	OrderServices       []OrderServices
 	UserID              uint64
 	PropertyID          uint64
+	PropertyAddress     string
 	Property            Property
 	Subtotal            float32
 	Discount            float32
