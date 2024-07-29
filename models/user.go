@@ -44,4 +44,5 @@ type EmailSetting struct {
 	AwsZone        string
 	AWSAccessKeyID string
 	AWSSecretKeyID string
+	EmailSend      bool
 }
