@@ -118,6 +118,7 @@ type Fra struct {
 	Name                            string `gorm:"size:255"`
 	Address                         string `gorm:"size:255"`
 	Description                     string `gorm:"size:512"`
+	PremisesDescription             string `gorm:"size:512"`
 	NumberOfFloors                  int
 	ConstructionDate                time.Time `form:"ConstructionDate"  time_format:"2006-01-02"`
 	BriefDescriptionOfAccommodation string
