@@ -10,3 +10,14 @@ type Profile struct {
 	UserID      uint64 `gorm:"unique;not null"`
 	DefaultProperties
 }
+
+type DashboardReport struct {
+	TotalCertificates int
+
+	ExpiringProperty []Property
+	TotalProperties  int
+	Properties       []Property
+	Complaince       int
+	TotalOrders      int
+	RecentOrders     []Order
+}
