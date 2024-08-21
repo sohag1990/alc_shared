@@ -18,6 +18,30 @@ type FollowUp struct {
 	RenewedOrderID  uint64
 	Status          bool
 }
+type EmergencyLightingCert struct {
+	DefaultProperties
+	OrderID  uint64
+	Name     string `gorm:"size:100"`
+	Email    string `gorm:"size:100"`
+	Address  string `gorm:"size:250"`
+	PostCode string `gorm:"size:20"`
+	Phone    string `gorm:"size:20"`
+
+	LandlordName     string    `gorm:"size:100"`
+	LandlordAddress  string    `gorm:"size:250"`
+	LandlordPostCode string    `gorm:"size:20"`
+	AssessedBy       string    `gorm:"size:100"`
+	Registration     string    `gorm:"size:100"`
+	AssessmentDate   time.Time `form:"AssessmentDate"  time_format:"2006-01-02"`
+	ReviewDate       time.Time `form:"ReviewDate"  time_format:"2006-01-02"`
+
+	SystemDetails     string `gorm:"size:550"`
+	CoveredThisReport string `gorm:"size:550"`
+	Agreed            string `gorm:"size:550"`
+	Variations        string `gorm:"size:550"`
+	GeneralCondition  string `gorm:"size:550"`
+	Validity          string `gorm:"size:50"`
+}
 type FireAlarmCert struct {
 	DefaultProperties
 	OrderID  uint64
