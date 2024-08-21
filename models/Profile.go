@@ -12,12 +12,12 @@ type Profile struct {
 }
 
 type DashboardReport struct {
-	TotalCertificates int
+	TotalCertificates int64
 
 	ExpiringProperty []Property
-	TotalProperties  int
+	TotalProperties  int64
 	Properties       []Property
-	Complaince       int
-	TotalOrders      int
+	Complaince       int64
+	TotalOrders      int64
 	RecentOrders     []Order
 }
