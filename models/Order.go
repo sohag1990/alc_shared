@@ -58,6 +58,7 @@ type Order struct {
 type OrderServices struct {
 	UserID     uint64
 	OrderID    uint64
+	Order      Order
 	ServiceID  int
 	PropertyID uint64
 	Title      string
