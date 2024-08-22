@@ -80,4 +80,5 @@ type OrderServices struct {
 	RenewdOrderID    uint64
 	RemainingDays    int
 	Archived         bool
+	Notes            string
 }
