@@ -57,6 +57,12 @@ type PatCert struct {
 	AssessmentDate   time.Time `form:"AssessmentDate"  time_format:"2006-01-02"`
 	ReviewDate       time.Time `form:"ReviewDate"  time_format:"2006-01-02"`
 }
+type PatItem struct {
+	DefaultProperties
+	PatCertID uint64
+	Location  string `gorm:"size:50"`
+	Name      string `gorm:"size:100"`
+}
 
 type FireAlarmCert struct {
 	DefaultProperties
