@@ -43,6 +43,7 @@ type EmergencyLightingCert struct {
 type PatCert struct {
 	DefaultProperties
 	OrderID  uint64
+	PatItems []PatItem
 	Name     string `gorm:"size:100"`
 	Email    string `gorm:"size:100"`
 	Address  string `gorm:"size:250"`
