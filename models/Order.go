@@ -82,3 +82,15 @@ type OrderServices struct {
 	Archived         bool
 	Notes            string
 }
+
+type OrderStats struct {
+	Month            string
+	Year             int
+	TotalOrders      int64
+	TotalAmount      float64
+	PendingAmount    float64
+	OnHoldAmount     float64
+	CompletedAmount  float64
+	ProcessingAmount float64
+	CanceledAmount   float64
+}
