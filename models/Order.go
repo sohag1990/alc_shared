@@ -52,7 +52,7 @@ type Order struct {
 	Hostname            string
 	OrderDate           *time.Time
 	OrderCompletedDate  *time.Time
-	OrderExporteddDate  *time.Time
+	OrderExportedDate   *time.Time
 	InvoiceddDate       *time.Time
 	Archived            bool
 }
