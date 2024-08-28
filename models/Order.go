@@ -53,7 +53,7 @@ type Order struct {
 	OrderDate           *time.Time
 	OrderCompletedDate  *time.Time
 	OrderExportedDate   *time.Time
-	InvoiceddDate       *time.Time
+	InvoicedDate        *time.Time
 	Archived            bool
 }
 
