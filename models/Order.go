@@ -85,6 +85,7 @@ type OrderServices struct {
 	Archived         bool
 	Notes            string
 	Engineer         string
+	EngineerCost     float32
 }
 
 type OrderStats struct {
