@@ -51,6 +51,8 @@ type Order struct {
 	AppointmentDate     string
 	Hostname            string
 	OrderDate           *time.Time
+	OrderCompletedDate  *time.Time
+	OrderExporteddDate  *time.Time
 	Archived            bool
 }
 
