@@ -84,6 +84,7 @@ type OrderServices struct {
 	RemainingDays    int
 	Archived         bool
 	Notes            string
+	Engineer         string
 }
 
 type OrderStats struct {
