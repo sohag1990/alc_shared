@@ -162,7 +162,8 @@ func GetHostWithoutProtocol(c *gin.Context) string {
 func Pluralize(word string) string {
 	// Define some irregular plural forms
 	irregularPlurals := map[string]string{
-		"branch": "branches",
+		"branch":         "branches",
+		"paymenthistory": "paymenthistories",
 		// Add more irregular plurals if needed
 	}
 
