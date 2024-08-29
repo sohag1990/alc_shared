@@ -99,3 +99,11 @@ type OrderStats struct {
 	ProcessingAmount float64
 	CanceledAmount   float64
 }
+
+type CostHead struct {
+	DefaultProperties
+	Title string
+	Cost  float32
+	Month string
+	Year  int
+}
