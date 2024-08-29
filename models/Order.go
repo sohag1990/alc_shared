@@ -107,3 +107,13 @@ type CostHead struct {
 	Month string
 	Year  int
 }
+
+type PaymentHistory struct {
+	DefaultProperties
+	PaymentDate   *time.Time
+	PaymentMethod string
+	Amount        int
+	Notes         string
+	Month         string
+	Year          int
+}
