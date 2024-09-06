@@ -188,7 +188,7 @@ func Pluralize(word string) string {
 }
 
 // Declare the key as a global variable
-var key = []byte("FIZAN")
+var key = []byte("SOHAGTUSHMIFIZAN")
 
 // Encrypt encrypts plaintext using the given key with AES-GCM.
 func Encrypt(plaintext []byte) (string, error) {
