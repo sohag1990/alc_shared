@@ -27,6 +27,7 @@ type User struct {
 	ProfileID uint64
 	Profile   Profile
 	Property  []Property
+	Api       string
 }
 
 type DefaultProperties struct {
