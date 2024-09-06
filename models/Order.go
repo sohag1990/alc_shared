@@ -25,6 +25,7 @@ type Property struct {
 type Order struct {
 	DefaultProperties
 	OrderServices       []OrderServices
+	FollowUps           []FollowUp
 	UserID              uint64
 	PropertyID          uint64
 	PropertyFullAddress string
