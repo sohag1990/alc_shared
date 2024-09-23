@@ -22,4 +22,5 @@ type DashboardReport struct {
 	RecentOrders              []Order
 	ExpiringCertificates      []OrderServices
 	TotalExpiringCertificates int64
+	TotalCustomers            int64
 }
