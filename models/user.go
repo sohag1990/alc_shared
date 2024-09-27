@@ -47,3 +47,20 @@ type EmailSetting struct {
 	AWSSecretKeyID string
 	EmailSend      bool
 }
+
+type Leads struct {
+	DefaultProperties
+	Niche    string `gorm:"size:30"`
+	Other    string `gorm:"size:350"`
+	Cuntry   string `gorm:"size:20"`
+	City     string `gorm:"size:50"`
+	Name     string `gorm:"size:250"`
+	Email    string `gorm:"unique;size:256;not null"`
+	Phone    string `gorm:"size:15"`
+	Address  string `gorm:"size:250"`
+	Company  string `gorm:"size:250"`
+	Website  string `gorm:"size:250"`
+	Position string `gorm:"size:250"`
+	Status   string `gorm:"size:10"`
+	Note     string `gorm:"size:512"`
+}
