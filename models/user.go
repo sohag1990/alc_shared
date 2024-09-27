@@ -48,7 +48,7 @@ type EmailSetting struct {
 	EmailSend      bool
 }
 
-type Leads struct {
+type Lead struct {
 	DefaultProperties
 	Niche    string `gorm:"size:30"`
 	Other    string `gorm:"size:350"`
