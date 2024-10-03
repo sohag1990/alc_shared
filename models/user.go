@@ -53,7 +53,7 @@ type Lead struct {
 	DefaultProperties
 	Niche         string `gorm:"size:30"`
 	Other         string `gorm:"size:350"`
-	Cuntry        string `gorm:"size:20"`
+	Country       string `gorm:"size:20"`
 	City          string `gorm:"size:50"`
 	Name          string `gorm:"size:250"`
 	Email         string `gorm:"unique;size:256;not null"`
