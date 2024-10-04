@@ -78,12 +78,14 @@ type Lead struct {
 
 type Campaign struct {
 	DefaultProperties
-	Name     string `gorm:"size:250"`
-	Type     string `gorm:"size:250"` //"Email, SMS"
-	Status   string `gorm:"size:25"`
-	SendTime *time.Time
-	UserID   uint64
-	User     User
+	Name            string `gorm:"size:250"`
+	Type            string `gorm:"size:250"` //"Email, SMS"
+	Status          string `gorm:"size:25"`
+	SendTime        *time.Time
+	UserID          uint64
+	User            User
+	CampaignLeads   []CampaignLead
+	CampaignContent CampaignContent
 }
 
 type CampaignLead struct {
