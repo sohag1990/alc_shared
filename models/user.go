@@ -83,10 +83,12 @@ type Lead struct {
 	Timestamp time.Time
 }
 type Photo struct {
-	Photo string `gorm:"size:512"`
+	DefaultProperties
+	Url string `gorm:"size:512"`
 }
 type Phone struct {
-	Phone string `gorm:"size:15"`
+	DefaultProperties
+	Number string `gorm:"size:15"`
 }
 type Campaign struct {
 	DefaultProperties
