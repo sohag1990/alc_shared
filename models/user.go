@@ -51,31 +51,43 @@ type EmailSetting struct {
 
 type Lead struct {
 	DefaultProperties
-	Niche         string `gorm:"size:30"`
-	Other         string `gorm:"size:350"`
-	Country       string `gorm:"size:20"`
+	Keyword       string `gorm:"size:30"`
 	City          string `gorm:"size:50"`
+	Country       string `gorm:"size:20"`
 	Name          string `gorm:"size:250"`
-	Email         string `gorm:"unique;size:256;not null"`
-	Phone         string `gorm:"size:15"`
-	Address       string `gorm:"size:250"`
-	Company       string `gorm:"size:250"`
-	Website       string `gorm:"size:250"`
-	Position      string `gorm:"size:250"`
-	Instagram     string `gorm:"size:512"`
-	Facebook      string `gorm:"size:512"`
-	Youtube       string `gorm:"size:512"`
-	X             string `gorm:"size:512"`
-	Linkedin      string `gorm:"size:512"`
-	Placeid       string `gorm:"size:100"`
-	Cid           string `gorm:"size:100"`
-	Category      string `gorm:"size:512"`
 	ReviewCount   string `gorm:"size:10"`
 	AverageRating string `gorm:"size:512"`
-	Latitude      string `gorm:"size:512"`
-	Longitude     string `gorm:"size:512"`
-}
+	PriceLevel    string `gorm:"size:50"`
+	MainCategory  string `gorm:"size:50"`
+	Niche         string `gorm:"size:30"`
 
+	Phones    []Phone
+	Email     string `gorm:"size:100"`
+	Address   string `gorm:"size:250"`
+	Website   string `gorm:"size:250"`
+	Company   string `gorm:"size:250"`
+	MapUrl    string `gorm:"size:512"`
+	Photos    []Photo
+	Position  string `gorm:"size:250"`
+	Instagram string `gorm:"size:512"`
+	Facebook  string `gorm:"size:512"`
+	Youtube   string `gorm:"size:512"`
+	X         string `gorm:"size:512"`
+	Linkedin  string `gorm:"size:512"`
+	Placeid   string `gorm:"size:100"`
+	Cid       string `gorm:"size:100"`
+	Category  string `gorm:"size:512"`
+
+	Latitude  float64
+	Longitude float64
+	Timestamp time.Time
+}
+type Photo struct {
+	Photo string `gorm:"size:512"`
+}
+type Phone struct {
+	Phone string `gorm:"size:15"`
+}
 type Campaign struct {
 	DefaultProperties
 	Name            string `gorm:"size:250"`
