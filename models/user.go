@@ -61,13 +61,13 @@ type Lead struct {
 	MainCategory  string `gorm:"size:50"`
 	Niche         string `gorm:"size:30"`
 
-	Phones    []Phone
+	Phones    string `gorm:"size:100"`
 	Email     string `gorm:"size:100"`
 	Address   string `gorm:"size:250"`
 	Website   string `gorm:"size:250"`
 	Company   string `gorm:"size:250"`
 	MapUrl    string `gorm:"size:512"`
-	Photos    []Photo
+	Photos    string `gorm:"size:512"`
 	Position  string `gorm:"size:250"`
 	Instagram string `gorm:"size:512"`
 	Facebook  string `gorm:"size:512"`
@@ -82,16 +82,7 @@ type Lead struct {
 	Longitude float64
 	Timestamp time.Time
 }
-type Photo struct {
-	DefaultProperties
-	Url    string `gorm:"size:512"`
-	LeadID uint64
-}
-type Phone struct {
-	DefaultProperties
-	Number string `gorm:"size:15"`
-	LeadID uint64
-}
+
 type Campaign struct {
 	DefaultProperties
 	Name            string `gorm:"size:250"`
