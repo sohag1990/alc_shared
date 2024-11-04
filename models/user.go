@@ -84,11 +84,13 @@ type Lead struct {
 }
 type Photo struct {
 	DefaultProperties
-	Url string `gorm:"size:512"`
+	Url    string `gorm:"size:512"`
+	LeadID uint64
 }
 type Phone struct {
 	DefaultProperties
 	Number string `gorm:"size:15"`
+	LeadID uint64
 }
 type Campaign struct {
 	DefaultProperties
