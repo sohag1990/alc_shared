@@ -67,7 +67,7 @@ type Lead struct {
 	Website   string `gorm:"size:250"`
 	Company   string `gorm:"size:250"`
 	MapUrl    string `gorm:"size:512"`
-	Photos    string `gorm:"size:512"`
+	Photos    string
 	Position  string `gorm:"size:250"`
 	Instagram string `gorm:"size:512"`
 	Facebook  string `gorm:"size:512"`
