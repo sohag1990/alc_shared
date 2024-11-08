@@ -23,7 +23,7 @@ import (
 
 func InvIDGenerator(order models.Order) string {
 
-	invID := GetYearFromTime(order.CreatedAt) + "-" + Uint64ConvertToString(order.InvID)
+	invID := GetYearFromTime(order.CreatedAt) + "-" + Uint64ConvertToString(order.ID)
 	return invID
 }
 func StringToInt(str string) int {
