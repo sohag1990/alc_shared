@@ -61,22 +61,18 @@ type Lead struct {
 	MainCategory  string `gorm:"size:50"`
 	Niche         string `gorm:"size:30"`
 
-	Phones    string `gorm:"size:100"`
-	Email     string `gorm:"size:100"`
-	Address   string `gorm:"size:250"`
-	Website   string `gorm:"size:250"`
-	Company   string `gorm:"size:250"`
-	MapUrl    string `gorm:"size:512"`
-	Photos    string
-	Position  string `gorm:"size:250"`
-	Instagram string `gorm:"size:512"`
-	Facebook  string `gorm:"size:512"`
-	Youtube   string `gorm:"size:512"`
-	X         string `gorm:"size:512"`
-	Linkedin  string `gorm:"size:512"`
-	Placeid   string `gorm:"size:100"`
-	Cid       string `gorm:"size:100"`
-	Category  string `gorm:"size:512"`
+	Phones           string `gorm:"size:100"`
+	Email            string `gorm:"size:100"`
+	Address          string `gorm:"size:250"`
+	Website          string `gorm:"size:250"`
+	Company          string `gorm:"size:250"`
+	MapUrl           string `gorm:"size:512"`
+	Photos           string
+	Position         string `gorm:"size:250"`
+	SocialMediaLinks string `gorm:"size:1024"`
+	Placeid          string `gorm:"size:100"`
+	Cid              string `gorm:"size:100"`
+	Category         string `gorm:"size:512"`
 
 	Latitude  float64
 	Longitude float64
