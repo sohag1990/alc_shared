@@ -78,7 +78,7 @@ type Lead struct {
 	Longitude float64
 	Timestamp time.Time
 	Crawled   bool
-	Ssl       bool
+	ValidSsl  bool
 	Title     string `gorm:"size:512"`
 }
 
