@@ -69,7 +69,7 @@ type Lead struct {
 	MapUrl           string `gorm:"size:512"`
 	Photos           string
 	Position         string `gorm:"size:250"`
-	SocialMediaLinks string `gorm:"size:1024"`
+	SocialMediaLinks string `gorm:"size:1200"`
 	Placeid          string `gorm:"size:100"`
 	Cid              string `gorm:"size:100"`
 	Category         string `gorm:"size:512"`
@@ -78,6 +78,8 @@ type Lead struct {
 	Longitude float64
 	Timestamp time.Time
 	Crawled   bool
+	Ssl       bool
+	Title     string `gorm:"size:512"`
 }
 
 type Campaign struct {
