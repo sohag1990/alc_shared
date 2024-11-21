@@ -51,9 +51,9 @@ type EmailSetting struct {
 
 type Lead struct {
 	DefaultProperties
-	Keyword       string `gorm:"size:30"`
-	City          string `gorm:"size:50"`
-	Country       string `gorm:"size:20"`
+	Keyword       string `gorm:"size:150"`
+	City          string `gorm:"size:100"`
+	Country       string `gorm:"size:50"`
 	Name          string `gorm:"size:250"`
 	ReviewCount   string `gorm:"size:10"`
 	AverageRating string `gorm:"size:512"`
