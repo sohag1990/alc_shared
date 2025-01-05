@@ -152,7 +152,24 @@ type GasInspection struct {
 	IsCOAlarmInDate                  string `gorm:"size:50"`
 	TestingCOAlarmSatisfactory       string `gorm:"size:50"`
 }
+type Eicr struct {
+	DefaultProperties
+	OrderID uint64
+	Name    string `gorm:"size:255"`
+	Address string `gorm:"size:255"`
 
+	LandlordName    string `gorm:"size:255"`
+	LandlordAddress string `gorm:"size:255"`
+	ContactNumber   string `gorm:"size:255"`
+	Email           string `gorm:"size:255"`
+
+	AssessmentDate    time.Time `form:"AssessmentDate"  time_format:"2006-01-02"`
+	AssessmentType    string    `gorm:"size:100"`
+	AssessedBy        string    `gorm:"size:100"`
+	Registration      string    `gorm:"size:100"`
+	AssessmentPurpose string    `gorm:"type:text"`
+	ReviewDate        time.Time `form:"ReviewDate"  time_format:"2006-01-02"`
+}
 type Fra struct {
 	DefaultProperties
 	OrderID                             uint64
