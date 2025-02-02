@@ -152,24 +152,7 @@ type GasInspection struct {
 	IsCOAlarmInDate                  string `gorm:"size:50"`
 	TestingCOAlarmSatisfactory       string `gorm:"size:50"`
 }
-type Eicr struct {
-	DefaultProperties
-	OrderID uint64
-	Name    string `gorm:"size:255"`
-	Address string `gorm:"size:255"`
 
-	LandlordName    string `gorm:"size:255"`
-	LandlordAddress string `gorm:"size:255"`
-	ContactNumber   string `gorm:"size:255"`
-	Email           string `gorm:"size:255"`
-
-	AssessmentDate    time.Time `form:"AssessmentDate"  time_format:"2006-01-02"`
-	AssessmentType    string    `gorm:"size:100"`
-	AssessedBy        string    `gorm:"size:100"`
-	Registration      string    `gorm:"size:100"`
-	AssessmentPurpose string    `gorm:"type:text"`
-	ReviewDate        time.Time `form:"ReviewDate"  time_format:"2006-01-02"`
-}
 type Fra struct {
 	DefaultProperties
 	OrderID                             uint64
@@ -580,4 +563,36 @@ type FraRecommendation struct {
 	Ref          string `gorm:"size:250"`
 	RiskCategory string `gorm:"size:150"`
 	Compliance   string `gorm:"size:250"`
+}
+
+type Eicr struct {
+	DefaultProperties
+	//eicr page 1
+	OrderID uint64
+	Name    string `gorm:"size:255"`
+	Address string `gorm:"size:255"`
+
+	LandlordName    string `gorm:"size:255"`
+	LandlordAddress string `gorm:"size:255"`
+	ContactNumber   string `gorm:"size:255"`
+	Email           string `gorm:"size:255"`
+
+	AssessmentDate   time.Time `form:"AssessmentDate"  time_format:"2006-01-02"`
+	AssessmentType   string    `gorm:"size:100"`
+	AssessedBy       string    `gorm:"size:100"`
+	Registration     string    `gorm:"size:100"`
+	AssessmentReason string    `gorm:"size:512"`
+	ReviewDate       time.Time `form:"ReviewDate"  time_format:"2006-01-02"`
+
+	EstimatedWiringAge     string `gorm:"size:50"`
+	EvidenceAlterations    string `gorm:"size:25"`
+	AlterationsAge         string `gorm:"size:25"`
+	InstallationRecords    string `gorm:"size:25"`
+	LastInspectionDate     string `gorm:"size:50"`
+	Extent                 string `gorm:"type:text"`
+	Limitations            string `gorm:"type:text"`
+	AgreedWith             string `gorm:"size:255"`
+	OperationalLimitations string `gorm:"type:text"`
+	AssessmentSummary      string `gorm:"size:50"`
+	SatisfactoryYear       string `gorm:"size:50"`
 }
