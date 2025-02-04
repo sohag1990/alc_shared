@@ -567,20 +567,21 @@ type FraRecommendation struct {
 
 type Eicr struct {
 	DefaultProperties
+	EngineerID       uint64
+	Engineer         Engineer
+	EicrObservations []EicrObservation
+	EicrPage3        EicrPage3
+
 	//eicr page 1
 	OrderID uint64
 	Name    string `gorm:"size:255"`
 	Address string `gorm:"size:255"`
 
-	LandlordName    string `gorm:"size:255"`
-	LandlordAddress string `gorm:"size:255"`
-	ContactNumber   string `gorm:"size:255"`
-	Email           string `gorm:"size:255"`
-
+	LandlordName     string    `gorm:"size:255"`
+	LandlordAddress  string    `gorm:"size:255"`
+	ContactNumber    string    `gorm:"size:255"`
+	Email            string    `gorm:"size:255"`
 	AssessmentDate   time.Time `form:"AssessmentDate"  time_format:"2006-01-02"`
-	AssessmentType   string    `gorm:"size:100"`
-	AssessedBy       string    `gorm:"size:100"`
-	Registration     string    `gorm:"size:100"`
 	AssessmentReason string    `gorm:"size:512"`
 	ReviewDate       time.Time `form:"ReviewDate"  time_format:"2006-01-02"`
 
@@ -595,4 +596,181 @@ type Eicr struct {
 	OperationalLimitations string `gorm:"type:text"`
 	AssessmentSummary      string `gorm:"size:50"`
 	SatisfactoryYear       string `gorm:"size:50"`
+
+	HasObservations string `gorm:"size:10"`
+	C1Items         string `gorm:"size:50"`
+	C2Items         string `gorm:"size:50"`
+	C3Items         string `gorm:"size:50"`
+	FiItems         string `gorm:"size:50"`
+}
+
+type EicrObservation struct {
+	DefaultProperties
+	EicrID      uint64
+	ItemNumber  int
+	Observation string `gorm:"size:512"`
+	Code        string `gorm:"size:25"`
+}
+
+type EicrPage3 struct {
+	DefaultProperties
+	EicrID                     uint64
+	GeneralCondition           string `gorm:"type:text"`
+	EarthingArrangements       string `gorm:"size:15"` //tns,tncs,tt system
+	LiveConductors             string `gorm:"size:50"` // 1-phase (2-wire) 2-phase (3 wire ), Other: etc
+	ConfirmationSupplyPolarity string `gorm:"size:10"`
+	// Nature of Supply Parameters
+	NominalVoltage                  string `gorm:"size:20"`
+	NominalFrequency                string `gorm:"size:20"`
+	ProspectiveFaultCurrent         string `gorm:"size:20"`
+	ExternalEarthFaultLoopImpedance string `gorm:"size:20"`
+	// Supply Protective Device
+	BsEn         string `gorm:"size:20"`
+	BsEnType     string `gorm:"size:20"`
+	RatedCurrent string `gorm:"size:20"`
+	// 11 PARTICULARS OF INSTALLATION REFERRED TO IN THE REPORT
+	// Means of Earthing
+	DistributorFacility        string `gorm:"size:10"`
+	InstallationEarthElectrode string `gorm:"size:10"`
+	//Details of Installation Earth Electrode (where applicable)
+	EarthType         string `gorm:"size:20"`
+	EarthLocation     string `gorm:"size:50"`
+	ResistanceEarth   string `gorm:"size:20"`
+	MethodMeasurement string `gorm:"size:50"`
+
+	//Main Switch / Switch-Fuse / Circuit-Breaker / RCD
+	FuseboxLocation string `gorm:"size:50"`
+	FuseboxBsEn     string `gorm:"size:50"`
+	NumberOfPoles   string `gorm:"size:50"`
+	CurrentRating   string `gorm:"size:50"`
+	FuseRating      string `gorm:"size:50"`
+	VoltageRating   string `gorm:"size:50"`
+	// If RCD main switch:
+	RcdType                       string `gorm:"size:50"`
+	RatedResidualOperatingCurrent string `gorm:"size:50"`
+	RatedTimeDelay                string `gorm:"size:50"`
+	MeasuredOperatingTime         string `gorm:"size:50"`
+	//Earthing and Protective Bonding Conductors
+	EarthingConductorMaterial           string `gorm:"size:50"`
+	EarthingConductorCsa                string `gorm:"size:50"`
+	EarthingConductorConnectionVerified string `gorm:"size:50"`
+	MainConductorMaterial               string `gorm:"size:50"`
+	MainConductorCsa                    string `gorm:"size:50"`
+	MainConductorConnectionVerified     string `gorm:"size:50"`
+
+	//Bonding of extraneous-conductive parts
+	ToWaterInstallationPipes string `gorm:"size:50"`
+	ToGasInstallationPipes   string `gorm:"size:50"`
+	ToOilInstallationPipes   string `gorm:"size:50"`
+	TolightningProtection    string `gorm:"size:50"`
+	ToOtherService           string `gorm:"size:50"`
+}
+
+// 12 INSPECTION SCHEDULE
+type InspectionSchedule struct {
+	DefaultProperties
+	EicrID uint64
+	//page 1
+	ServiceCable_1_1_1                    string `gorm:"size:10"`
+	ServiceHead_1_1_2                     string `gorm:"size:10"`
+	EarthingArrangement_1_1_3             string `gorm:"size:10"`
+	MeterTails_1_1_4                      string `gorm:"size:10"`
+	MeteringEquipment1_1_5                string `gorm:"size:10"`
+	Isolator_1_1_6                        string `gorm:"size:10"`
+	ConsumerIsolator_1_2                  string `gorm:"size:10"`
+	ConsumerMeterTails_1_3                string `gorm:"size:10"`
+	OtherSources_2_0                      string `gorm:"size:10"`
+	PresenceAndCondition_3_1              string `gorm:"size:10"`
+	PresenceAndCondition_3_2              string `gorm:"size:10"`
+	ProvisionOfEarthing_3_3               string `gorm:"size:10"`
+	ConfirmationOfEarthing_3_4            string `gorm:"size:10"`
+	AccessibilityAndConditionEarthing_3_5 string `gorm:"size:10"`
+	ConfirmationOfMain_3_6                string `gorm:"size:10"`
+	ConditionAndAccessibilityMain_3_7     string `gorm:"size:10"`
+	AccessibilityAndConditionOther_3_3    string `gorm:"size:10"`
+	//4.0 CONSUMER UNIT(S) / DISTRIBUTION BOARD(S)
+	AdequacyOfWorking_4_1            string `gorm:"size:10"`
+	SecurityOfFixing_4_2             string `gorm:"size:10"`
+	IpRatingEtc_4_3                  string `gorm:"size:10"`
+	FireRatingetc_4_4                string `gorm:"size:10"`
+	EnclosureNotDamaged_4_5          string `gorm:"size:10"`
+	PresenceOfMain_4_6               string `gorm:"size:10"`
+	OperationOfMain_4_7              string `gorm:"size:10"`
+	ManualOperation_4_8              string `gorm:"size:10"`
+	CorrectIdentification_4_9        string `gorm:"size:10"`
+	PresenceOfRcd_4_10               string `gorm:"size:10"`
+	PresenceOfAlternativeSupply_4_11 string `gorm:"size:10"`
+	PresenceOfOther_4_12             string `gorm:"size:10"`
+	// Compatibility of protective devices 4.13
+	// Single-pole switching 4.14
+	// Protection against mechanical 4.15
+	// Protection against electromagnetic 4.16
+	// RCD(s) provided for fault protection 4.17
+	// RCD(s) provided for additional protection 4.18
+	// Confirmation of indication that SPD is functiona 4.19
+	// Confirmation that ALL conductor connections  4.20
+	// Adequate arrangements where a generating set operates as a switched alternative 4.21
+	// Adequate arrangements where a generating set operates in parallel with the public supply 4.22
+	// 5.1 Identification of conductors (514.3.1)
+	// 5.2 Cables correctly supported throughout
+	// 5.3 Condition of insulation of live parts
+	// 5.4 Non-sheathed cables protected by enclosure in conduit, ducting or trunking
+	// 5.4.1 To include the integrity of conduit and trunking systems (metallic and plastic)
+	// 5.5 Adequacy of cables for current-carrying capacity with regard for the type and nature of installatio
+	// 5.6 Coordination between conductors and overload protective devices
+	// 5.7 Adequacy of protective devices: type and rated current for fault protection
+	// 5.8 Presence and adequacy of circuit protective conductors
+	// 5.9 Wiring system(s) appropriate for the type and nature of the installation
+	// 5.10 Concealed cables installed in prescribed zones
+	// 5.11 Cables concealed under floors, above ceilings or in walls/partitions, adequately protected against damage
+	// 5.12.1 For all socket-outlets of rating 32A or less, unless an exception is permitted
+	// 5.12.2 For the supply of mobile equipment not exceeding 32A rating for use outdoors
+	// 5.12.3 For cables concealed in walls at a depth of less than 50mm
+	// 5.12.4 For cables concealed in walls/partitions containing metal parts regardless of depth
+	// 5.12.5 Final circuits supplying luminaires within domestic (household) premises
+	// 5.13 Provision of fire barriers, sealing arrangements and protection against thermal effects
+	// 5.14 Band II cables segregated/separated from Band I cables
+	// 5.15 Cables segregated/separated from communications cabling
+	// 5.16 Cables segregated/separated from non-electrical services
+	// 5.17.1 Connections soundly made and under no undue strain
+	// 5.17.2 No basic insulation of a conductor visible outside enclosure
+	// 5.17.3 Connections of live conductors adequately enclosed
+	// 5.17.4 Adequately connected at point of entry to enclosure (glands, bushes etc.)
+	// 5.18 Condition of accessories including socket-outlets, switches and joint boxes
+	// 5.19 Suitability of accessories for external influences
+	// 5.20 Adequacy of working space/accessibility to equipment
+	// 5.21 Single-pole switching or protective devices in line conductors only
+	// 6.1 Additional protection for all low voltage (LV) circuits by RCD not exceeding 30mA
+	// 6.2 Where used as a protective measure, requirements for SELV or PELV met
+	// 6.3 Shaver supply units comply with BS EN 61558-2-5 formerly BS 3535
+	// 6.4 Presence of supplementary bonding conductors, unless not required by BS
+	// 6.5 Low voltage (e.g. 230 V) socket-outlets sited at least 2.5m from zone 1
+	// 6.6 Suitability of equipment for external influences for installed location in terms of IP rating
+	// 6.7 Suitability of accessories and controlgear etc. for a particular zone
+	// 6.8 Suitability of current-using equipment for particular position within the location
+
+}
+type Engineer struct {
+	DefaultProperties
+	Title            string `gorm:"size:100"`
+	Name             string `gorm:"size:100"`
+	Registration     string `gorm:"size:100"`
+	GasID            string `gorm:"size:100"`
+	GasSafeNo        string `gorm:"size:100"`
+	EicrTradingTitle string `gorm:"size:250"`
+	GasTradingTitle  string `gorm:"size:250"`
+	FraTradingTitle  string `gorm:"size:250"`
+	Address          string `gorm:"size:250"`
+	PostCode         string `gorm:"size:15"`
+	Phone            string `gorm:"size:25"`
+	Position         string `gorm:"size:50"`
+	Signature        string `gorm:"type:text"`
+
+	//Test Instrument SRL number
+	MultiFunctional          string `gorm:"size:25"`
+	InsulationResistance     string `gorm:"size:25"`
+	Continuity               string `gorm:"size:25"`
+	EarthElectrodeResistance string `gorm:"size:25"`
+	EarthFaultLoopImpedance  string `gorm:"size:25"`
+	RCD                      string `gorm:"size:25"`
 }
