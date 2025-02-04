@@ -701,6 +701,60 @@ type InspectionSchedule struct {
 	PresenceOfRcd_4_10               string `gorm:"size:10"`
 	PresenceOfAlternativeSupply_4_11 string `gorm:"size:10"`
 	PresenceOfOther_4_12             string `gorm:"size:10"`
+
+	// Compatibility of protective devices
+	CompatibilityOfProtective_4_13             string `gorm:"size:10"`
+	SinglePoleSwitching_4_14                   string `gorm:"size:10"`
+	ProtectionAgainstMechanical_4_15           string `gorm:"size:10"`
+	ProtectionAgainstElectromagnetic_4_16      string `gorm:"size:10"`
+	RcdsProvidedForFaultProtection_4_17        string `gorm:"size:10"`
+	RcdsProvidedForAdditionalProtection_4_18   string `gorm:"size:10"`
+	ConfirmationOfIndicationOfSpd_4_19         string `gorm:"size:10"`
+	ConfirmationOfAllConductorConnections_4_20 string `gorm:"size:10"`
+	AdequateSwitchedAlternative_4_21           string `gorm:"size:10"`
+	AdequateGeneratingSetParallel_4_22         string `gorm:"size:10"`
+
+	// Section 5
+	IdentificationOfConductors_5_1          string `gorm:"size:10"`
+	CablesCorrectlySupported_5_2            string `gorm:"size:10"`
+	ConditionOfInsulation_5_3               string `gorm:"size:10"`
+	NonSheathedCablesProtected_5_4          string `gorm:"size:10"`
+	IntegrityOfConduitAndTrunking_5_4_1     string `gorm:"size:10"`
+	AdequacyOfCablesForCurrent_5_5          string `gorm:"size:10"`
+	CoordinationBetweenConductors_5_6       string `gorm:"size:10"`
+	AdequacyOfProtectiveDevices_5_7         string `gorm:"size:10"`
+	PresenceAndAdequacyOfCpc_5_8            string `gorm:"size:10"`
+	AppropriateWiringSystems_5_9            string `gorm:"size:10"`
+	ConcealedCablesInPrescribedZones_5_10   string `gorm:"size:10"`
+	ConcealedCablesProtected_5_11           string `gorm:"size:10"`
+	RcdForSockets_32AOrLess_5_12_1          string `gorm:"size:10"`
+	RcdForMobileEquipment_32A_5_12_2        string `gorm:"size:10"`
+	RcdForCablesLessThan50mmDepth_5_12_3    string `gorm:"size:10"`
+	RcdForCablesInWalls_5_12_4              string `gorm:"size:10"`
+	RcdForFinalCircuits_5_12_5              string `gorm:"size:10"`
+	ProvisionOfFireBarriers_5_13            string `gorm:"size:10"`
+	BandIICablesSeparated_5_14              string `gorm:"size:10"`
+	CablesSeparatedFromComms_5_15           string `gorm:"size:10"`
+	CablesSeparatedFromNonElectrical_5_16   string `gorm:"size:10"`
+	ConnectionsSoundlyMade_5_17_1           string `gorm:"size:10"`
+	NoBasicInsulationVisible_5_17_2         string `gorm:"size:10"`
+	LiveConductorsAdequatelyEnclosed_5_17_3 string `gorm:"size:10"`
+	AdequateEntryConnection_5_17_4          string `gorm:"size:10"`
+	ConditionOfAccessories_5_18             string `gorm:"size:10"`
+	SuitabilityOfAccessories_5_19           string `gorm:"size:10"`
+	AdequacyOfWorkingSpace_5_20             string `gorm:"size:10"`
+	SinglePoleSwitchingInLine_5_21          string `gorm:"size:10"`
+
+	// Section 6
+	AdditionalRcdProtectionForLVCircuits_6_1 string `gorm:"size:10"`
+	SelvOrPelvRequirementsMet_6_2            string `gorm:"size:10"`
+	ShaverSupplyUnitsCompliant_6_3           string `gorm:"size:10"`
+	PresenceOfSupplementaryBonding_6_4       string `gorm:"size:10"`
+	LVSocketOutletsDistance_6_5              string `gorm:"size:10"`
+	SuitabilityForExternalInfluences_6_6     string `gorm:"size:10"`
+	SuitabilityOfAccessoriesForZone_6_7      string `gorm:"size:10"`
+	SuitabilityOfEquipmentForLocation_6_8    string `gorm:"size:10"`
+
 	// Compatibility of protective devices 4.13
 	// Single-pole switching 4.14
 	// Protection against mechanical 4.15
