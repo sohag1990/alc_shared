@@ -597,11 +597,11 @@ type Eicr struct {
 	AssessmentSummary      string `gorm:"size:50"`
 	SatisfactoryYear       string `gorm:"size:50"`
 
-	HasObservations string `gorm:"size:10"`
-	C1Items         string `gorm:"size:50"`
-	C2Items         string `gorm:"size:50"`
-	C3Items         string `gorm:"size:50"`
-	FiItems         string `gorm:"size:50"`
+	// HasObservations string `gorm:"size:10"`
+	// C1Items         string `gorm:"size:50"`
+	// C2Items         string `gorm:"size:50"`
+	// C3Items         string `gorm:"size:50"`
+	// FiItems         string `gorm:"size:50"`
 }
 
 type EicrObservation struct {
