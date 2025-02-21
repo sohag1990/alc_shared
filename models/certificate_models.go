@@ -567,10 +567,11 @@ type FraRecommendation struct {
 
 type Eicr struct {
 	DefaultProperties
-	EngineerID       uint64
-	Engineer         Engineer
-	EicrObservations []EicrObservation
-	EicrPage3        EicrPage3
+	EngineerID         uint64
+	Engineer           Engineer
+	EicrObservations   []EicrObservation
+	EicrPage3          EicrPage3
+	InspectionSchedule InspectionSchedule
 
 	//eicr page 1
 	OrderID uint64
