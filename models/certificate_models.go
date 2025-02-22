@@ -572,6 +572,7 @@ type Eicr struct {
 	EicrObservations   []EicrObservation
 	EicrPage3          EicrPage3
 	InspectionSchedule InspectionSchedule
+	EicrDbInfos        []EicrDbInfo
 
 	//eicr page 1
 	OrderID uint64
@@ -779,4 +780,60 @@ type Engineer struct {
 	EarthElectrodeResistance string `gorm:"size:25"`
 	EarthFaultLoopImpedance  string `gorm:"size:25"`
 	RCD                      string `gorm:"size:25"`
+}
+
+type EicrDbInfo struct {
+	DefaultProperties
+	EicrID                       uint64
+	EicrCircuits                 []EicrCircuit
+	DBReference                  string `gorm:"size:50"`
+	Location                     string `gorm:"size:50"`
+	SuppliedFrom                 string `gorm:"size:50"`
+	OcpdBsEn                     string `gorm:"size:50"`
+	OcpdType                     string `gorm:"size:50"`
+	OcpdRating                   string `gorm:"size:50"`
+	OcpdNoOfPhase                string `gorm:"size:50"`
+	SpdNoOfTypesT1               string `gorm:"size:50"`
+	SpdNoOfTypesT2               string `gorm:"size:50"`
+	SpdNoOfTypesT3               string `gorm:"size:50"`
+	SpdNoOfTypesNa               string `gorm:"size:50"`
+	SpdStatusChecked             string `gorm:"size:50"`
+	ConfirmationOfSupplyPolarity string `gorm:"size:50"`
+	ConfirmationOfPhaseSequence  string `gorm:"size:50"`
+	ZsAtDb                       string `gorm:"size:50"`
+	LpfAtDb                      string `gorm:"size:50"`
+}
+type EicrCircuit struct {
+	DefaultProperties
+	EicrDbInfoID                  uint64
+	CircuitNumber                 string `gorm:"size:50"`
+	CircuitDescription            string `gorm:"size:200"`
+	TypeOfWiring                  string `gorm:"size:5"`
+	ReferenceMethod               string `gorm:"size:5"`
+	NumberOfPointServed           string `gorm:"size:5"`
+	LiveMm                        string `gorm:"size:5"`
+	LiveCpc                       string `gorm:"size:5"`
+	MaxDisconnectionTimePermitted string `gorm:"size:5"`
+	OcpdBsEn                      string `gorm:"size:15"` // over current protection device
+	OcpdType                      string `gorm:"size:15"` // over current protection device
+	OcpdRatingA                   string `gorm:"size:15"` // over current protection device
+	OcpdBreakingCapacity          string `gorm:"size:15"` // over current protection device
+	OcpdMaximumPermittedZs        string `gorm:"size:15"` // over current protection device
+	RcdBsEn                       string `gorm:"size:15"`
+	RcdType                       string `gorm:"size:15"`
+	RcdRatedOperatingCurrent      string `gorm:"size:15"`
+	RcdRatingA                    string `gorm:"size:15"`
+	RingFinalCircuit_r1           string `gorm:"size:15"`
+	RingFinalCircuit_rn           string `gorm:"size:15"`
+	RingFinalCircuit_r2           string `gorm:"size:15"`
+	R1PlusR2                      string `gorm:"size:15"`
+	R2                            string `gorm:"size:15"`
+	TestVoltage                   string `gorm:"size:15"`
+	LiveLive                      string `gorm:"size:15"`
+	LiveEarth                     string `gorm:"size:15"`
+	Polarity                      string `gorm:"size:15"`
+	ZsMaximumMeasured             string `gorm:"size:15"`
+	RcdDisconnectionTime          string `gorm:"size:15"`
+	RcdTestButtonOperation        string `gorm:"size:15"`
+	AfddManualTestButtonOperation string `gorm:"size:15"`
 }
