@@ -689,7 +689,7 @@ type InspectionSchedule struct {
 	AccessibilityAndConditionEarthing_3_5 string `gorm:"size:10"`
 	ConfirmationOfMain_3_6                string `gorm:"size:10"`
 	ConditionAndAccessibilityMain_3_7     string `gorm:"size:10"`
-	AccessibilityAndConditionOther_3_3    string `gorm:"size:10"`
+	AccessibilityAndConditionOther_3_8    string `gorm:"size:10"`
 	//4.0 CONSUMER UNIT(S) / DISTRIBUTION BOARD(S)
 	AdequacyOfWorking_4_1            string `gorm:"size:10"`
 	SecurityOfFixing_4_2             string `gorm:"size:10"`
