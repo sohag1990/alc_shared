@@ -664,6 +664,7 @@ type EicrPage3 struct {
 	ToWaterInstallationPipes string `gorm:"size:50"`
 	ToGasInstallationPipes   string `gorm:"size:50"`
 	ToOilInstallationPipes   string `gorm:"size:50"`
+	ToStructuralSteel        string `gorm:"size:50"`
 	TolightningProtection    string `gorm:"size:50"`
 	ToOtherService           string `gorm:"size:50"`
 }
