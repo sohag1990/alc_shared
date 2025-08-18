@@ -32,10 +32,11 @@ type User struct {
 }
 
 type DefaultProperties struct {
-	ID        uint64 `gorm:"primary_key"`
-	CreatedAt *time.Time
-	UpdatedAt *time.Time `json:"-"`
-	Deleted   gorm.DeletedAt
+	ID          uint64 `gorm:"primary_key"`
+	EncryptedID string `gorm:"-:migration"` // ignore this field when migrate with struct
+	CreatedAt   *time.Time
+	UpdatedAt   *time.Time `json:"-"`
+	Deleted     gorm.DeletedAt
 }
 
 type EmailSetting struct {
