@@ -33,7 +33,7 @@ type User struct {
 
 type DefaultProperties struct {
 	ID          uint64 `gorm:"primary_key"`
-	EncryptedID string `gorm:"-:migration"` // ignore this field when migrate with struct
+	EncryptedID string `gorm:"-"` //ignore in crude operation
 	CreatedAt   *time.Time
 	UpdatedAt   *time.Time `json:"-"`
 	Deleted     gorm.DeletedAt
